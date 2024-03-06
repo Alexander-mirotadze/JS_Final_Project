@@ -1,8 +1,8 @@
 .header {
-  padding: 1rem;
+  padding: 10px;
   width: 100%;
   height: 142px;
-  position: fixed;
+  position: relative;
   top: 0;
   left: 0;
   z-index: 9999999999;
@@ -18,19 +18,55 @@
   width: 7.4375rem;
   height: 5.375rem;
   background-color: #004f44;
-  cursor: pointer;
 }
 .nav__ul {
   display: flex;
   column-gap: 2rem;
 }
-.nav__ul-li {
+.nav__ul-li a {
+  white-space: nowrap;
   color: #ffffff;
   font-family: "Kode Mono";
-  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.5s linear;
+}
+.nav__ul-li :hover{
+  transform: scale(1.1,1.1);
+  box-shadow: 5px 5px 10px #ffffff;
 }
 .products {
-  white-space: nowrap;
+  position: relative;
+  color: #ffffff;
+  cursor: pointer;
+}
+/* .products::after {
+  font: var(--fa-font-solid);
+  content: "\f150";
+}
+.products.active--products::after {
+  content: "\f151";
+} */
+.drop__product__list {
+  position: absolute;
+  top: 44px;
+  left: 70px;
+  height: 0;
+  overflow: hidden;
+}
+.drop__product__list.active--products{
+  width: 120px;
+  height: 200px;
+  transform: translateY(95px);
+  background-color: #004f44;
+  border-radius: 4px;
+  box-shadow: none;
+}
+.drop__product__list a {
+  padding: 10px;
+  margin-top: 20px;
+  display: inline-block;
+  color: #ffffff;
+  font-family: "Kode Mono";
 }
 .header__components {
   display: flex;
@@ -41,6 +77,12 @@
   width: 100%;
   height: 100%;
   cursor: pointer;
+  transition: all 0.5s linear;
+}
+.header__components div :hover {
+  transform: scale(1.1,1.1);
+  box-shadow: 5px 5px 10px #ffffff;
+  border-radius: 4px;
 }
 .burger__bar {
   display: none;
@@ -74,8 +116,8 @@
 }
 .reg__autau__btn__div.active-reg-btns {
   display: block;
-  position: fixed;
-  margin-top: 142px;
+  position: absolute;
+  top: 142px;
   right: 0;
   z-index: 5555555555;
   padding: 5px;
@@ -94,12 +136,12 @@
 }
 .signe__in--div.active-log-in {
   display: block;
-  position: fixed;
-  top: 147px;
+  position: absolute;
+  top: 143px;
   right: 0;
   z-index: 7777777777;
   width: 600px;
-  height: 100%;
+  height: 700px;
   background-color: #004f44;
   border-radius: 4px;
 }
@@ -146,12 +188,12 @@
 }
 .signe__up--div.active-sign-up {
   display: block;
-  position: fixed;
-  top: 147px;
+  position: absolute;
+  top: 143px;
   right: 0;
   z-index: 7777777777;
   width: 600px;
-  height: 100%;
+  height: 700px;
   background-color: #004f44;
   border-radius: 4px;
 }

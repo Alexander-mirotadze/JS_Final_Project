@@ -17,27 +17,88 @@
       <div class="header-wraper">
         <nav class="nav">
           <ul class="nav__ul">
-            <li class="nav__ul-li">Shop</li>
-            <li class="nav__ul-li products">
-              Products
-              <i class="fa-solid fa-caret-down"></i>
+            <li class="nav__ul-li">
+              <a href="#">Shop</a>
             </li>
-            <li class="nav__ul-li">Fertilizer</li>
-            <li class="nav__ul-li">Guide</li>
+            <li class="nav__ul-li">
+              <a href="#"
+                >Products
+                <i
+                  class="fa-solid fa-square-caret-down products"
+                  data-dropDown-icon
+                ></i>
+              </a>
+              <div class="drop__product__list" data-dropDown-icon>
+                <a href="#">New</a>
+                <a href="#">Popular</a>
+                <a href="#">Featured</a>
+              </div>
+            </li>
+            <li class="nav__ul-li"><a href="#">Fertilizer</a></li>
+            <li class="nav__ul-li"><a href="#">Guide</a></li>
           </ul>
         </nav>
-        <div class="logo-div"><img src="img/header/logo.png" alt="Logo" /></div>
+        <a class="logo-div"><img src="img/header/logo.png" alt="Logo" /></a>
         <div class="header__components">
-          <img
-            id="searchIcon"
-            src="img/header/search_line.png"
-            alt="search_icon"
-          />
-          <img
-            id="userRegAutauthoriz"
-            src="img/header/user_line.png"
-            alt="user_icon"
-          /><img src="img/header/shopping_cart_line.png" alt="cart_icon" />
+          <div>
+            <img
+              id="searchIcon"
+              src="img/header/search_line.png"
+              alt="search_icon"
+            />
+          </div>
+          <div>
+            <img
+              id="userRegAutauthoriz"
+              src="img/header/user_line.png"
+              alt="user_icon"
+            />
+          </div>
+          <div>
+            <img src="img/header/shopping_cart_line.png" alt="cart_icon" />
+          </div>
+          <div class="reg__autau__btn__div">
+            <button id="signe__in">Sign In</button>
+            <button id="signe__up">Sign Up</button>
+          </div>
+          <div class="signe__in--div">
+            <form class="log-in-form" action="">
+              <input
+                type="text"
+                placeholder="Enter your User Name or Email :"
+              />
+              <input type="password" placeholder="Enter you password :" />
+              <button>Log In</button>
+            </form>
+            <i
+              class="fa-solid fa-rectangle-xmark fa-2xl close--signInDiv-btn"
+              style="color: #ffffff"
+            ></i>
+          </div>
+          <div class="signe__up--div">
+            <form class="signe__up-form" class="" action="">
+              <input type="text" placeholder="Enter your first name :" />
+              <input type="text" placeholder="Enter your last name :" />
+              <input type="password" placeholder="Enter your password :" />
+              <input type="password" placeholder="Re-enter your password :" />
+              <input type="email" placeholder="Enter your email :" />
+              <div class="signe__up-radio">
+                <label for="Male">Male</label>
+                <input type="radio" name="gender" id="Male" />
+                <label for="Female">Female</label>
+                <input type="radio" name="gender" id="Female" />
+              </div>
+              <div class="signe__up-checkbox">
+                <span>I agree terms</span>
+                <input type="checkbox" />
+              </div>
+              <button>SubmiT</button>
+            </form>
+            <i
+              class="fa-solid fa-rectangle-xmark fa-2xl close--signUpDiv-btn"
+              style="color: #ffffff"
+            ></i>
+          </div>
         </div>
         <div class="burger__bar"></div>
       </div>
@@ -47,47 +108,7 @@
       </form>
     </header>
     <main>
-      <section>
-        <div class="reg__autau__btn__div">
-          <button id="signe__in">Sign In</button>
-          <button id="signe__up">Sign Up</button>
-        </div>
-        <div class="signe__in--div">
-          <form class="log-in-form" action="">
-            <input type="text" placeholder="Enter your User Name or Email :" />
-            <input type="password" placeholder="Enter you password :" />
-            <button>Log In</button>
-          </form>
-          <i
-            class="fa-solid fa-rectangle-xmark fa-2xl close--signInDiv-btn"
-            style="color: #ffffff"
-          ></i>
-        </div>
-        <div class="signe__up--div">
-          <form class="signe__up-form" class="" action="">
-            <input type="text" placeholder="Enter your first name :" />
-            <input type="text" placeholder="Enter your last name :" />
-            <input type="password" placeholder="Enter your password :" />
-            <input type="password" placeholder="Re-enter your password :" />
-            <input type="email" placeholder="Enter your email :" />
-            <div class="signe__up-radio">
-                <label for="Male">Male</label>
-                <input type="radio" name="gender" id="Male"/>
-                <label for="Female">Female</label>
-                <input type="radio" name="gender" id="Female" />
-            </div>
-            <div class="signe__up-checkbox">
-                <span>I agree terms</span>
-                <input type="checkbox" />
-            </div>
-            <button>SubmiT</button>
-          </form>
-          <i
-            class="fa-solid fa-rectangle-xmark fa-2xl close--signUpDiv-btn"
-            style="color: #ffffff"
-          ></i>
-        </div>
-      </section>
+      <section></section>
     </main>
     <footer></footer>
 
