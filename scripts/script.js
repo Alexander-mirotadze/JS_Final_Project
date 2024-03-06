@@ -21,9 +21,9 @@ dropProductList.addEventListener("click", function () {
 });
 
 document.addEventListener("click", (body) => {
-  console.log(body.target);
+//   console.log(body.target);
   const isDropDown = body.target.matches("[data-dropDown-icon]");
-  console.log(isDropDown);
+//   console.log(isDropDown);
   if (!isDropDown) {
     dropProductsDiv.classList.remove("active--products");
     dropArrowUpDown();
@@ -45,6 +45,15 @@ const regAutaudiv = document.querySelector(".reg__autau__btn__div");
 userRegAutauthoriz.addEventListener("click", function () {
   regAutaudiv.classList.toggle("active-reg-btns");
 });
+
+document.addEventListener("click", body => {
+    const isRegAutauDiv = body.target.matches("[data-reg-auta-div]");
+    // console.log(isRegAutauDiv);
+    if(!isRegAutauDiv){
+        regAutaudiv.classList.remove("active-reg-btns");
+    }
+});
+
 // ! registration sign in
 const signInBtn = document.getElementById("signe__in");
 const signInDiv = document.querySelector(".signe__in--div");
