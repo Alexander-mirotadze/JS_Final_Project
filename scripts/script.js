@@ -21,16 +21,16 @@ dropProductList.addEventListener("click", function () {
 });
 
 document.addEventListener("click", (body) => {
-//   console.log(body.target);
+  //   console.log(body.target);
   const isDropDown = body.target.matches("[data-dropDown-icon]");
-//   console.log(isDropDown);
-  if (!isDropDown) {
+  //   console.log(isDropDown);
+  const arrowDefault = document.querySelector(".fa-square-caret-down");
+  //   console.log(arrowDefault);
+
+  if (!isDropDown && !arrowDefault) {
     dropProductsDiv.classList.remove("active--products");
     dropArrowUpDown();
   }
-  else{
-  }
-
 });
 
 // ! search
@@ -46,12 +46,12 @@ userRegAutauthoriz.addEventListener("click", function () {
   regAutaudiv.classList.toggle("active-reg-btns");
 });
 
-document.addEventListener("click", body => {
-    const isRegAutauDiv = body.target.matches("[data-reg-auta-div]");
-    // console.log(isRegAutauDiv);
-    if(!isRegAutauDiv){
-        regAutaudiv.classList.remove("active-reg-btns");
-    }
+document.addEventListener("click", (body) => {
+  const isRegAutauDiv = body.target.matches("[data-reg-auta-div]");
+  // console.log(isRegAutauDiv);
+  if (!isRegAutauDiv) {
+    regAutaudiv.classList.remove("active-reg-btns");
+  }
 });
 
 // ! registration sign in
