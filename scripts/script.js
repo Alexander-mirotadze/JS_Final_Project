@@ -39,6 +39,15 @@ const searchForm = document.getElementById("searchForm");
 searchIcon.addEventListener("click", function () {
   searchForm.classList.toggle("active__search");
 });
+
+document.addEventListener("click", (body) => {
+  const isSearchBar = body.target.matches("[search-bar]");
+  // console.log(isRegAutauDiv);
+  if (!isSearchBar) {
+    searchForm.classList.remove("active__search");
+  }
+});
+
 // ! user
 const userRegAutauthoriz = document.getElementById("userRegAutauthoriz");
 const regAutaudiv = document.querySelector(".reg__autau__btn__div");
