@@ -36,8 +36,15 @@ document.addEventListener("click", (body) => {
 // ! search
 const searchIcon = document.getElementById("searchIcon");
 const searchForm = document.getElementById("searchForm");
+const searchBtn = document.querySelector(".search__btn");
+const searchInput = document.querySelector(".search-input");
 searchIcon.addEventListener("click", function () {
   searchForm.classList.toggle("active__search");
+  searchForm.reset();
+});
+searchForm.addEventListener("submit", function (e) {
+  e.preventDefault();
+  searchForm.reset();
 });
 
 document.addEventListener("click", (body) => {
@@ -45,6 +52,7 @@ document.addEventListener("click", (body) => {
   // console.log(isRegAutauDiv);
   if (!isSearchBar) {
     searchForm.classList.remove("active__search");
+    searchForm.reset();
   }
 });
 
@@ -66,29 +74,66 @@ document.addEventListener("click", (body) => {
 // ! registration sign in
 const signInBtn = document.getElementById("signe__in");
 const signInDiv = document.querySelector(".signe__in--div");
+const signInForm = document.querySelector(".log-in-form");
 const closeBtn = document.querySelector(".close--signInDiv-btn");
 
 signInBtn.addEventListener("click", function () {
   signInDiv.classList.add("active-log-in");
 });
 
-signInDiv.addEventListener("submit", function (e) {
+signInForm.addEventListener("submit", function (e) {
   e.preventDefault();
 });
 
+document.addEventListener("click", function (body) {
+  const isSignInForm = body.target.matches("[is-sign-in]");
+  if (!isSignInForm) {
+    signInDiv.classList.remove("active-log-in");
+    signInForm.reset();
+  }
+});
+
+
 closeBtn.addEventListener("click", function () {
   signInDiv.classList.remove("active-log-in");
+  signInForm.reset();
 });
 
 // ! registration sign up
 const signUpBtn = document.getElementById("signe__up");
 const signUpDiv = document.querySelector(".signe__up--div");
+const signUpForm = document.querySelector(".signe__up-form");
 const closeSignUpDiv = document.querySelector(".close--signUpDiv-btn");
 
 signUpBtn.addEventListener("click", function () {
   signUpDiv.classList.add("active-sign-up");
 });
 
+signUpForm.addEventListener("submit", function (e) {
+  e.preventDefault();
+});
+
+document.addEventListener("click", function (body) {
+  const isSignUpForm = body.target.matches("[sign-up-form]");
+  if (!isSignUpForm) {
+    signUpDiv.classList.remove("active-sign-up");
+    signUpForm.reset();
+  }
+});
+
 closeSignUpDiv.addEventListener("click", function () {
   signUpDiv.classList.remove("active-sign-up");
+  signUpForm.reset();
 });
+
+// ! info from server
+async function serverInfo() {
+  try {
+    const response = await fetch("https://api.punkapi.com/v2/beers");
+    const JSdata = await response.json();
+    // const result = console.log(JSdata);
+  } catch (error) {
+    console.log("Page Not Found");
+  }
+}
+serverInfo();

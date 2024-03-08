@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Plantify.com</title>
+    <title>Beer-shop.com</title>
     <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="css/font.css" />
     <link rel="stylesheet" href="css/style.css" />
@@ -38,13 +38,13 @@
             <li class="nav__ul-li"><a href="#">Guide</a></li>
           </ul>
         </nav>
-        <a class="logo-div"><img src="img/header/logo.png" alt="Logo" /></a>
+        <a href="index.html" class="logo-div"><img src="img/header/logo.png" alt="Logo" /></a>
         <div class="header__components">
           <div class="header__components-div">
             <img
             class="header__components-img"
               id="searchIcon"
-              src="img/header/search_line.png"
+              src="img/header/search_line.svg"
               alt="search_icon"
               search-bar
             />
@@ -63,53 +63,54 @@
             class="header__components-img" src="img/header/shopping_cart_line.png" alt="cart_icon" />
           </div>
           <div class="reg__autau__btn__div">
-            <button id="signe__in" class="reg__autau__btn__div-button">Sign In</button>
-            <button id="signe__up" class="reg__autau__btn__div-button">Sign Up</button>
+            <button id="signe__in" class="reg__autau__btn__div-button" is-sign-in>Sign In</button>
+            <button id="signe__up" class="reg__autau__btn__div-button" sign-up-form>Sign Up</button>
           </div>
-          <div class="signe__in--div">
-            <form class="log-in-form" action="">
+          <div class="signe__in--div" is-sign-in>
+            <form class="log-in-form" action="" is-sign-in>
               <input
+                class="search-input"
                 type="text"
-                placeholder="Enter your User Name or Email :"
+                placeholder="Enter your User Name or Email :" is-sign-in
               />
-              <input type="password" placeholder="Enter you password :" />
-              <button>Log In</button>
+              <input type="password" placeholder="Enter you password :" is-sign-in />
+              <button is-sign-in>Log In</button>
             </form>
             <i
               class="fa-solid fa-rectangle-xmark fa-2xl close--signInDiv-btn"
-              style="color: #ffffff"
+              style="color: #000000"
             ></i>
           </div>
-          <div class="signe__up--div">
-            <form class="signe__up-form" class="" action="">
-              <input type="text" placeholder="Enter your first name :" />
-              <input type="text" placeholder="Enter your last name :" />
-              <input type="password" placeholder="Enter your password :" />
-              <input type="password" placeholder="Re-enter your password :" />
-              <input type="email" placeholder="Enter your email :" />
-              <div class="signe__up-radio">
-                <label for="Male">Male</label>
-                <input type="radio" name="gender" id="Male" />
-                <label for="Female">Female</label>
-                <input type="radio" name="gender" id="Female" />
+          <div class="signe__up--div" sign-up-form>
+            <form class="signe__up-form" action="" sign-up-form>
+              <input type="text" placeholder="Enter your first name :"  sign-up-form/>
+              <input type="text" placeholder="Enter your last name :"  sign-up-form/>
+              <input type="password" placeholder="Enter your password :"  sign-up-form/>
+              <input type="password" placeholder="Re-enter your password :"  sign-up-form/>
+              <input type="email" placeholder="Enter your email :"  sign-up-form/>
+              <div class="signe__up-radio" sign-up-form>
+                <label for="Male" sign-up-form>Male</label>
+                <input type="radio" name="gender" id="Male"  sign-up-form/>
+                <label for="Female" sign-up-form>Female</label>
+                <input type="radio" name="gender" id="Female"  sign-up-form/>
               </div>
-              <div class="signe__up-checkbox">
-                <span>I agree terms</span>
-                <input type="checkbox" />
+              <div class="signe__up-checkbox" sign-up-form>
+                <span sign-up-form>I agree terms</span>
+                <input type="checkbox"  sign-up-form/>
               </div>
-              <button>SubmiT</button>
+              <button sign-up-form>SubmiT</button>
             </form>
             <i
               class="fa-solid fa-rectangle-xmark fa-2xl close--signUpDiv-btn"
-              style="color: #ffffff"
+              style="color: #000000"
             ></i>
           </div>
         </div>
         <div class="burger__bar"></div>
       </div>
-      <form id="searchForm" action="" class="search__form">
-        <input class="search__input" type="search" placeholder="Search" />
-        <button class="search__btn">Search</button>
+      <form id="searchForm" action="" class="search__form" search-bar>
+        <input class="search__input" type="search" placeholder="Search" search-bar />
+        <button class="search__btn" search-bar>Search</button>
       </form>
     </header>
     <main>

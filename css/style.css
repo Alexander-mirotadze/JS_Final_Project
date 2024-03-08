@@ -6,7 +6,7 @@
   top: 0;
   left: 0;
   z-index: 9999999999;
-  background-color: #004f44;
+  background-color: #F4C314;
 }
 .header-wraper {
   display: flex;
@@ -15,9 +15,15 @@
   column-gap: 2.5rem;
 }
 .logo-div {
-  width: 7.4375rem;
-  height: 5.375rem;
-  background-color: #004f44;
+  width: 5rem;
+  height: 5rem;
+  background-color: #ffffff;
+  border-radius: 50px;
+}
+.logo-div img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover center ;
 }
 .nav__ul {
   display: flex;
@@ -32,12 +38,13 @@
 }
 .nav__ul-li a {
   white-space: nowrap;
-  color: #ffffff;
+  color: #000000;
   font-family: "Kode Mono";
+  font-weight: 700;
 }
 .products {
   position: relative;
-  color: #ffffff;
+  color: #000000;
   cursor: pointer;
 }
 /* .products::after {
@@ -61,7 +68,7 @@
   width: 120px;
   height: 200px;
   transform: translateY(95px);
-  background-color: #004f44;
+  background-color: #F4C314;
   border-radius: 4px;
   box-shadow: none;
 }
@@ -69,7 +76,7 @@
   padding: 10px;
   margin-top: 20px;
   display: inline-block;
-  color: #ffffff;
+  color: #000000;
   font-family: "Kode Mono";
   border-radius: 4px;
   transition: all 0.5s linear;
@@ -88,6 +95,8 @@
   height: 100%;
 }
 .header__components-div{
+  width: 20px;
+  height: 20px;
   cursor: pointer;
   transition: all 0.5s linear;
 }
@@ -100,10 +109,11 @@
   display: none;
 }
 .search__form.active__search {
+  margin-top: 5px;
   display: flex;
   column-gap: 2px;
   width: 100%;
-  animation: right-to-left 1s linear;
+  animation: end-to-top 1s linear;
 }
 .search__input {
   width: 100%;
@@ -113,13 +123,14 @@
   background-color: #ffffff;
 }
 .search__btn {
-  color: #ffffff;
+  color: #000000;
   font-family: "Kode Mono";
-  background-color: #004f44;
+  font-weight: 600;
+  background-color: #F4C314;
   width: 8rem;
   height: 1.5rem;
   border-radius: 4px;
-  border: 1px solid #ffffff;
+  border: 1px solid #000000;
 }
 .reg__autau__btn__div {
   display: none;
@@ -135,13 +146,14 @@
   animation: right-to-left 1s linear;
 }
 .reg__autau__btn__div-button {
-  color: #ffffff;
+  color: #000000;
   font-family: "Kode Mono";
-  background-color: #004f44;
+  font-weight: 700;
+  background-color: #F4C314;
   width: 8rem;
   height: 1.5rem;
   border-radius: 4px;
-  border: 1px solid #ffffff;
+  border: 1px solid #000000;
 }
 .signe__in--div {
   display: none;
@@ -155,7 +167,7 @@
   z-index: 7777777777;
   width: 600px;
   height: 700px;
-  background-color: #004f44;
+  background-color: #F4C314;
   border-radius: 4px;
   animation: right-to-left 1s linear;
 }
@@ -175,21 +187,22 @@
   height: 3rem;
   border-radius: 4px;
   font-family: "Kode Mono";
-  background-color: #004f44;
-  color: #ffffff;
+  background-color: #F4C314;
+  color: #000000;
 }
 .log-in-form input::placeholder {
-  color: #ffffff;
+  color: #000000;
 }
 .log-in-form button {
   margin: 0 auto;
-  color: #ffffff;
+  color: #000000;
   font-family: "Kode Mono";
-  background-color: #004f44;
+  font-weight: 700;
+  background-color: #F4C314;
   width: 8rem;
   height: 2rem;
   border-radius: 4px;
-  border: 1px solid #ffffff;
+  border: 1px solid #000000;
 }
 .close--signInDiv-btn {
   position: absolute;
@@ -212,7 +225,7 @@
   z-index: 7777777777;
   width: 600px;
   height: 700px;
-  background-color: #004f44;
+  background-color: #F4C314;
   border-radius: 4px;
   animation: right-to-left 1s linear;
 }
@@ -232,21 +245,22 @@
   height: 3rem;
   border-radius: 4px;
   font-family: "Kode Mono";
-  background-color: #004f44;
-  color: #ffffff;
+  background-color: #F4C314;
+  color: #000000;
 }
 .signe__up-form input::placeholder {
-  color: #ffffff;
+  color: #000000;
 }
 .signe__up-form button {
   margin: 0 auto;
-  color: #ffffff;
+  color: #000000;
   font-family: "Kode Mono";
-  background-color: #004f44;
+  font-weight: 700;
+  background-color: #F4C314;
   width: 8rem;
   height: 2rem;
   border-radius: 4px;
-  border: 1px solid #ffffff;
+  border: 1px solid #000000;
 }
 .signe__up-radio {
   display: flex;
@@ -282,5 +296,10 @@
 @keyframes left-to-right {
   100% {
     transform: translateX(0%);
+  }
+}
+@keyframes end-to-top {
+  0% {
+    transform: translateY(100%);
   }
 }
