@@ -127,13 +127,47 @@ closeSignUpDiv.addEventListener("click", function () {
 });
 
 // ! info from server
+const beersContainerDiv = document.getElementById("beer-container-div");
+
+
+
 async function serverInfo() {
   try {
     const response = await fetch("https://api.punkapi.com/v2/beers");
     const JSdata = await response.json();
-    // const result = console.log(JSdata);
+    const result = await JSdata.forEach(element => {
+      mainFnc (element)
+    });
+    return result;
   } catch (error) {
     console.log("Page Not Found");
   }
 }
 serverInfo();
+
+
+function mainFnc (beerItem) {
+  let eachBeerDiv = document.createElement("div");
+  eachBeerDiv.classList.add("each-beer-div");
+
+  const h2BeerElements = document.createElement("h2");
+  h2BeerElements.innerText = beerItem.name;
+  h2BeerElements.classList.add("h2-beer-name");
+  
+  const imgDivElements = document.createElement("div");
+  imgDivElements.setAttribute("class", "div-for-beer-img");
+
+  const imgBeerElements = document.createElement("img");
+  imgBeerElements.setAttribute("src", beerItem.image_url);
+  imgBeerElements.setAttribute("alt", `${"beer-"}${beerItem.id}`);
+  imgBeerElements.classList.add("beer-image")
+
+  // beersContainerDiv.appendChild(h2BeerElements);
+  // beersContainerDiv.appendChild(imgDivElements);
+  // beersContainerDiv.appendChild(imgBeerElements);
+
+  imgDivElements.appendChild(imgBeerElements);
+  eachBeerDiv.appendChild(h2BeerElements);
+  eachBeerDiv.appendChild(imgDivElements);
+  beersContainerDiv.appendChild(eachBeerDiv);
+}
