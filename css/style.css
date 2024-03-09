@@ -35,7 +35,7 @@
 .nav__ul-li {
   height: 20px;
   border-radius: 4px;
-  transition: all 0.5s linear;
+  transition: all 0.5s ease-in-out;
 }
 .nav__ul-li:hover {
   box-shadow: 5px 5px 10px #ffffff;
@@ -72,7 +72,7 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  transition: all 0.5s linear;
+  transition: all 1s ease-in-out;
 }
 .drop__product__list.active--products {
   width: 100px;
@@ -89,7 +89,7 @@
   color: #000000;
   font-family: "Kode Mono";
   border-radius: 4px;
-  transition: all 0.5s linear;
+  transition: all 0.5s ease-in-out;
 }
 .drop__product__list a:hover {
   box-shadow: 5px 5px 10px #ffffff;
@@ -107,7 +107,7 @@
   width: 20px;
   height: 20px;
   cursor: pointer;
-  transition: all 0.5s linear;
+  transition: all 0.5s ease-in-out;
 }
 .header__components-div:hover {
   transform: scale(1.1, 1.1);
@@ -118,11 +118,12 @@
   display: none;
 }
 .search__form.active__search {
+  display: block;
   margin-top: 3px;
   display: flex;
   column-gap: 2px;
   width: 100%;
-  animation: right-to-left 3s linear;
+  animation: right-to-left 3s ease-in-out;
 }
 .search__input {
   width: 100%;
@@ -143,7 +144,7 @@
 }
 .reg__autau__btn__div {
   display: none;
-  animation: left-to-right 3s linear; /*? ასამუშავებელი მაქვს*/
+  animation: left-to-right 3s ease-in-out; /*? ასამუშავებელი მაქვს*/
 }
 .reg__autau__btn__div.active-reg-btns {
   display: block;
@@ -152,7 +153,7 @@
   right: 0;
   z-index: 5555555555;
   padding: 5px;
-  animation: right-to-left 3s linear;
+  animation: right-to-left 3s ease-in-out;
 }
 .reg__autau__btn__div-button {
   color: #000000;
@@ -166,7 +167,7 @@
 }
 .signe__in--div {
   display: none;
-  animation: left-to-right 1s linear; /*? ასამუშავებელი მაქვს*/
+  animation: left-to-right 1s ease-in-out; /*? ასამუშავებელი მაქვს*/
 }
 .signe__in--div.active-log-in {
   display: block;
@@ -178,7 +179,7 @@
   height: 700px;
   background-color: #f4c314;
   border-radius: 4px;
-  animation: right-to-left 3s linear;
+  animation: right-to-left 3s ease-in-out;
 }
 .log-in-form {
   margin: 100px auto;
@@ -219,14 +220,14 @@
   top: 20px;
   right: 20px;
   cursor: pointer;
-  animation: left-to-right 1s linear;
+  animation: left-to-right 1s ease-in-out;
 }
 .signe__up--div {
   display: none;
-  animation: left-to-right 1s linear; /*? ასამუშავებელი მაქვს*/
+  animation: left-to-right 1s ease-in-out; /*? ასამუშავებელი მაქვს*/
 }
 /* .signe__up--div.disable-sign-up{
-  animation: left-to-right 1s linear;
+  animation: left-to-right 1s ease-in-out;
 } */
 .signe__up--div.active-sign-up {
   display: block;
@@ -238,7 +239,7 @@
   height: 700px;
   background-color: #f4c314;
   border-radius: 4px;
-  animation: right-to-left 3s linear;
+  animation: right-to-left 3s ease-in-out;
 }
 .signe__up-form {
   margin: 50px auto;
@@ -308,7 +309,11 @@
 }
 @keyframes left-to-right {
   0% {
+    transform: translateX(0);
+  }
+  100% {
     transform: translateX(-100%);
+
   }
 }
 @keyframes end-to-top {
@@ -323,8 +328,8 @@
 }
 /*! main */
 /* .slogan {
-  transition: all 20s linear;
-  animation: left-to-right 20s linear infinite;
+  transition: all 20s ease-in-out;
+  animation: left-to-right 20s ease-in-out infinite;
 } */
 h1 {
   margin-top: 20px;
@@ -392,7 +397,7 @@ h1::after {
   bottom: 20px;
   right: 10px;
   opacity: 0.7;
-  transition: all 0.5s linear;
+  transition: all 0.5s ease-in-out;
 }
 .scroll-up:hover{
   opacity: 1;
