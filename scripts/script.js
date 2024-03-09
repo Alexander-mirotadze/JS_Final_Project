@@ -168,7 +168,13 @@ function mainFnc (beerItem) {
   eachBeerDiv.appendChild(imgDivElements);
   beersContainerDiv.appendChild(eachBeerDiv);
 }
+// ! burger
+const burgerBar = document.querySelector(".burger__bar");
+const navLists = document.querySelector(".nav");
 
+burgerBar.addEventListener("click", function(){
+  navLists.classList.toggle("active-nav");
+})
 
 // ! scroll up
 function scrollUp () {

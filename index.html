@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="css/font.css" />
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/respo.css">
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -27,12 +28,12 @@
                   class="fa-solid fa-square-caret-down products"
                   data-dropDown-icon
                 ></i>
+                <div class="drop__product__list" data-dropDown-icon>
+                  <a href="#" target="_blank">New</a>
+                  <a href="#" target="_blank">Popular</a>
+                  <a href="#" target="_blank">Featured</a>
+                </div>
             </div>
-              <div class="drop__product__list" data-dropDown-icon>
-                <a href="#" target="_blank">New</a>
-                <a href="#" target="_blank">Popular</a>
-                <a href="#" target="_blank">Featured</a>
-              </div>
             </li>
             <li class="nav__ul-li"><a href="#">Fertilizer</a></li>
             <li class="nav__ul-li"><a href="#">Guide</a></li>
@@ -106,7 +107,11 @@
             ></i>
           </div>
         </div>
-        <div class="burger__bar"></div>
+        <div class="burger__bar">
+          <div class="burger__lines"></div>
+          <div class="burger__lines"></div>
+          <div class="burger__lines"></div>
+        </div>
       </div>
       <form id="searchForm" action="" class="search__form" search-bar>
         <input class="search__input" type="search" placeholder="Search" search-bar />
