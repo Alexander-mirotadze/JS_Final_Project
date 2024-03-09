@@ -162,12 +162,24 @@ function mainFnc (beerItem) {
   imgBeerElements.setAttribute("alt", `${"beer-"}${beerItem.id}`);
   imgBeerElements.classList.add("beer-image")
 
-  // beersContainerDiv.appendChild(h2BeerElements);
-  // beersContainerDiv.appendChild(imgDivElements);
-  // beersContainerDiv.appendChild(imgBeerElements);
 
   imgDivElements.appendChild(imgBeerElements);
   eachBeerDiv.appendChild(h2BeerElements);
   eachBeerDiv.appendChild(imgDivElements);
   beersContainerDiv.appendChild(eachBeerDiv);
 }
+
+
+// ! scroll up
+function scrollUp () {
+  const scrollUpIcon = document.querySelector(".fa-circle-up");
+
+  scrollUpIcon.addEventListener("click", function () {
+    window.scrollTo({
+      top: 0, 
+      left: 0, 
+      behavior: 'smooth' 
+     });
+  });
+}
+scrollUp ();
