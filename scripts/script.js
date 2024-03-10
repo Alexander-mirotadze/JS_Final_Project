@@ -162,9 +162,26 @@ function mainFnc(beerItem) {
   beerDescription.innerText = beerItem.description;
   beerDescription.classList.add("p-beer-description");
 
+  let beerPP = document.createElement("div");
+  beerPP.classList.add("beer-pp-div");
+  let beerPrice = document.createElement("span");
+  beerPrice.classList.add("beer-price");
+  beerPrice.textContent = `${beerItem.abv}${" - GEL"}`;
+  let beerPcLine = document.createElement("input");
+  beerPcLine.classList.add("beer-pc");
+  let beerPCText = document.createElement("span");
+  beerPCText.classList.add("beer-PC-text")
+  beerPCText.textContent = "PC";
+
+
+
   beerDetailInfo.appendChild(beerName);
   beerDetailInfo.appendChild(beerTag);
   beerDetailInfo.appendChild(beerDescription);
+  beerPP.appendChild(beerPrice);
+  beerPP.appendChild(beerPcLine);
+  beerPP.appendChild(beerPCText);
+  beerDetailInfo.appendChild(beerPP);
   beerInfoContainer.appendChild(beerDetailInfo);
 
 
@@ -188,10 +205,12 @@ var splide = new Splide(".splide", {
   type: "loop",
   wheel: true,
   perPage: 1,
+  pagination: true,
   rewind: true,
   autoplay: true,
   interval: 5000,
   speed: 3000,
+  
   // classes: {
   //   // Add classes for arrows.
   //   arrows: "splide__arrows your-class-arrows",
