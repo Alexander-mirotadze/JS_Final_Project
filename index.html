@@ -7,10 +7,14 @@
     <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="css/font.css" />
     <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/respo.css">
+    <link rel="stylesheet" href="css/respo.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="./node_modules/@splidejs/splide/dist/css/splide.min.css"
     />
   </head>
   <body class="body">
@@ -22,8 +26,8 @@
               <a href="#">Shop</a>
             </li>
             <li class="nav__ul-li">
-              <div class="poducts-div"
-                >Products
+              <div class="poducts-div">
+                Products
                 <i
                   class="fa-solid fa-square-caret-down products"
                   data-dropDown-icon
@@ -33,17 +37,19 @@
                   <a href="#" target="_blank">Popular</a>
                   <a href="#" target="_blank">Featured</a>
                 </div>
-            </div>
+              </div>
             </li>
             <li class="nav__ul-li"><a href="#">Fertilizer</a></li>
             <li class="nav__ul-li"><a href="#">Guide</a></li>
           </ul>
         </nav>
-        <a href="index.html" class="logo-div"><img src="img/header/logo.png" alt="Logo" /></a>
+        <a href="index.html" class="logo-div"
+          ><img src="img/header/logo.png" alt="Logo"
+        /></a>
         <div class="header__components">
           <div class="header__components-div">
             <img
-            class="header__components-img"
+              class="header__components-img"
               id="searchIcon"
               src="img/header/search_line.svg"
               alt="search_icon"
@@ -52,7 +58,7 @@
           </div>
           <div class="header__components-div">
             <img
-            class="header__components-img"
+              class="header__components-img"
               id="userRegAutauthoriz"
               src="img/header/user_line.png"
               alt="user_icon"
@@ -61,20 +67,40 @@
           </div>
           <div class="header__components-div">
             <img
-            class="header__components-img" src="img/header/shopping_cart_line.png" alt="cart_icon" />
+              class="header__components-img"
+              src="img/header/shopping_cart_line.png"
+              alt="cart_icon"
+            />
           </div>
           <div class="reg__autau__btn__div">
-            <button id="signe__in" class="reg__autau__btn__div-button" is-sign-in>Sign In</button>
-            <button id="signe__up" class="reg__autau__btn__div-button" sign-up-form>Sign Up</button>
+            <button
+              id="signe__in"
+              class="reg__autau__btn__div-button"
+              is-sign-in
+            >
+              Sign In
+            </button>
+            <button
+              id="signe__up"
+              class="reg__autau__btn__div-button"
+              sign-up-form
+            >
+              Sign Up
+            </button>
           </div>
           <div class="signe__in--div" is-sign-in>
             <form class="log-in-form" action="" is-sign-in>
               <input
                 class="search-input"
                 type="text"
-                placeholder="Enter your User Name or Email :" is-sign-in
+                placeholder="Enter your User Name or Email :"
+                is-sign-in
               />
-              <input type="password" placeholder="Enter you password :" is-sign-in />
+              <input
+                type="password"
+                placeholder="Enter you password :"
+                is-sign-in
+              />
               <button is-sign-in>Log In</button>
             </form>
             <i
@@ -84,20 +110,40 @@
           </div>
           <div class="signe__up--div" sign-up-form>
             <form class="signe__up-form" action="" sign-up-form>
-              <input type="text" placeholder="Enter your first name :"  sign-up-form/>
-              <input type="text" placeholder="Enter your last name :"  sign-up-form/>
-              <input type="password" placeholder="Enter your password :"  sign-up-form/>
-              <input type="password" placeholder="Re-enter your password :"  sign-up-form/>
-              <input type="email" placeholder="Enter your email :"  sign-up-form/>
+              <input
+                type="text"
+                placeholder="Enter your first name :"
+                sign-up-form
+              />
+              <input
+                type="text"
+                placeholder="Enter your last name :"
+                sign-up-form
+              />
+              <input
+                type="password"
+                placeholder="Enter your password :"
+                sign-up-form
+              />
+              <input
+                type="password"
+                placeholder="Re-enter your password :"
+                sign-up-form
+              />
+              <input
+                type="email"
+                placeholder="Enter your email :"
+                sign-up-form
+              />
               <div class="signe__up-radio" sign-up-form>
                 <label for="Male" sign-up-form>Male</label>
-                <input type="radio" name="gender" id="Male"  sign-up-form/>
+                <input type="radio" name="gender" id="Male" sign-up-form />
                 <label for="Female" sign-up-form>Female</label>
-                <input type="radio" name="gender" id="Female"  sign-up-form/>
+                <input type="radio" name="gender" id="Female" sign-up-form />
               </div>
               <div class="signe__up-checkbox" sign-up-form>
                 <span sign-up-form>I agree terms</span>
-                <input type="checkbox"  sign-up-form/>
+                <input type="checkbox" sign-up-form />
               </div>
               <button sign-up-form>SubmiT</button>
             </form>
@@ -114,24 +160,44 @@
         </div>
       </div>
       <form id="searchForm" action="" class="search__form" search-bar>
-        <input class="search__input" type="search" placeholder="Search" search-bar />
+        <input
+          class="search__input"
+          type="search"
+          placeholder="Search"
+          search-bar
+        />
         <button class="search__btn" search-bar>Search</button>
       </form>
     </header>
     <main>
       <section>
         <div class="slogan">
-          <h1>“This is grain, which any fool can eat, but for which the lord has intended a more divine form of consumption. Let us give praise to our maker and glory to His bounty by learning about beer.”</h1>
+          <h1>
+            “This is grain, which any fool can eat, but for which the lord has
+            intended a more divine form of consumption. Let us give praise to
+            our maker and glory to His bounty by learning about beer.”
+          </h1>
         </div>
-        <div id="beer-container-div"></div>
+        <div id="beer-container-div">
+          <div class="beer-info"></div>
+          <div
+            class="splide"
+            role="group"
+            aria-label="Splide Basic HTML Example"
+          >
+            <div class="splide__track">
+              <ul class="splide__list"></ul>
+            </div>
+          </div>
+        </div>
       </section>
     </main>
     <footer></footer>
     <div class="scroll-up">
-      <i class="fa-solid fa-circle-up fa-2xl" style="color: #000000;"></i>
+      <i class="fa-solid fa-circle-up fa-2xl" style="color: #000000"></i>
     </div>
 
-
+    <script src="./node_modules/@splidejs/splide/dist/js/splide.min.js"></script>
     <script src="scripts/script.js"></script>
   </body>
 </html>

@@ -38,6 +38,7 @@ const searchIcon = document.getElementById("searchIcon");
 const searchForm = document.getElementById("searchForm");
 const searchBtn = document.querySelector(".search__btn");
 const searchInput = document.querySelector(".search-input");
+
 searchIcon.addEventListener("click", function () {
   searchForm.classList.toggle("active__search");
   searchForm.reset();
@@ -93,7 +94,6 @@ document.addEventListener("click", function (body) {
   }
 });
 
-
 closeBtn.addEventListener("click", function () {
   signInDiv.classList.remove("active-log-in");
   signInForm.reset();
@@ -127,16 +127,13 @@ closeSignUpDiv.addEventListener("click", function () {
 });
 
 // ! info from server
-const beersContainerDiv = document.getElementById("beer-container-div");
-
-
 
 async function serverInfo() {
   try {
     const response = await fetch("https://api.punkapi.com/v2/beers");
     const JSdata = await response.json();
-    const result = await JSdata.forEach(element => {
-      mainFnc (element)
+    const result = await JSdata.forEach((element) => {
+      mainFnc(element);
     });
     return result;
   } catch (error) {
@@ -145,55 +142,97 @@ async function serverInfo() {
 }
 serverInfo();
 
+const beersContainerDiv = document.getElementById("beer-container-div");
+const beerInfoContainer = document.querySelector(".beer-info");
+const beerUlcontainer = document.querySelector(".splide__list");
 
-function mainFnc (beerItem) {
-  let eachBeerDiv = document.createElement("div");
-  eachBeerDiv.classList.add("each-beer-div");
+function mainFnc(beerItem) {
 
-  const h2BeerElements = document.createElement("h2");
-  h2BeerElements.innerText = beerItem.name;
-  h2BeerElements.classList.add("h2-beer-name");
-  
-  const imgDivElements = document.createElement("div");
-  imgDivElements.setAttribute("class", "div-for-beer-img");
+  let beerDetailInfo = document.createElement("div");
 
-  const imgBeerElements = document.createElement("img");
+  let beerName = document.createElement("h2");
+  beerName.innerText = beerItem.name;
+  beerName.classList.add("h2-beer-name");
+
+  let beerTag = document.createElement("p");
+  beerTag.innerText = beerItem.tagline;
+  beerTag.classList.add("p-beer-tagline");
+
+  let beerDescription = document.createElement("p");
+  beerDescription.innerText = beerItem.description;
+  beerDescription.classList.add("p-beer-description");
+
+  beerDetailInfo.appendChild(beerName);
+  beerDetailInfo.appendChild(beerTag);
+  beerDetailInfo.appendChild(beerDescription);
+  beerInfoContainer.appendChild(beerDetailInfo);
+
+
+  let imgLiElements = document.createElement("li");
+  imgLiElements.setAttribute("class", "splide__slide");
+  imgLiElements.classList.add("li-for-beer-img");
+
+  let imgBeerElements = document.createElement("img");
   imgBeerElements.setAttribute("src", beerItem.image_url);
   imgBeerElements.setAttribute("alt", `${"beer-"}${beerItem.id}`);
-  imgBeerElements.classList.add("beer-image")
+  imgBeerElements.classList.add("beer-image");
 
-
-  imgDivElements.appendChild(imgBeerElements);
-  eachBeerDiv.appendChild(h2BeerElements);
-  eachBeerDiv.appendChild(imgDivElements);
-  beersContainerDiv.appendChild(eachBeerDiv);
+  imgLiElements.appendChild(imgBeerElements);
+  beerUlcontainer.appendChild(imgLiElements);
 }
+
+var splide = new Splide(".splide", {
+  direction: "ttb",
+  height: "500px",
+  // width: "80%",
+  type: "loop",
+  wheel: true,
+  perPage: 1,
+  rewind: true,
+  autoplay: true,
+  interval: 5000,
+  speed: 3000,
+  // classes: {
+  //   // Add classes for arrows.
+  //   arrows: "splide__arrows your-class-arrows",
+  //   arrow: "splide__arrow your-class-arrow",
+  //   prev: "splide__arrow--prev your-class-prev",
+  //   next: "splide__arrow--next your-class-next",
+
+  //   // Add classes for pagination.
+  //   pagination: "splide__pagination your-class-pagination", // container
+  //   page: "splide__pagination__page your-class-page", // each button
+  // },
+});
+
+splide.mount();
+
 // ! burger
 const burgerBar = document.querySelector(".burger__bar");
 const navLists = document.querySelector(".nav");
 
-burgerBar.addEventListener("click", function(){
+burgerBar.addEventListener("click", function () {
   navLists.classList.toggle("active-nav");
 
   const burgerMiddleLine = document.querySelector(".burger__middle-line");
-  burgerMiddleLine.classList.toggle("burger__middle-line-hide")
+  burgerMiddleLine.classList.toggle("burger__middle-line-hide");
 
   const burgerBarLines = document.querySelectorAll(".burger__lines");
   burgerBarLines.forEach(function (element) {
-    element.classList.toggle("burger__lines-to-X")
-  })
-})
+    element.classList.toggle("burger__lines-to-X");
+  });
+});
 
 // ! scroll up
-function scrollUp () {
+function scrollUp() {
   const scrollUpIcon = document.querySelector(".fa-circle-up");
 
   scrollUpIcon.addEventListener("click", function () {
     window.scrollTo({
-      top: 0, 
-      left: 0, 
-      behavior: 'smooth' 
-     });
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
   });
 }
-scrollUp ();
+scrollUp();
