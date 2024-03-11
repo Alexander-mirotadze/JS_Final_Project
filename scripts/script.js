@@ -254,7 +254,7 @@ var splide = new Splide(".splide", {
 splide.mount();
 
 //  ! shop all products
-const shopAllProducts = document.getElementById("Shop");
+const shopAllProducts = document.querySelector(".shop");
 
 function shopAllProductsFnc (beerItem) {
   let beerDetailInfo = document.createElement("div");

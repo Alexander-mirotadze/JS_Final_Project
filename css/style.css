@@ -354,6 +354,19 @@ h1::after {
   content: "\f0fc";
   margin-left: 10px;
 }
+.h2-section-header{
+  margin: 20px auto;
+  width: fit-content;
+  background-color: #f4c314;
+  font-family: "Kode Mono";
+  color: #000000;
+  font-size: 36px;
+  line-height: 36px;
+  font-weight: 900;
+  font-style: italic;
+  text-align: center;
+
+}
 #beer-container-div {
   margin: 20px auto;
   height: 400px;
@@ -495,7 +508,7 @@ h1::after {
 .splide__pagination__page.new-beer-class-page.is-active {
   background-color: #ffffff;
 }
-#Shop{
+.shop{
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
