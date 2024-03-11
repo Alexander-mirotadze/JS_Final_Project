@@ -130,9 +130,11 @@ closeSignUpDiv.addEventListener("click", function () {
 
 async function serverInfo() {
   try {
-    const response = await fetch("https://api.punkapi.com/v2/beers");
+    const response = await fetch(
+      "https://alexander-mirotadze.github.io/server/server.json"
+    );
     const JSdata = await response.json();
-    const result = await JSdata.forEach((element) => {
+    const result = await JSdata.new.forEach((element) => {
       mainFnc(element);
     });
     return result;
@@ -142,13 +144,22 @@ async function serverInfo() {
 }
 serverInfo();
 
+// ! ---
 const beersContainerDiv = document.getElementById("beer-container-div");
 const beerInfoContainer = document.querySelector(".beer-info");
-const beerUlcontainer = document.querySelector(".splide__list");
+const newBeerSlide = document.querySelector(".splide__slide");
 
-function mainFnc(beerItem) {
+function mainFnc(eachBeerItem) {
+  beerDescriptionFnc(eachBeerItem);
+  beerImageFnc(eachBeerItem);
+}
 
+// ! ---
+
+function beerDescriptionFnc(beerItem) {
   let beerDetailInfo = document.createElement("div");
+  beerDetailInfo.classList.add("beer-details");
+  beerDetailInfo.setAttribute("data-beerDesc", beerItem.id);
 
   let beerName = document.createElement("h2");
   beerName.innerText = beerItem.name;
@@ -166,14 +177,12 @@ function mainFnc(beerItem) {
   beerPP.classList.add("beer-pp-div");
   let beerPrice = document.createElement("span");
   beerPrice.classList.add("beer-price");
-  beerPrice.textContent = `${beerItem.abv}${" - GEL"}`;
+  beerPrice.textContent = `${beerItem.price}${" - GEL"}`;
   let beerPcLine = document.createElement("input");
   beerPcLine.classList.add("beer-pc");
   let beerPCText = document.createElement("span");
-  beerPCText.classList.add("beer-PC-text")
+  beerPCText.classList.add("beer-PC-text");
   beerPCText.textContent = "PC";
-
-
 
   beerDetailInfo.appendChild(beerName);
   beerDetailInfo.appendChild(beerTag);
@@ -183,45 +192,43 @@ function mainFnc(beerItem) {
   beerPP.appendChild(beerPCText);
   beerDetailInfo.appendChild(beerPP);
   beerInfoContainer.appendChild(beerDetailInfo);
+}
 
-
-  let imgLiElements = document.createElement("li");
-  imgLiElements.setAttribute("class", "splide__slide");
-  imgLiElements.classList.add("li-for-beer-img");
-
+// ! ---
+function beerImageFnc(beerItem) {
   let imgBeerElements = document.createElement("img");
   imgBeerElements.setAttribute("src", beerItem.image_url);
   imgBeerElements.setAttribute("alt", `${"beer-"}${beerItem.id}`);
+  imgBeerElements.setAttribute("data-id-img", beerItem.id);
   imgBeerElements.classList.add("beer-image");
 
-  imgLiElements.appendChild(imgBeerElements);
-  beerUlcontainer.appendChild(imgLiElements);
+  newBeerSlide.appendChild(imgBeerElements);
 }
 
 var splide = new Splide(".splide", {
   direction: "ttb",
   height: "500px",
   // width: "80%",
-  type: "loop",
+  type: "slide",
   wheel: true,
   perPage: 1,
   pagination: true,
   rewind: true,
-  autoplay: true,
-  interval: 5000,
-  speed: 3000,
-  
-  // classes: {
-  //   // Add classes for arrows.
-  //   arrows: "splide__arrows your-class-arrows",
-  //   arrow: "splide__arrow your-class-arrow",
-  //   prev: "splide__arrow--prev your-class-prev",
-  //   next: "splide__arrow--next your-class-next",
+  // autoplay: true,
+  // interval: 5000,
+  // speed: 3000,
 
-  //   // Add classes for pagination.
-  //   pagination: "splide__pagination your-class-pagination", // container
-  //   page: "splide__pagination__page your-class-page", // each button
-  // },
+  classes: {
+    // Add classes for arrows.
+    arrows: "splide__arrows new-beer-class-arrows",
+    arrow: "splide__arrow new-beer-class-arrow",
+    prev: "splide__arrow--prev new-beer-class-prev",
+    next: "splide__arrow--next new-beer-class-next",
+
+    // Add classes for pagination.
+    pagination: "splide__pagination new-beer-class-pagination", // container
+    page: "splide__pagination__page new-beer-class-page", // each button
+  },
 });
 
 splide.mount();
