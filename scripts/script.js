@@ -152,15 +152,14 @@ const newBeerSlide = document.querySelector(".splide__slide");
 function mainFnc(eachBeerItem) {
   beerDescriptionFnc(eachBeerItem);
   beerImageFnc(eachBeerItem);
+  shopAllProductsFnc(eachBeerItem);
 }
 
 // ! ---
-
 function beerDescriptionFnc(beerItem) {
   let beerDetailInfo = document.createElement("div");
   beerDetailInfo.classList.add("beer-details");
   beerDetailInfo.setAttribute("data-beerDesc", beerItem.id);
-  console.log(beerDetailInfo);
 
   let beerName = document.createElement("h2");
   beerName.innerText = beerItem.name;
@@ -185,7 +184,12 @@ function beerDescriptionFnc(beerItem) {
   beerPCText.classList.add("beer-PC-text");
   beerPCText.textContent = "PC";
   let addToBuyIcon = document.createElement("i");
-  addToBuyIcon.classList.add("fa-solid", "fa-cart-plus", "fa-2xl", "add-product-icon")
+  addToBuyIcon.classList.add(
+    "fa-solid",
+    "fa-cart-plus",
+    "fa-2xl",
+    "add-product-icon"
+  );
 
   beerDetailInfo.appendChild(beerName);
   beerDetailInfo.appendChild(beerTag);
@@ -195,8 +199,7 @@ function beerDescriptionFnc(beerItem) {
   beerPP.appendChild(beerPCText);
   beerPP.appendChild(addToBuyIcon);
   beerDetailInfo.appendChild(beerPP);
-  // beerInfoContainer.appendChild(beerDetailInfo);
-
+  beerInfoContainer.appendChild(beerDetailInfo);
 }
 
 // ! ---
@@ -217,9 +220,10 @@ function beerImageFnc(beerItem) {
     if (slideElementNum == imgBeerNum) {
       elementSlide.appendChild(imgBeerElements);
     }
-
   });
 }
+
+// ! slider npm
 
 var splide = new Splide(".splide", {
   direction: "ttb",
@@ -230,9 +234,9 @@ var splide = new Splide(".splide", {
   perPage: 1,
   pagination: true,
   rewind: true,
-  // autoplay: true,
-  // interval: 5000,
-  // speed: 3000,
+  autoplay: true,
+  interval: 5000,
+  speed: 3000,
 
   classes: {
     // Add classes for arrows.
@@ -248,6 +252,65 @@ var splide = new Splide(".splide", {
 });
 
 splide.mount();
+
+//  ! shop all products
+const shopAllProducts = document.getElementById("Shop");
+
+function shopAllProductsFnc (beerItem) {
+  let beerDetailInfo = document.createElement("div");
+  beerDetailInfo.classList.add("shop-beer-details");
+
+  let beerName = document.createElement("h2");
+  beerName.innerText = beerItem.name;
+  beerName.classList.add("h2-beer-name");
+
+  let imgBeerElements = document.createElement("img");
+  imgBeerElements.setAttribute("src", beerItem.image_url);
+  imgBeerElements.setAttribute("alt", `${"beer-"}${beerItem.id}`);
+  imgBeerElements.classList.add("shop-beer-image");
+
+
+  let beerTag = document.createElement("p");
+  beerTag.innerText = beerItem.tagline;
+  beerTag.classList.add("p-beer-tagline");
+
+  let beerDescription = document.createElement("span");
+  beerDescription.innerText = beerItem.description;
+  beerDescription.classList.add("shop-span-beer-description");
+  let beerDescDrop = document.createElement("i");
+  beerDescDrop.classList.add("fa-solid","fa-sort-down","fa-lg","desc-accord-icon");
+
+  let beerPP = document.createElement("div");
+  beerPP.classList.add("beer-pp-div");
+  let beerPrice = document.createElement("span");
+  beerPrice.classList.add("beer-price");
+  beerPrice.textContent = `${beerItem.price}${" - GEL"}`;
+  let beerPcLine = document.createElement("input");
+  beerPcLine.classList.add("beer-pc");
+  let beerPCText = document.createElement("span");
+  beerPCText.classList.add("beer-PC-text");
+  beerPCText.textContent = "PC";
+  let addToBuyIcon = document.createElement("i");
+  addToBuyIcon.classList.add(
+    "fa-solid",
+    "fa-cart-plus",
+    "fa-2xl",
+    "add-product-icon"
+  );
+
+  beerDetailInfo.appendChild(beerName);
+  beerDetailInfo.appendChild(imgBeerElements);
+  beerDetailInfo.appendChild(beerTag);
+  beerDescription.appendChild(beerDescDrop);
+  beerDetailInfo.appendChild(beerDescription);
+  beerPP.appendChild(beerPrice);
+  beerPP.appendChild(beerPcLine);
+  beerPP.appendChild(beerPCText);
+  beerPP.appendChild(addToBuyIcon);
+  beerDetailInfo.appendChild(beerPP);
+
+  shopAllProducts.appendChild(beerDetailInfo)
+}
 
 // ! burger
 const burgerBar = document.querySelector(".burger__bar");

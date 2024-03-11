@@ -1,5 +1,6 @@
 .body {
   padding-top: 120px;
+  /* background-color: #000000; */
 }
 .header {
   padding: 10px;
@@ -366,7 +367,7 @@ h1::after {
   height: 100%;
   border-radius: 4px;
   background-color: #f4c314;
-  /* overflow: hidden; */
+  overflow: hidden;
 }
 .beer-details {
   width: 100%;
@@ -377,6 +378,7 @@ h1::after {
   /* background-color: red; */
 }
 .h2-beer-name {
+  padding-top: 5px;
   width: 90%;
   height: 40px;
   font-family: "Kode Mono";
@@ -389,8 +391,8 @@ h1::after {
   background-color: #ffffff;
 }
 .p-beer-tagline {
+  padding-top: 3px;
   width: 90%;
-  height: 20px;
   font-family: "Kode Mono";
   font-size: 16px;
   font-weight: 600;
@@ -418,16 +420,16 @@ h1::after {
   display: flex;
   justify-content: center;
   align-items: center;
-  column-gap: 10px;
+  column-gap: 20px;
   /* background-color: rebeccapurple; */
 }
 .beer-price {
   font-family: "Kode Mono";
-  font-size: 24px;
+  font-size: 16px;
   font-weight: 800;
 }
 .beer-pc {
-  width: 80px;
+  width: 60px;
   height: 100%;
   font-size: 24px;
   font-weight: 600;
@@ -439,7 +441,7 @@ h1::after {
 }
 .beer-PC-text {
   font-family: "Kode Mono";
-  font-size: 24px;
+  font-size: 16px;
   font-weight: 800;
 }
 /* .li-for-beer-img {
@@ -492,6 +494,46 @@ h1::after {
 }
 .splide__pagination__page.new-beer-class-page.is-active {
   background-color: #ffffff;
+}
+#Shop{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.shop-beer-details{
+  margin: 20px auto;
+  width: 20%;
+  height: 800px;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #f4c314;
+}
+.shop-beer-image{
+  width: 50%;
+  height: 50%;
+}
+.shop-span-beer-description{
+  position: relative;
+  height: 50px;
+  width: 90%;
+  padding: 10px;
+  font-family: "Kode Mono";
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16px;
+  margin: 10px auto;
+  border-radius: 4px;
+  background-color: #ffffff;
+  overflow: hidden;
+}
+.desc-accord-icon{
+  position: absolute;
+  top: 50%;
+  right: 2px;
+  transform: translateY(-50%);
 }
 /* ! scroll up */
 .scroll-up {
