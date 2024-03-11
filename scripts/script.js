@@ -134,7 +134,7 @@ async function serverInfo() {
       "https://alexander-mirotadze.github.io/server/server.json"
     );
     const JSdata = await response.json();
-    const result = await JSdata.new.forEach((element) => {
+    const result = await JSdata.forEach((element) => {
       mainFnc(element);
     });
     return result;
@@ -160,6 +160,7 @@ function beerDescriptionFnc(beerItem) {
   let beerDetailInfo = document.createElement("div");
   beerDetailInfo.classList.add("beer-details");
   beerDetailInfo.setAttribute("data-beerDesc", beerItem.id);
+  console.log(beerDetailInfo);
 
   let beerName = document.createElement("h2");
   beerName.innerText = beerItem.name;
@@ -183,6 +184,8 @@ function beerDescriptionFnc(beerItem) {
   let beerPCText = document.createElement("span");
   beerPCText.classList.add("beer-PC-text");
   beerPCText.textContent = "PC";
+  let addToBuyIcon = document.createElement("i");
+  addToBuyIcon.classList.add("fa-solid", "fa-cart-plus", "fa-2xl", "add-product-icon")
 
   beerDetailInfo.appendChild(beerName);
   beerDetailInfo.appendChild(beerTag);
@@ -190,11 +193,16 @@ function beerDescriptionFnc(beerItem) {
   beerPP.appendChild(beerPrice);
   beerPP.appendChild(beerPcLine);
   beerPP.appendChild(beerPCText);
+  beerPP.appendChild(addToBuyIcon);
   beerDetailInfo.appendChild(beerPP);
-  beerInfoContainer.appendChild(beerDetailInfo);
+  // beerInfoContainer.appendChild(beerDetailInfo);
+
 }
 
 // ! ---
+
+const newBeerAllSlides = document.querySelectorAll(".splide__slide");
+
 function beerImageFnc(beerItem) {
   let imgBeerElements = document.createElement("img");
   imgBeerElements.setAttribute("src", beerItem.image_url);
@@ -202,12 +210,20 @@ function beerImageFnc(beerItem) {
   imgBeerElements.setAttribute("data-id-img", beerItem.id);
   imgBeerElements.classList.add("beer-image");
 
-  newBeerSlide.appendChild(imgBeerElements);
+  newBeerAllSlides.forEach(function (elementSlide) {
+    let slideElementNum = elementSlide.getAttribute("data-id");
+    let imgBeerNum = imgBeerElements.getAttribute("data-id-img");
+
+    if (slideElementNum == imgBeerNum) {
+      elementSlide.appendChild(imgBeerElements);
+    }
+
+  });
 }
 
 var splide = new Splide(".splide", {
   direction: "ttb",
-  height: "500px",
+  height: "400px",
   // width: "80%",
   type: "slide",
   wheel: true,

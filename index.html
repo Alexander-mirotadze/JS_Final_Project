@@ -23,7 +23,7 @@
         <nav class="nav">
           <ul class="nav__ul">
             <li class="nav__ul-li">
-              <a href="#">Shop</a>
+              <a href="#" target="_blank">Shop</a>
             </li>
             <li class="nav__ul-li">
               <div class="poducts-div">
@@ -39,8 +39,10 @@
                 </div>
               </div>
             </li>
-            <li class="nav__ul-li"><a href="#">Fertilizer</a></li>
-            <li class="nav__ul-li"><a href="#">Guide</a></li>
+            <li class="nav__ul-li">
+              <a href="#" target="_blank">Fertilizer</a>
+            </li>
+            <li class="nav__ul-li"><a href="#" target="_blank">Guide</a></li>
           </ul>
         </nav>
         <a href="index.html" class="logo-div"
@@ -60,7 +62,7 @@
             <img
               class="header__components-img"
               id="userRegAutauthoriz"
-              src="img/header/user_line.png"
+              src="img/header/user_line.svg"
               alt="user_icon"
               data-reg-auta-div
             />
@@ -68,7 +70,7 @@
           <div class="header__components-div">
             <img
               class="header__components-img"
-              src="img/header/shopping_cart_line.png"
+              src="img/header/shopping_cart_line.svg"
               alt="cart_icon"
             />
           </div>
@@ -189,11 +191,11 @@
               aria-label="Splide Basic HTML Example"
             >
               <div class="splide__track">
-                <ul class="splide__list">
-                  <li class="splide__slide"></li>
-                  <li class="splide__slide"></li>
-                  <li class="splide__slide"></li>
-                  <li class="splide__slide"></li>
+                <ul id="slide-ul" class="splide__list">
+                  <li class="splide__slide" data-id="1"></li>
+                  <li class="splide__slide" data-id="2"></li>
+                  <li class="splide__slide" data-id="3"></li>
+                  <li class="splide__slide" data-id="4"></li>
                 </ul>
               </div>
             </div>
@@ -201,10 +203,12 @@
         </div>
       </section>
       <section id="Popular">
-        <div></div>
+        <div>
+        </div>
       </section>
       <section id="Featured">
-        <div></div>
+        <div>
+        </div>
       </section>
     </main>
     <footer></footer>

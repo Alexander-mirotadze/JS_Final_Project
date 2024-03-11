@@ -355,14 +355,15 @@ h1::after {
 }
 #beer-container-div {
   margin: 20px auto;
+  height: 400px;
   display: flex;
   justify-content: space-around;
   column-gap: 30px;
   /* background-color: red; */
 }
 .beer-info {
-  width: 50%;
-  height: 500px;
+  width: 45%;
+  height: 100%;
   border-radius: 4px;
   background-color: #f4c314;
   /* overflow: hidden; */
@@ -410,14 +411,14 @@ h1::after {
   background-color: #ffffff;
 }
 .beer-pp-div {
-  max-width: 300px;
+  max-width: 315px;
   width: 95%;
   height: 50px;
   margin: 0 auto;
   display: flex;
   justify-content: center;
   align-items: center;
-  column-gap: 20px;
+  column-gap: 10px;
   /* background-color: rebeccapurple; */
 }
 .beer-price {
@@ -449,15 +450,20 @@ h1::after {
   border-radius: 4px;
 } */
 .beer-slides {
-  width: 50%;
-  height: 500px;
+  width: 45%;
+  height: 100%;
   border-radius: 4px;
   background-color: #f4c314;
+}
+#slide-ul {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .beer-image {
   width: 150px;
   height: 100%;
-  object-fit: cover center;
+  /* object-fit: cover; */
 }
 /* .splide__arrows.new-beer-class-arrows {
   color: red;
