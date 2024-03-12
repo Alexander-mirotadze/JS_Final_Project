@@ -69,6 +69,7 @@
           </div>
           <div class="header__components-div">
             <img
+              id="cartIcon"
               class="header__components-img"
               src="img/header/shopping_cart_line.svg"
               alt="cart_icon"
@@ -154,6 +155,17 @@
               style="color: #000000"
             ></i>
           </div>
+          <div class="cart-div">
+            <ul class="cart-ul">
+              <button class="clear-all">Clear All
+                <i class="fa-solid fa-trash-can fa-2xl" style="color: #f4c314;"></i>
+              </button>
+            </ul>
+            <i
+            class="fa-solid fa-rectangle-xmark fa-2xl close--signInDiv-btn"
+            style="color: #000000"
+          ></i>
+          </div>
         </div>
         <div class="burger__bar">
           <div class="burger__lines line--1"></div>
@@ -187,6 +199,7 @@
           <div class="beer-info"></div>
           <div class="beer-slides">
             <div
+              id="splide1"
               class="splide"
               role="group"
               aria-label="Splide Basic HTML Example"
@@ -205,13 +218,51 @@
       </section>
       <section id="Popular">
         <h2 class="h2-section-header">POPULAR PRODUCTS</h2>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, officia quisquam sequi hic explicabo porro fugiat aspernatur placeat molestias assumenda dolorum, necessitatibus nesciunt esse totam doloremque eaque voluptas facilis numquam.</p>
+        <div id="beer-container-div">
+          <div class="beer-info"></div>
+          <div class="beer-slides">
+            <div
+            id="splide2"
+              class="splide"
+              role="group"
+              aria-label="Splide Basic HTML Example"
+            >
+              <div class="splide__track">
+                <ul id="slide-ul" class="splide__list">
+                  <li class="splide__slide" data-id="5"></li>
+                  <li class="splide__slide" data-id="6"></li>
+                  <li class="splide__slide" data-id="7"></li>
+                  <li class="splide__slide" data-id="8"></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
         <div>
         </div>
       </section>
       <section id="Featured">
         <h2 class="h2-section-header">FEATUED PRODUCTS</h2>
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsa vero a voluptas quasi veritatis non minus, impedit deleniti libero cumque corrupti, velit illo nihil nostrum recusandae quidem, accusantium ipsam officiis!</p>
+        <div id="beer-container-div">
+          <div class="beer-info"></div>
+          <div class="beer-slides">
+            <div
+            id="splide3"
+              class="splide"
+              role="group"
+              aria-label="Splide Basic HTML Example"
+            >
+              <div class="splide__track">
+                <ul id="slide-ul" class="splide__list">
+                  <li class="splide__slide" data-id="21"></li>
+                  <li class="splide__slide" data-id="22"></li>
+                  <li class="splide__slide" data-id="23"></li>
+                  <li class="splide__slide" data-id="24"></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
         <div>
         </div>
       </section>

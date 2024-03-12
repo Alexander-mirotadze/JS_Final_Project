@@ -299,6 +299,50 @@
   right: 20px;
   cursor: pointer;
 }
+/*! cart */
+.cart-div{
+  display: none;
+}
+.cart-div.active-cart{
+  display: block;
+  position: absolute;
+  top: 120px;
+  right: 0;
+  z-index: 7777777777;
+  width: 100%;
+  height: 650px;
+  background-color: #f4c314;
+  border-radius: 4px;
+  animation: right-to-left 3s ease-in-out;
+}
+.cart-ul{
+  margin: 50px auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  row-gap: 20px;
+  max-width: 400px;
+  width: 90%;
+  padding: 10px;
+  border-radius: 4px;
+  background-color: #ffffff;
+}
+.clear-all{
+  width: 150px;
+  height: 50px;
+  border-radius: 4px;
+  border: 2px solid #000000;
+  background-color: #000000;
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+  font-family: "Kode Mono";
+  color: #f4c314;
+  font-size: 16px;
+  font-weight: 700;
+  margin: 20px auto;
+}
+/* ! burger none */
 .burger__bar {
   display: none;
 }
@@ -437,13 +481,21 @@ h1::after {
   display: flex;
   justify-content: center;
   align-items: center;
-  column-gap: 20px;
+  column-gap: 10px;
   /* background-color: rebeccapurple; */
 }
 .beer-price {
+  width: 40%;
   font-family: "Kode Mono";
   font-size: 16px;
   font-weight: 800;
+}
+.beer-qty-form{
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: none;
 }
 .beer-pc {
   width: 60px;
@@ -460,6 +512,11 @@ h1::after {
   font-family: "Kode Mono";
   font-size: 16px;
   font-weight: 800;
+}
+.beer-qty-submit{
+  width: 40px;
+  height: 100%;
+  background-color: #f4c314;
 }
 /* .li-for-beer-img {
   width: 200px;
@@ -516,11 +573,12 @@ h1::after {
 .shop{
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 20px;
 }
 .shop-beer-details{
   margin: 20px auto;
-  width: 20%;
+  max-width: 350px;
+  width: 70%;
   height: 800px;
   border-radius: 4px;
   display: flex;
@@ -558,7 +616,7 @@ h1::after {
 .scroll-up {
   position: fixed;
   bottom: 20px;
-  right: 10px;
+  right: 0;
   opacity: 0.7;
   transition: all 0.5s ease-in-out;
 }
