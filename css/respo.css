@@ -87,4 +87,7 @@
   .signe__up--div.active-sign-up {
     top: 80px;
   }
+  .cart-div.active-cart {
+    top: 80px;
+  }
 }

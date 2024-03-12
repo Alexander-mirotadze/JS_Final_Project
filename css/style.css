@@ -327,11 +327,13 @@
   border-radius: 4px;
   background-color: #ffffff;
 }
-.cart-ul h2 {
-  margin: 20px;
+.cart-div h2 {
+  margin: 50px auto;
   padding: 5px;
-  min-height: 30px;
-  background-color: #f4c314;
+  max-width: 800px;
+  width: 90%;
+  height: 30px;
+  background-color: #ffffff;
   font-family: "Kode Mono";
   color: #000000;
   font-size: 16px;
@@ -339,14 +341,25 @@
   font-weight: 900;
   font-style: italic;
   text-align: center;
+  border-radius: 4px;
 }
 .cart-li {
   width: 100%;
   height: 20px;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   border-radius: 4px;
   border: 2px solid #000000;
   background-color: #f4c314;
+  font-family: "Kode Mono";
+  font-size: 14px;
+  font-weight: 700;
   color: #000000;
+}
+.delete-cart-li{
+  cursor: pointer;
 }
 .pay-clear-div {
   display: flex;
@@ -480,7 +493,7 @@ h1::after {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  /* background-color: red; */
+  background-color: red;
 }
 .h2-beer-name {
   padding-top: 5px;
