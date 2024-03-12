@@ -616,23 +616,23 @@ h1::after {
 .splide__pagination__page.new-beer-class-page.is-active {
   background-color: #ffffff;
 }
+/* ! shop */
 .shop {
   display: flex;
+  justify-content: space-around;
   flex-wrap: wrap;
   gap: 20px;
 }
 .shop-beer-details {
-  margin: 20px auto;
   max-width: 350px;
   width: 70%;
-  height: 800px;
-  border-radius: 4px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
   background-color: #f4c314;
   box-shadow: 5px 10px 10px #000000;
+  border-radius: 4px;
 }
 .shop-beer-image {
   width: 50%;

@@ -137,15 +137,8 @@ cartIcon.addEventListener("click", function () {
 });
 
 cartClose.addEventListener("click", function () {
-  cartDivActive.classList.remove("active-cart")
-})
-// ! add Item Fnc
-
-// function addItemFnc (element) {
-//   let addBeerLi = document.createElement("li");
-//   addBeerLi.classList.add("add-beer-li");
-
-// }
+  cartDivActive.classList.remove("active-cart");
+});
 
 // ! info from server
 
@@ -165,133 +158,21 @@ async function serverInfo() {
 }
 serverInfo();
 
-// ! ---
-const beersContainerDiv = document.getElementById("beer-container-div");
-const beerInfoContainer = document.querySelector(".beer-info");
-const newBeerSlide = document.querySelector(".splide__slide");
-
+// ! ---main Fnc
 function mainFnc(eachBeerItem) {
-  beerDescriptionFnc(eachBeerItem);
-  beerImageFnc(eachBeerItem);
-  shopAllProductsFnc(eachBeerItem);
-}
-
-// ! --- beer PP Fnc  არ გამოვიდა Call back
-// let beerPP = document.createElement("div");
-// beerPP.classList.add("beer-pp-div");
-
-// function beerPPFnc(element) {
-//   let beerPrice = document.createElement("span");
-//   beerPrice.classList.add("beer-price");
-//   beerPrice.textContent = `${element.price}${" - GEL"}`;
-//   let beerPcLine = document.createElement("input");
-//   beerPcLine.classList.add("beer-pc");
-//   let beerPCText = document.createElement("span");
-//   beerPCText.classList.add("beer-PC-text");
-//   beerPCText.textContent = "PC";
-//   let addToBuyIcon = document.createElement("i");
-//   addToBuyIcon.classList.add(
-//     "fa-solid",
-//     "fa-cart-plus",
-//     "fa-2xl",
-//     "add-product-icon"
-//   );
-
-//   beerPP.appendChild(beerPrice);
-//   beerPP.appendChild(beerPcLine);
-//   beerPP.appendChild(beerPCText);
-//   beerPP.appendChild(addToBuyIcon);
-// }
-
-// ! --- beer Description Fnc
-
-let totalBeerPrice = 1;
-
-function beerDescriptionFnc(beerItem) {
-  let beerDetailInfo = document.createElement("div");
-  beerDetailInfo.classList.add("beer-details");
-  beerDetailInfo.setAttribute("data-beerDesc", beerItem.id);
-
-  // ---
-
-  let beerName = document.createElement("h2");
-  beerName.innerText = beerItem.name;
-  beerName.classList.add("h2-beer-name");
-
-  let beerTag = document.createElement("p");
-  beerTag.innerText = beerItem.tagline;
-  beerTag.classList.add("p-beer-tagline");
-
-  let beerDescription = document.createElement("p");
-  beerDescription.innerText = beerItem.description;
-  beerDescription.classList.add("p-beer-description");
-
-  // ---
-
-  let beerPP = document.createElement("div");
-  beerPP.classList.add("beer-pp-div");
-
-  let beerPrice = document.createElement("span");
-  beerPrice.classList.add("beer-price");
-  beerPrice.textContent = `${beerItem.price}${" - GEL"}`;
-
-  let beerQty = document.createElement("form");
-  beerQty.classList.add("beer-qty-form");
-
-  let beerPcLine = document.createElement("input");
-  beerPcLine.classList.add("beer-pc");
-
-  let beerPCText = document.createElement("span");
-  beerPCText.classList.add("beer-PC-text");
-  beerPCText.textContent = "PC";
-
-  let submiQtyBtn = document.createElement("button");
-  submiQtyBtn.classList.add("beer-qty-submit");
-
-  let addToBuyIcon = document.createElement("i");
-  addToBuyIcon.classList.add(
-    "fa-solid",
-    "fa-cart-plus",
-    "fa-2xl",
-    "add-product-icon"
-  );
-
-  beerQty.addEventListener("submit", function (e) {
-    e.preventDefault();
-    beerPcLine.value = "";
-    let cartLi = document.createElement("li");
-    cartLi.classList.add("cart-li");
-    cartLi.textContent = `${beerItem.name} ${beerItem.price} ${" - GEL "} ${
-      beerPcLine.value
-    } ${" - PC "} ${" total "} ${totalBeerPrice} ${"- Gel"}`;
-
-    cartUl.appendChild(cartLi);
-  });
-
-  // beerPPFnc(beerItem);
-
-  beerDetailInfo.appendChild(beerName);
-  beerDetailInfo.appendChild(beerTag);
-  beerDetailInfo.appendChild(beerDescription);
-  beerPP.appendChild(beerPrice);
-  beerQty.appendChild(beerPcLine);
-  beerQty.appendChild(beerPCText);
-  submiQtyBtn.appendChild(addToBuyIcon);
-  beerQty.appendChild(submiQtyBtn);
-  beerPP.appendChild(beerQty);
-  beerDetailInfo.appendChild(beerPP);
-  beerInfoContainer.appendChild(beerDetailInfo);
+  beerInfoForSlide(eachBeerItem);
+  beerImageFncForSliders(eachBeerItem);
+  beerDetailInfoFnc(eachBeerItem);
 }
 
 // ! --- slider beer Image Fnc
-
 const newBeerAllSlides = document.querySelectorAll(".splide__slide");
-
-function beerImageFnc(beerItem) {
+// console.log(newBeerAllSlides);
+function beerImageFncForSliders(element) {
   let imgBeerElements = document.createElement("img");
-  imgBeerElements.setAttribute("src", beerItem.image_url);
-  imgBeerElements.setAttribute("alt", `${"beer-"}${beerItem.id}`);
-  imgBeerElements.setAttribute("data-id-img", beerItem.id);
+  imgBeerElements.setAttribute("src", element.image_url);
+  imgBeerElements.setAttribute("alt", `${"beer-"}${element.id}`);
+  imgBeerElements.setAttribute("data-id-img", element.id);
   imgBeerElements.classList.add("beer-image");
 
   newBeerAllSlides.forEach(function (elementSlide) {
@@ -303,9 +184,41 @@ function beerImageFnc(beerItem) {
     }
   });
 }
+// ! --- beer Description Fnc for sliders
+const beerInfoContainer = document.querySelector(".beer-info");
+function beerInfoForSlide(element) {
+  let beerDetailInfo = document.createElement("div");
+  beerDetailInfo.classList.add("beer-details");
+  beerDetailInfo.setAttribute("data-beerDesc", element.id);
 
+  let beerName = document.createElement("h2");
+  beerName.innerText = element.name;
+  beerName.classList.add("h2-beer-name");
+
+  let beerTag = document.createElement("p");
+  beerTag.innerText = element.tagline;
+  beerTag.classList.add("p-beer-tagline");
+
+  let beerDescription = document.createElement("p");
+  beerDescription.innerText = element.description;
+  beerDescription.classList.add("p-beer-description");
+
+  beerDetailInfo.appendChild(beerName);
+  beerDetailInfo.appendChild(beerTag);
+  beerDetailInfo.appendChild(beerDescription);
+
+  newBeerAllSlides.forEach(function (elementSlide) {
+    let slideElementNum = elementSlide.getAttribute("data-id");
+    let beerInfoForSlideNum = beerDetailInfo.getAttribute("data-beerDesc");
+
+    if (slideElementNum == beerInfoForSlideNum) {
+      beerInfoContainer.appendChild(beerDetailInfo);
+    } else {
+      beerDetailInfo.innerHTML = "";
+    }
+  });
+}
 // ! slider npm 1
-
 var splide = new Splide("#splide1", {
   direction: "ttb",
   height: "400px",
@@ -315,9 +228,9 @@ var splide = new Splide("#splide1", {
   perPage: 1,
   pagination: true,
   rewind: true,
-  autoplay: true,
-  interval: 5000,
-  speed: 3000,
+  // autoplay: true,
+  // interval: 5000,
+  // speed: 3000,
 
   classes: {
     // Add classes for arrows.
@@ -331,7 +244,6 @@ var splide = new Splide("#splide1", {
     page: "splide__pagination__page new-beer-class-page", // each button
   },
 });
-
 splide.mount();
 
 // ! slider npm 2
@@ -344,9 +256,9 @@ var splide = new Splide("#splide2", {
   perPage: 1,
   pagination: true,
   rewind: true,
-  autoplay: true,
-  interval: 5000,
-  speed: 3000,
+  // autoplay: true,
+  // interval: 5000,
+  // speed: 3000,
 
   classes: {
     // Add classes for arrows.
@@ -360,7 +272,6 @@ var splide = new Splide("#splide2", {
     page: "splide__pagination__page new-beer-class-page", // each button
   },
 });
-
 splide.mount();
 
 // ! slider npm 3
@@ -373,9 +284,9 @@ var splide = new Splide("#splide3", {
   perPage: 1,
   pagination: true,
   rewind: true,
-  autoplay: true,
-  interval: 5000,
-  speed: 3000,
+  // autoplay: true,
+  // interval: 5000,
+  // speed: 3000,
 
   classes: {
     // Add classes for arrows.
@@ -389,31 +300,84 @@ var splide = new Splide("#splide3", {
     page: "splide__pagination__page new-beer-class-page", // each button
   },
 });
-
 splide.mount();
 
 //  ! shop all products
 const shopAllProducts = document.querySelector(".shop");
+let totalBeerPrice = 1;
 
-function shopAllProductsFnc(beerItem) {
+// ! --- beer PP Fnc for shop
+// function beerPPFnc(element) {
+//   let beerPP = document.createElement("div");
+//   beerPP.classList.add("beer-pp-div");
+
+//   let beerPrice = document.createElement("span");
+//   beerPrice.classList.add("beer-price");
+//   beerPrice.textContent = `${element.price}${" - GEL"}`;
+
+//   let beerQty = document.createElement("form");
+//   beerQty.classList.add("beer-qty-form");
+
+//   let beerPcLine = document.createElement("input");
+//   beerPcLine.classList.add("beer-pc");
+
+//   let beerPCText = document.createElement("span");
+//   beerPCText.classList.add("beer-PC-text");
+//   beerPCText.textContent = "PC";
+
+//   let submiQtyBtn = document.createElement("button");
+//   submiQtyBtn.classList.add("beer-qty-submit");
+
+//   let addToBuyIcon = document.createElement("i");
+//   addToBuyIcon.classList.add(
+//     "fa-solid",
+//     "fa-cart-plus",
+//     "fa-2xl",
+//     "add-product-icon"
+//   );
+
+//   beerQty.addEventListener("submit", function (e) {
+//     e.preventDefault();
+//     beerPcLine.value = "";
+
+//     let cartLi = document.createElement("li");
+//     cartLi.classList.add("cart-li");
+//     cartLi.textContent = `${element.name} ${element.price} ${" - GEL "} ${
+//       beerPcLine.value
+//     } ${" - PC "} ${" total "} ${totalBeerPrice} ${"- Gel"}`;
+
+//     beerPcLine.textContent = " ";
+//     cartUl.appendChild(cartLi);
+//   });
+
+//   beerPP.appendChild(beerPrice);
+//   beerQty.appendChild(beerPcLine);
+//   beerQty.appendChild(beerPCText);
+//   submiQtyBtn.appendChild(addToBuyIcon);
+//   beerQty.appendChild(submiQtyBtn);
+//   beerPP.appendChild(beerQty);
+// }
+
+// ! beer Detail Info Fnc for shop
+function beerDetailInfoFnc(element) {
   let beerDetailInfo = document.createElement("div");
   beerDetailInfo.classList.add("shop-beer-details");
 
   let beerName = document.createElement("h2");
-  beerName.innerText = beerItem.name;
+  beerName.innerText = element.name;
   beerName.classList.add("h2-beer-name");
 
   let imgBeerElements = document.createElement("img");
-  imgBeerElements.setAttribute("src", beerItem.image_url);
-  imgBeerElements.setAttribute("alt", `${"beer-"}${beerItem.id}`);
+  imgBeerElements.setAttribute("src", element.image_url);
+  imgBeerElements.setAttribute("alt", `${"beer-"}${element.id}`);
   imgBeerElements.classList.add("shop-beer-image");
 
   let beerTag = document.createElement("p");
-  beerTag.innerText = beerItem.tagline;
+  beerTag.innerText = element.tagline;
   beerTag.classList.add("p-beer-tagline");
 
   let beerDescription = document.createElement("span");
-  beerDescription.innerText = beerItem.description;
+  beerDescription.innerText = element.description;
   beerDescription.classList.add("shop-span-beer-description");
   let beerDescDrop = document.createElement("i");
   beerDescDrop.classList.add(
@@ -422,13 +386,13 @@ function shopAllProductsFnc(beerItem) {
     "fa-lg",
     "desc-accord-icon"
   );
-
+  //# --- PP
   let beerPP = document.createElement("div");
   beerPP.classList.add("beer-pp-div");
 
   let beerPrice = document.createElement("span");
   beerPrice.classList.add("beer-price");
-  beerPrice.textContent = `${beerItem.price}${" - GEL"}`;
+  beerPrice.textContent = `${element.price}${" - GEL"}`;
 
   let beerQty = document.createElement("form");
   beerQty.classList.add("beer-qty-form");
@@ -450,7 +414,6 @@ function shopAllProductsFnc(beerItem) {
     "fa-2xl",
     "add-product-icon"
   );
-  // addToBuyIcon.addEventListener("click", addItemFnc);
 
   beerQty.addEventListener("submit", function (e) {
     e.preventDefault();
@@ -458,7 +421,7 @@ function shopAllProductsFnc(beerItem) {
 
     let cartLi = document.createElement("li");
     cartLi.classList.add("cart-li");
-    cartLi.textContent = `${beerItem.name} ${beerItem.price} ${" - GEL "} ${
+    cartLi.textContent = `${element.name} ${element.price} ${" - GEL "} ${
       beerPcLine.value
     } ${" - PC "} ${" total "} ${totalBeerPrice} ${"- Gel"}`;
 
@@ -479,6 +442,7 @@ function shopAllProductsFnc(beerItem) {
   beerPP.appendChild(beerQty);
   beerDetailInfo.appendChild(beerPP);
   shopAllProducts.appendChild(beerDetailInfo);
+
 }
 
 // ! burger
