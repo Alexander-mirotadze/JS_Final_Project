@@ -130,22 +130,22 @@ closeSignUpDiv.addEventListener("click", function () {
 const cartIcon = document.getElementById("cartIcon");
 const cartDivActive = document.querySelector(".cart-div");
 const cartUl = document.querySelector(".cart-ul");
+const cartClose = document.querySelector(".close--prodact-list-btn");
 
-cartIcon.addEventListener("click", function (){
+cartIcon.addEventListener("click", function () {
   cartDivActive.classList.toggle("active-cart");
-})
+});
 
+cartClose.addEventListener("click", function () {
+  cartDivActive.classList.remove("active-cart")
+})
 // ! add Item Fnc
 
-function addItemFnc (element) {
-  let addBeerLi = document.createElement("li");
-  addBeerLi.classList.add("add-beer-li");
+// function addItemFnc (element) {
+//   let addBeerLi = document.createElement("li");
+//   addBeerLi.classList.add("add-beer-li");
 
-  let beerTotalPrice = document.createElement("span")
-  addBeerLi.textContent = element.name;
-
-  cartUl.appendChild(addBeerLi);
-}
+// }
 
 // ! info from server
 
@@ -176,7 +176,7 @@ function mainFnc(eachBeerItem) {
   shopAllProductsFnc(eachBeerItem);
 }
 
-// ! --- beer PP Fnc  არ გამოვიდა Call back 
+// ! --- beer PP Fnc  არ გამოვიდა Call back
 // let beerPP = document.createElement("div");
 // beerPP.classList.add("beer-pp-div");
 
@@ -204,15 +204,15 @@ function mainFnc(eachBeerItem) {
 // }
 
 // ! --- beer Description Fnc
-const totalBeerPrice = 1;
+
+let totalBeerPrice = 1;
 
 function beerDescriptionFnc(beerItem) {
-
   let beerDetailInfo = document.createElement("div");
   beerDetailInfo.classList.add("beer-details");
   beerDetailInfo.setAttribute("data-beerDesc", beerItem.id);
 
-// ---
+  // ---
 
   let beerName = document.createElement("h2");
   beerName.innerText = beerItem.name;
@@ -240,8 +240,6 @@ function beerDescriptionFnc(beerItem) {
 
   let beerPcLine = document.createElement("input");
   beerPcLine.classList.add("beer-pc");
-  // let inputValue = Number(beerPcLine.value);
-  // console.log(inputValue);
 
   let beerPCText = document.createElement("span");
   beerPCText.classList.add("beer-PC-text");
@@ -257,7 +255,18 @@ function beerDescriptionFnc(beerItem) {
     "fa-2xl",
     "add-product-icon"
   );
-  addToBuyIcon.addEventListener("click", addItemFnc(beerItem));
+
+  beerQty.addEventListener("submit", function (e) {
+    e.preventDefault();
+    beerPcLine.value = "";
+    let cartLi = document.createElement("li");
+    cartLi.classList.add("cart-li");
+    cartLi.textContent = `${beerItem.name} ${beerItem.price} ${" - GEL "} ${
+      beerPcLine.value
+    } ${" - PC "} ${" total "} ${totalBeerPrice} ${"- Gel"}`;
+
+    cartUl.appendChild(cartLi);
+  });
 
   // beerPPFnc(beerItem);
 
@@ -267,7 +276,7 @@ function beerDescriptionFnc(beerItem) {
   beerPP.appendChild(beerPrice);
   beerQty.appendChild(beerPcLine);
   beerQty.appendChild(beerPCText);
-  submiQtyBtn.appendChild(addToBuyIcon)
+  submiQtyBtn.appendChild(addToBuyIcon);
   beerQty.appendChild(submiQtyBtn);
   beerPP.appendChild(beerQty);
   beerDetailInfo.appendChild(beerPP);
@@ -383,8 +392,6 @@ var splide = new Splide("#splide3", {
 
 splide.mount();
 
-
-
 //  ! shop all products
 const shopAllProducts = document.querySelector(".shop");
 
@@ -432,7 +439,7 @@ function shopAllProductsFnc(beerItem) {
   let beerPCText = document.createElement("span");
   beerPCText.classList.add("beer-PC-text");
   beerPCText.textContent = "PC";
-  
+
   let submiQtyBtn = document.createElement("button");
   submiQtyBtn.classList.add("beer-qty-submit");
 
@@ -443,8 +450,21 @@ function shopAllProductsFnc(beerItem) {
     "fa-2xl",
     "add-product-icon"
   );
-  addToBuyIcon.addEventListener("click", addItemFnc);
+  // addToBuyIcon.addEventListener("click", addItemFnc);
 
+  beerQty.addEventListener("submit", function (e) {
+    e.preventDefault();
+    beerPcLine.value = "";
+
+    let cartLi = document.createElement("li");
+    cartLi.classList.add("cart-li");
+    cartLi.textContent = `${beerItem.name} ${beerItem.price} ${" - GEL "} ${
+      beerPcLine.value
+    } ${" - PC "} ${" total "} ${totalBeerPrice} ${"- Gel"}`;
+
+    beerPcLine.textContent = " ";
+    cartUl.appendChild(cartLi);
+  });
 
   beerDetailInfo.appendChild(beerName);
   beerDetailInfo.appendChild(imgBeerElements);
@@ -454,7 +474,7 @@ function shopAllProductsFnc(beerItem) {
   beerPP.appendChild(beerPrice);
   beerQty.appendChild(beerPcLine);
   beerQty.appendChild(beerPCText);
-  submiQtyBtn.appendChild(addToBuyIcon)
+  submiQtyBtn.appendChild(addToBuyIcon);
   beerQty.appendChild(submiQtyBtn);
   beerPP.appendChild(beerQty);
   beerDetailInfo.appendChild(beerPP);
