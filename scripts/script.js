@@ -415,7 +415,9 @@ function beerDetailInfoFnc(element) {
 
   let beerPcLine = document.createElement("input");
   beerPcLine.classList.add("beer-pc");
-
+  beerPcLine.setAttribute("type", "Number");
+  beerPcLine.setAttribute("min", "1");
+  
   let beerPCText = document.createElement("span");
   beerPCText.classList.add("beer-PC-text");
   beerPCText.textContent = "PC";
@@ -431,29 +433,49 @@ function beerDetailInfoFnc(element) {
     "add-product-icon"
   );
 
+  // ---
   beerQty.addEventListener("submit", function (e) {
     e.preventDefault();
+    let beerQuantityNum = Number(e.target[0].value);
+    // console.log(beerQuantityNum, typeof(beerQuantityNum));
     beerPcLine.value = "";
+    
 
-    let cartLi = document.createElement("li");
-    cartLi.classList.add("cart-li");
-    cartLi.textContent = `${element.name} ${element.price} ${" - GEL "} ${
-      beerPcLine.value
-    } ${" - PC "} ${" total "} ${totalBeerPrice} ${"- Gel"}`;
-    let deletecartLi = document.createElement("i");
-    deletecartLi.classList.add(
-      "fa-solid",
-      "fa-trash-can",
-      "fa-lg",
-      "delete-cart-li"
-    );
-    deletecartLi.addEventListener("click", function () {
-      cartLi.remove();
-    });
+    if(beerQuantityNum <= 0){
+      return alert("Wrong Quantity");
+    }else{
+      let cartLi = document.createElement("li");
+      cartLi.classList.add("cart-li");
+      let cartLiPic = document.createElement("img");
+      cartLiPic.setAttribute("src", element.image_url);
+      cartLiPic.classList.add("cart-li-pic")
+      let cartLiName = document.createElement("div");
+      cartLiName.textContent = element.name;
+      let cartLiPrice = document.createElement("div");
+      cartLiPrice.textContent = `${element.price} - ${"GEL"}`;
+      let cartLiQty = document.createElement("div");
+      cartLiQty.textContent = `${beerQuantityNum} - ${"PC"}` ;
 
-    beerPcLine.textContent = " ";
-    cartLi.appendChild(deletecartLi);
-    cartUl.appendChild(cartLi);
+      let deletecartLi = document.createElement("i");
+      deletecartLi.classList.add(
+        "fa-solid",
+        "fa-trash-can",
+        "fa-lg",
+        "delete-cart-li"
+      );
+      deletecartLi.addEventListener("click", function () {
+        cartLi.remove();
+      });
+      
+      beerPcLine.textContent = " ";
+      cartLi.appendChild(cartLiPic);
+      cartLi.appendChild(cartLiName);
+      cartLi.appendChild(cartLiPrice);
+      cartLi.appendChild(cartLiPrice);
+      cartLi.appendChild(cartLiQty);
+      cartLi.appendChild(deletecartLi);
+      cartUl.appendChild(cartLi);
+    }
   });
 
   beerDetailInfo.appendChild(beerName);

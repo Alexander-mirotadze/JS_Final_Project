@@ -91,3 +91,22 @@
     top: 80px;
   }
 }
+@media(max-width: 481px){
+  .beer-container-div{
+    height: 1000px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column-reverse;
+    row-gap: 20px;
+  }
+  .beer-info{
+    width: 90%;
+    background-color: gray;
+  }
+  .beer-slides{
+    width: 90%;
+  }
+  .shop-beer-details{
+    width: 90%;
+  }
+}

@@ -92,7 +92,7 @@
             </button>
           </div>
           <div class="signe__in--div" is-sign-in>
-            <form class="log-in-form" action="" is-sign-in>
+            <form class="log-in-form" action="" method="get" is-sign-in>
               <input
                 class="search-input"
                 type="text"
@@ -112,7 +112,7 @@
             ></i>
           </div>
           <div class="signe__up--div" sign-up-form>
-            <form class="signe__up-form" action="" sign-up-form>
+            <form class="signe__up-form" action="" method="get" sign-up-form>
               <input
                 type="text"
                 placeholder="Enter your first name :"
@@ -158,13 +158,20 @@
           <div class="cart-div">
             <h2>PRODUCT LIST</h2>
             <ul class="cart-ul"></ul>
+            <div class="total-pay-div">
+              <span class="total-pay-number"></span>
+              <span class="total-pay-valute">GEL</span>
+            </div>
+
             <div class="pay-clear-div">
               <button class="pay">
-                Pay It
-                <i
+                <a href="#" target="_blank">
+                  <i
                   class="fa-solid fa-money-bill-1-wave fa-2xl"
                   style="color: #f4c314"
                 ></i>
+                Pay It
+                </a>
               </button>
               <button class="clear-all">
                 Clear All
@@ -208,7 +215,7 @@
       </section>
       <section id="New">
         <h2 class="h2-section-header">NEW PRODUCTS</h2>
-        <div id="beer-container-div">
+        <div class="beer-container-div">
           <div class="beer-info"></div>
           <div class="beer-slides">
             <div
@@ -218,7 +225,7 @@
               aria-label="Splide Basic HTML Example"
             >
               <div class="splide__track">
-                <ul id="slide-ul" class="splide__list">
+                <ul id="slide-ul-1" class="splide__list">
                   <li class="splide__slide" data-id="1"></li>
                   <li class="splide__slide" data-id="2"></li>
                   <li class="splide__slide" data-id="3"></li>
@@ -231,7 +238,7 @@
       </section>
       <section id="Popular">
         <h2 class="h2-section-header">POPULAR PRODUCTS</h2>
-        <div id="beer-container-div">
+        <div class="beer-container-div">
           <div class="beer-info"></div>
           <div class="beer-slides">
             <div
@@ -241,7 +248,7 @@
               aria-label="Splide Basic HTML Example"
             >
               <div class="splide__track">
-                <ul id="slide-ul" class="splide__list">
+                <ul id="slide-ul-2" class="splide__list">
                   <li class="splide__slide" data-id="5"></li>
                   <li class="splide__slide" data-id="6"></li>
                   <li class="splide__slide" data-id="7"></li>
@@ -255,7 +262,7 @@
       </section>
       <section id="Featured">
         <h2 class="h2-section-header">FEATUED PRODUCTS</h2>
-        <div id="beer-container-div">
+        <div class="beer-container-div">
           <div class="beer-info"></div>
           <div class="beer-slides">
             <div
@@ -265,7 +272,7 @@
               aria-label="Splide Basic HTML Example"
             >
               <div class="splide__track">
-                <ul id="slide-ul" class="splide__list">
+                <ul id="slide-ul-3" class="splide__list">
                   <li class="splide__slide" data-id="21"></li>
                   <li class="splide__slide" data-id="22"></li>
                   <li class="splide__slide" data-id="23"></li>
