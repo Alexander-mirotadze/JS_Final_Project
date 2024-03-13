@@ -308,7 +308,6 @@ splide.mount();
 
 //  ! shop all products
 const shopAllProducts = document.querySelector(".shop");
-let totalBeerPrice = 1;
 
 // ! --- beer PP Fnc for shop
 // function beerPPFnc(element) {
@@ -434,12 +433,15 @@ function beerDetailInfoFnc(element) {
   );
 
   // ---
+  let totalBeerPrice = 0;
+  let totalBeerPriceBox = document.querySelector(".total-pay-number");
+  totalBeerPriceBox.textContent = totalBeerPrice;
+  // ---
   beerQty.addEventListener("submit", function (e) {
     e.preventDefault();
     let beerQuantityNum = Number(e.target[0].value);
     // console.log(beerQuantityNum, typeof(beerQuantityNum));
     beerPcLine.value = "";
-    
 
     if(beerQuantityNum <= 0){
       return alert("Wrong Quantity");
@@ -455,7 +457,6 @@ function beerDetailInfoFnc(element) {
       cartLiPrice.textContent = `${element.price} - ${"GEL"}`;
       let cartLiQty = document.createElement("div");
       cartLiQty.textContent = `${beerQuantityNum} - ${"PC"}` ;
-
       let deletecartLi = document.createElement("i");
       deletecartLi.classList.add(
         "fa-solid",
@@ -466,7 +467,24 @@ function beerDetailInfoFnc(element) {
       deletecartLi.addEventListener("click", function () {
         cartLi.remove();
       });
-      
+
+      let cartLiItemSum = [];
+      function sumCartLi () {
+        let cartLiItemSumArray = beerQuantityNum * Number(element.price);
+        cartLiItemSum.push(cartLiItemSumArray);
+        // console.log(cartLiItemSum);
+      }
+      sumCartLi ();
+      console.log(cartLiItemSum);
+
+      let cartUlItemsSum = 0;
+      function sumCartUl () {
+        cartUlItemsSum += cartLiItemSum;
+        // console.log(cartUlItemsSum);
+      }
+      sumCartUl ();
+      console.log(cartUlItemsSum);
+
       beerPcLine.textContent = " ";
       cartLi.appendChild(cartLiPic);
       cartLi.appendChild(cartLiName);

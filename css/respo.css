@@ -91,7 +91,7 @@
     top: 80px;
   }
 }
-@media(max-width: 481px){
+@media(max-width: 550px){
   .beer-container-div{
     height: 1000px;
     justify-content: center;
@@ -108,5 +108,11 @@
   }
   .shop-beer-details{
     width: 90%;
+  }
+  #footer{
+    height: 100%;
+  }
+  .footer-info{
+    flex-direction: column;
   }
 }
