@@ -655,7 +655,7 @@ h1::after {
   position: relative;
   height: 50px;
   width: 90%;
-  padding: 10px;
+  padding: 20px;
   font-family: "Kode Mono";
   font-size: 14px;
   font-weight: 400;
@@ -664,12 +664,17 @@ h1::after {
   border-radius: 4px;
   background-color: #ffffff;
   overflow: hidden;
+  transition: all 1s linear;
+}
+.shop-span-beer-description.up-down{
+  height: 360px;
 }
 .desc-accord-icon {
   position: absolute;
   top: 50%;
   right: 2px;
   transform: translateY(-50%);
+  cursor: pointer;
 }
 /* ! scroll up */
 .scroll-up {

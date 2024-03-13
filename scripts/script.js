@@ -380,7 +380,7 @@ function beerDetailInfoFnc(element) {
   beerTag.innerText = element.tagline;
   beerTag.classList.add("p-beer-tagline");
 
-  let beerDescription = document.createElement("span");
+  let beerDescription = document.createElement("p");
   beerDescription.innerText = element.description;
   beerDescription.classList.add("shop-span-beer-description");
   let beerDescDrop = document.createElement("i");
@@ -390,6 +390,18 @@ function beerDetailInfoFnc(element) {
     "fa-lg",
     "desc-accord-icon"
   );
+  beerDescDrop.addEventListener("click", function (e) {
+    beerDescription.classList.toggle("up-down");
+    let descritptionActive = document.querySelector(".up-down");
+    if(descritptionActive){
+      beerDescDrop.classList.remove("fa-sort-down");
+      beerDescDrop.classList.add("fa-sort-up");
+   }
+   else{
+    beerDescDrop.classList.remove("fa-sort-up");
+    beerDescDrop.classList.add("fa-sort-down");
+   }
+  })
   //# --- PP
   let beerPP = document.createElement("div");
   beerPP.classList.add("beer-pp-div");
