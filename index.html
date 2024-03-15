@@ -66,12 +66,13 @@
               data-reg-auta-div
             />
           </div>
-          <div class="header__components-div">
+          <div class="header__components-div" cart-div>
             <img
               id="cartIcon"
               class="header__components-img"
               src="img/header/shopping_cart_line.svg"
               alt="cart_icon"
+              cart-div
             />
           </div>
           <div class="reg__autau__btn__div">
@@ -154,27 +155,28 @@
               style="color: #000000"
             ></i>
           </div>
-          <div class="cart-div">
-            <h2>PRODUCT LIST</h2>
-            <ul class="cart-ul"></ul>
-            <div class="total-pay-div">
-              <span class="total-pay-number"></span>
-              <span class="total-pay-valute">GEL</span>
+          <div class="cart-div" cart-div>
+            <h2 cart-div>PRODUCT LIST</h2>
+            <ul class="cart-ul" cart-div></ul>
+            <div class="total-pay-div" cart-div>
+              <span class="total-pay-number" cart-div></span>
+              <span class="total-pay-valute" cart-div>GEL</span>
             </div>
-
-            <div class="pay-clear-div">
-              <button class="pay">
-                <a href="#" target="_blank">
+            <div class="pay-clear-div" cart-div>
+              <button class="pay" cart-div>
+                <a href="#" target="_blank" cart-div>
                   <i
+                    cart-div
                     class="fa-solid fa-money-bill-1-wave fa-2xl"
                     style="color: #f4c314"
                   ></i>
                   Pay It
                 </a>
               </button>
-              <button class="clear-all">
+              <button class="clear-all" cart-div>
                 Clear All
                 <i
+                  cart-div
                   class="fa-solid fa-trash-can fa-2xl"
                   style="color: #f4c314"
                 ></i>
@@ -354,6 +356,6 @@
     </footer>
 
     <script src="./node_modules/@splidejs/splide/dist/js/splide.min.js"></script>
-    <script src="scripts/script.js"></script>
+    <script type="module" src="scripts/script.js"></script>
   </body>
 </html>

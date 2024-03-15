@@ -345,7 +345,7 @@
 }
 .cart-li {
   width: 100%;
-  height: 20px;
+  min-height: 20px;
   padding: 15px;
   display: flex;
   justify-content: space-between;
@@ -359,10 +359,11 @@
   color: #000000;
 }
 .cart-li div {
-  width: 25%;
-  height: 30px;
+  width: 100%;
+  min-height: 30px;
   text-align: center;
   padding-top: 2px;
+  /* background-color: red; */
 }
 .cart-li-pic {
   width: 20px;
@@ -810,7 +811,6 @@ h1::after {
   justify-content: space-between;
 }
 /* ! Respo */
-/* ! resp. */
 @media (max-width: 1024px) {
   .body {
     padding-top: 80px;
