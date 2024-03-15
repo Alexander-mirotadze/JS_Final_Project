@@ -347,7 +347,7 @@ function beerDetailInfoFnc(element) {
 // let totalBeerPrice = 0;
 
 //! create cart li fnc
-function createCartLifnc(element, itemQty) {
+function createCartLifnc(element) {
   let cartLi = document.createElement("li");
   cartLi.classList.add("cart-li");
   cartLi.setAttribute("cart-div", element.id);
@@ -362,13 +362,13 @@ function createCartLifnc(element, itemQty) {
   cartLiPrice.textContent = `${element.price} ${"GEL"}`;
   cartLiPrice.setAttribute("cart-div", element.id);
   let cartLiQty = document.createElement("div");
-  cartLiQty.textContent = `${itemQty.value} ${"PC"}`;
-  cartLiQty.setAttribute("cart-div", element.id);
+  // cartLiQty.textContent = `${itemQty.value} ${"PC"}`;
+  // cartLiQty.setAttribute("cart-div", element.id);
   let cartItemSumPrice = document.createElement("div");
-  cartItemSumPrice.textContent = `${
-    Number(element.price) * Number(itemQty.value)
-  } ${"GEL"}`;
-  cartItemSumPrice.setAttribute("cart-div", element.id);
+  // cartItemSumPrice.textContent = `${
+  //   Number(element.price) * Number(itemQty.value)
+  // } ${"GEL"}`;
+  // cartItemSumPrice.setAttribute("cart-div", element.id);
   let deletecartLi = document.createElement("i");
   deletecartLi.classList.add(
     "fa-solid",
@@ -412,6 +412,8 @@ function beerPPFnc(element) {
   beerPCText.classList.add("beer-PC-text");
   beerPCText.textContent = "PC";
 
+  let beerTotalPrice = Number(beerPcLine.value) * Number(element.price);
+
   let submiQtyBtn = document.createElement("button");
   submiQtyBtn.classList.add("beer-qty-submit");
 
@@ -431,8 +433,9 @@ function beerPPFnc(element) {
     } else {
       createCartLifnc(element, beerPcLine);
       // loocalStorageFnc(element);
+      beerPcLine.value = "";
     }
-    this[0].textContent = "";
+    loocalStorageFnc(element);
   });
 
   beerPP.appendChild(beerPrice);
@@ -446,22 +449,23 @@ function beerPPFnc(element) {
 }
 
 // //! loocal Storage Fnc
-// function loocalStorageFnc(storageCartli) {
-//   const cartLocStorageArray =
-//     JSON.parse(localStorage.getItem("cartLiLocStorage")) || [];
-//   localStorage.setItem("cartLiLocStorage", JSON.stringify([...cartLocStorageArray, storageCartli]));
-// }
+function loocalStorageFnc(storageCartli) {
+  const cartLocStorageArray =
+    JSON.parse(localStorage.getItem("cartLiLocStorage")) || [];
+  localStorage.setItem("cartLiLocStorage", JSON.stringify([...cartLocStorageArray, storageCartli]));
+  console.log(localStorage);
+}
 
 // //! load local storage fnc
-// function loadLocalStorageFnc() {
-//   const cartLoad = JSON.parse(localStorage.getItem("cartLiLocStorage"));
-//   if (cartLoad) {
-//     cartLoad.forEach((element) => {
-//       createCartLifnc(element);
-//     });
-//   }
-// }
-// document.addEventListener("DOMContentLoaded", loadLocalStorageFnc());
+function loadLocalStorageFnc() {
+  const cartLoad = JSON.parse(localStorage.getItem("cartLiLocStorage"));
+  if (cartLoad) {
+    cartLoad.forEach((element) => {
+      createCartLifnc(element);
+    });
+  }
+}
+document.addEventListener("DOMContentLoaded", loadLocalStorageFnc());
 
 // ! burger
 // import {burgerBarFnc} from "./burgerBar";
