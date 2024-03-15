@@ -173,20 +173,24 @@ serverInfo();
 
 // ! ---main Fnc
 function mainFnc(eachBeerItem) {
-  beerInfoForSlide(eachBeerItem);
-  beerImageFncForSliders(eachBeerItem);
+  beerImageFncForSlidersFnc(eachBeerItem);
   beerDetailInfoFnc(eachBeerItem);
 }
 
 // ! --- slider beer Image Fnc
+const beerInfoContainer = document.querySelector(".beer-info");
 const newBeerAllSlides = document.querySelectorAll(".splide__slide");
-// console.log(newBeerAllSlides);
-function beerImageFncForSliders(element) {
+// const activeSlide = document.querySelector("[aria-hidden]");
+// console.log(activeSlide);
+
+function beerImageFncForSlidersFnc(element) {
   let imgBeerElements = document.createElement("img");
   imgBeerElements.setAttribute("src", element.image_url);
   imgBeerElements.setAttribute("alt", `${"beer-"}${element.id}`);
   imgBeerElements.setAttribute("data-id-img", element.id);
   imgBeerElements.classList.add("beer-image");
+
+  // console.log(imgBeerElements);
 
   newBeerAllSlides.forEach(function (elementSlide) {
     let slideElementNum = elementSlide.getAttribute("data-id");
@@ -284,45 +288,11 @@ splide.mount();
 //  ! shop all products
 const shopAllProducts = document.querySelector(".shop");
 
-// ! --- beer Description Fnc for sliders
-const beerInfoContainer = document.querySelector(".beer-info");
-function beerInfoForSlide(element) {
-  let beerDetailInfo = document.createElement("div");
-  beerDetailInfo.classList.add("beer-details");
-  beerDetailInfo.setAttribute("data-beerDesc", element.id);
-
-  let beerName = document.createElement("h2");
-  beerName.innerText = element.name;
-  beerName.classList.add("h2-beer-name");
-
-  let beerTag = document.createElement("p");
-  beerTag.innerText = element.tagline;
-  beerTag.classList.add("p-beer-tagline");
-
-  let beerDescription = document.createElement("p");
-  beerDescription.innerText = element.description;
-  beerDescription.classList.add("p-beer-description");
-
-  beerDetailInfo.appendChild(beerName);
-  beerDetailInfo.appendChild(beerTag);
-  beerDetailInfo.appendChild(beerDescription);
-
-  newBeerAllSlides.forEach(function (elementSlide) {
-    let slideElementNum = elementSlide.getAttribute("data-id");
-    let beerInfoForSlideNum = beerDetailInfo.getAttribute("data-beerDesc");
-
-    if (slideElementNum == beerInfoForSlideNum) {
-      beerInfoContainer.appendChild(beerDetailInfo);
-    } else {
-      beerDetailInfo.innerHTML = "";
-    }
-  });
-}
-
 // ! beer Detail Info Fnc for shop
 function beerDetailInfoFnc(element) {
   let beerDetailInfo = document.createElement("div");
   beerDetailInfo.classList.add("shop-beer-details");
+  beerDetailInfo.setAttribute("data-description", element.id);
 
   let beerName = document.createElement("h2");
   beerName.innerText = element.name;
@@ -363,12 +333,6 @@ function beerDetailInfoFnc(element) {
   let resultBeerPP = beerPPFnc(element);
   // console.log(resultBeerPP);
 
-  // ---
-  // let totalBeerPrice = 0;
-  // let totalBeerPriceBox = document.querySelector(".total-pay-number");
-  // totalBeerPriceBox.textContent = totalBeerPrice;
-  // ---
-
   beerDetailInfo.appendChild(beerName);
   beerDetailInfo.appendChild(imgBeerElements);
   beerDetailInfo.appendChild(beerTag);
@@ -376,7 +340,11 @@ function beerDetailInfoFnc(element) {
   beerDetailInfo.appendChild(beerDescription);
   beerDetailInfo.appendChild(resultBeerPP);
   shopAllProducts.appendChild(beerDetailInfo);
+
 }
+
+// let totalBeerPriceBox = document.querySelector(".total-pay-number");
+// let totalBeerPrice = 0;
 
 //! create cart li fnc
 function createCartLifnc(element, itemQty) {
@@ -394,11 +362,11 @@ function createCartLifnc(element, itemQty) {
   cartLiPrice.textContent = `${element.price} ${"GEL"}`;
   cartLiPrice.setAttribute("cart-div", element.id);
   let cartLiQty = document.createElement("div");
-  cartLiQty.textContent = `${itemQty} ${"PC"}`;
+  cartLiQty.textContent = `${itemQty.value} ${"PC"}`;
   cartLiQty.setAttribute("cart-div", element.id);
   let cartItemSumPrice = document.createElement("div");
   cartItemSumPrice.textContent = `${
-    Number(element.price) * Number(itemQty)
+    Number(element.price) * Number(itemQty.value)
   } ${"GEL"}`;
   cartItemSumPrice.setAttribute("cart-div", element.id);
   let deletecartLi = document.createElement("i");
@@ -411,7 +379,6 @@ function createCartLifnc(element, itemQty) {
   deletecartLi.setAttribute("cart-div", element.id);
   deletecartLi.addEventListener("click", function () {
     cartLi.remove();
-    localStorage.remove();
   });
 
   cartLi.appendChild(cartLiPic);
@@ -459,16 +426,13 @@ function beerPPFnc(element) {
   //# --- cart li
   beerQty.addEventListener("submit", function (e) {
     e.preventDefault();
-    let beerQuantityNum = Number(beerPcLine.value);
-    // console.log(beerQuantityNum, typeof beerQuantityNum);
-    if (beerQuantityNum <= 0) {
+    if (Number(beerPcLine.value) <= 0) {
       return alert("Wrong Quantity");
     } else {
-      createCartLifnc(element, beerQuantityNum);
-      // console.log(element);
-      loocalStorageFnc(element, beerQuantityNum);
+      createCartLifnc(element, beerPcLine);
+      // loocalStorageFnc(element);
     }
-    beerPcLine.textContent = " ";
+    this[0].textContent = "";
   });
 
   beerPP.appendChild(beerPrice);
@@ -477,26 +441,27 @@ function beerPPFnc(element) {
   submiQtyBtn.appendChild(addToBuyIcon);
   beerQty.appendChild(submiQtyBtn);
   beerPP.appendChild(beerQty);
+
   return beerPP;
 }
 
 // //! loocal Storage Fnc
-function loocalStorageFnc(storageCartli) {
-  const cartLocStorageArray =
-    JSON.parse(localStorage.getItem("cartLiLocStorage")) || [];
-  localStorage.setItem("cartLiLocStorage", JSON.stringify([...cartLocStorageArray, storageCartli]));
-}
+// function loocalStorageFnc(storageCartli) {
+//   const cartLocStorageArray =
+//     JSON.parse(localStorage.getItem("cartLiLocStorage")) || [];
+//   localStorage.setItem("cartLiLocStorage", JSON.stringify([...cartLocStorageArray, storageCartli]));
+// }
 
 // //! load local storage fnc
-function loadLocalStorageFnc() {
-  const cartLoad = JSON.parse(localStorage.getItem("cartLiLocStorage"));
-  if (cartLoad) {
-    cartLoad.forEach((element) => {
-      createCartLifnc(element);
-    });
-  }
-}
-document.addEventListener("DOMContentLoaded", loadLocalStorageFnc());
+// function loadLocalStorageFnc() {
+//   const cartLoad = JSON.parse(localStorage.getItem("cartLiLocStorage"));
+//   if (cartLoad) {
+//     cartLoad.forEach((element) => {
+//       createCartLifnc(element);
+//     });
+//   }
+// }
+// document.addEventListener("DOMContentLoaded", loadLocalStorageFnc());
 
 // ! burger
 // import {burgerBarFnc} from "./burgerBar";
