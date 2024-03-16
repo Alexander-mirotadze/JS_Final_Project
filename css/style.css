@@ -389,6 +389,8 @@
 .total-pay-number {
   width: 40%;
   height: 90%;
+  display: grid;
+  place-items: center;
   border-radius: 4px;
   font-family: "Kode Mono";
   font-size: 24px;

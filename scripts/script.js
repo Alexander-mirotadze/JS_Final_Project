@@ -179,8 +179,8 @@ function mainFnc(eachBeerItem) {
   beerDetailInfoFnc(eachBeerItem);
 }
 
-// ! --- slider beer Image Fnc
-const beerInfoContainer = document.querySelector(".beer-info");
+// ? --- slider beer Image Fnc
+// const beerInfoContainer = document.querySelector(".beer-info");
 const newBeerAllSlides = document.querySelectorAll(".splide__slide");
 // const activeSlide = document.querySelector("[aria-hidden]");
 // console.log(activeSlide);
@@ -344,48 +344,8 @@ function beerDetailInfoFnc(element) {
   shopAllProducts.appendChild(beerDetailInfo);
 }
 
-//! create cart li fnc
-function createCartLifnc(element) {
-  let cartLi = document.createElement("li");
-  cartLi.classList.add("cart-li");
-  cartLi.setAttribute("cart-div", element.id);
-  let cartLiPic = document.createElement("img");
-  cartLiPic.setAttribute("src", element.image_url);
-  cartLiPic.classList.add("cart-li-pic");
-  cartLiPic.setAttribute("cart-div", element.id);
-  let cartLiName = document.createElement("div");
-  cartLiName.textContent = element.name;
-  cartLiName.setAttribute("cart-div", element.id);
-  let cartLiPrice = document.createElement("div");
-  cartLiPrice.textContent = `${element.price} ${"GEL"}`;
-  cartLiPrice.setAttribute("cart-div", element.id);
-  let cartTotalPrice = document.createElement("div");
-  cartTotalPrice.textContent = `${Number(element.total_price)} ${"GEL"}`;
-  cartTotalPrice.setAttribute("cart-div", element.id);
-  // let cartLiQty = document.createElement("div");
-  // cartLiQty.textContent = `${itemQty.value} ${"PC"}`;
-  // cartLiQty.setAttribute("cart-div", element.id);
-  let deletecartLi = document.createElement("i");
-  deletecartLi.classList.add(
-    "fa-solid",
-    "fa-trash-can",
-    "fa-lg",
-    "delete-cart-li"
-  );
-  deletecartLi.setAttribute("cart-div", element.id);
-  deletecartLi.addEventListener("click", function () {
-    cartLi.remove();
-  });
-
-  cartLi.appendChild(cartLiPic);
-  cartLi.appendChild(cartLiName);
-  cartLi.appendChild(cartLiPrice);
-  cartLi.appendChild(cartLiPrice);
-  // cartLi.appendChild(cartLiQty);
-  cartLi.appendChild(cartTotalPrice);
-  cartLi.appendChild(deletecartLi);
-  cartUl.appendChild(cartLi);
-}
+const beerQtyload = document.createElement("span");
+const beerQtySumload = document.createElement("span");
 
 //! beer pp Fnc
 function beerPPFnc(element) {
@@ -426,7 +386,7 @@ function beerPPFnc(element) {
       return alert("Wrong Quantity");
     } else {
       createCartLifnc(element);
-      // loocalStorageFnc(element);
+      // --- თითოეული ლუდის სახეობის ჯამის დასათვლელი ფორმულა
       function sumProducts(...totalPrice) {
         let totalBeerPrice = 0;
         for (let item of totalPrice) {
@@ -437,8 +397,16 @@ function beerPPFnc(element) {
       let resultTotalPrice = sumProducts(
         Number(beerPcLine.value) * Number(element.price)
       );
+      // --- li-ებში ჩასახატი ლუდის რაოდენობა და ჯამური თანხა სათითაოდ
+      let beerQtyInput = Number(beerPcLine.value);
+      beerQtyload.textContent = `${beerQtyInput} ${"PC"}`;
+      let beerItemSum = beerQtyInput * Number(element.price);
+      beerQtySumload.textContent = `${"total"} ${beerItemSum} ${"GEL"}`;
+      // --- localStorage-ში შენახვა li-ს საჭირო კომპონენტების
+      element.input_qty = beerQtyInput;
+      element.qty_sum = beerItemSum;
       element.total_price = resultTotalPrice;
-
+      // --- input -ის გასუფთავება
       beerPcLine.value = "";
     }
 
@@ -453,6 +421,50 @@ function beerPPFnc(element) {
   beerPP.appendChild(beerQty);
 
   return beerPP;
+}
+
+function createCartLifnc(element) {
+  let cartLi = document.createElement("li");
+  cartLi.classList.add("cart-li");
+  cartLi.setAttribute("cart-div", element.id);
+  let cartLiPic = document.createElement("img");
+  cartLiPic.setAttribute("src", element.image_url);
+  cartLiPic.classList.add("cart-li-pic");
+  cartLiPic.setAttribute("cart-div", element.id);
+  let cartLiName = document.createElement("div");
+  cartLiName.textContent = element.name;
+  cartLiName.setAttribute("cart-div", element.id);
+  let cartLiPrice = document.createElement("div");
+  cartLiPrice.textContent = `${element.price} ${"GEL"}`;
+  cartLiPrice.setAttribute("cart-div", element.id);
+  let cartTotalPrice = document.createElement("div");
+  cartTotalPrice.appendChild(beerQtySumload);
+  // cartTotalPrice.textContent = `${"total"} ${beerQtySumload} ${"GEL"}`;
+  cartTotalPrice.setAttribute("cart-div", element.id);
+  let cartLiQty = document.createElement("div");
+  cartLiQty.appendChild(beerQtyload);
+  // cartLiQty.textContent = `${beerQtyload} ${"PC"}`;
+  cartLiQty.setAttribute("cart-div", element.id);
+  let deletecartLi = document.createElement("i");
+  deletecartLi.classList.add(
+    "fa-solid",
+    "fa-trash-can",
+    "fa-lg",
+    "delete-cart-li"
+  );
+  deletecartLi.setAttribute("cart-div", element.id);
+  deletecartLi.addEventListener("click", function () {
+    cartLi.remove();
+  });
+
+  cartLi.appendChild(cartLiPic);
+  cartLi.appendChild(cartLiName);
+  cartLi.appendChild(cartLiPrice);
+  cartLi.appendChild(cartLiPrice);
+  cartLi.appendChild(cartLiQty);
+  cartLi.appendChild(cartTotalPrice);
+  cartLi.appendChild(deletecartLi);
+  cartUl.appendChild(cartLi);
 }
 
 // //! loocal Storage Fnc
@@ -471,6 +483,8 @@ function loadLocalStorageFnc() {
   if (cartLoad) {
     cartLoad.forEach((element) => {
       createCartLifnc(element);
+      beerQtyload.textContent = `${element.input_qty} ${"PC"}`;
+      beerQtySumload.textContent =`${"total"} ${element.qty_sum} ${"GEL"}`;
     });
     const calculTotalLoadSum = cartLoad.reduce(function (
       totalSumLoad,
