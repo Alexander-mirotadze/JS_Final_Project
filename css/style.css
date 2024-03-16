@@ -348,8 +348,9 @@
   min-height: 20px;
   padding: 15px;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
+  column-gap: 20px;
   border-radius: 4px;
   border: 2px solid #000000;
   background-color: #f4c314;
@@ -366,8 +367,9 @@
   /* background-color: red; */
 }
 .cart-li-pic {
-  width: 20px;
-  height: 20px;
+  width: 40px;
+  height: 40px;
+  margin-right: 20px;
   object-fit: center;
 }
 .delete-cart-li {
@@ -387,7 +389,6 @@
 .total-pay-number {
   width: 40%;
   height: 90%;
-  background-color: green;
   border-radius: 4px;
   font-family: "Kode Mono";
   font-size: 24px;
@@ -398,7 +399,6 @@
 .total-pay-valute {
   width: 40%;
   height: 30%;
-  background-color: green;
   border-radius: 4px;
   font-family: "Kode Mono";
   font-size: 18px;
@@ -407,6 +407,7 @@
   text-align: center;
 }
 .pay-clear-div {
+  margin-bottom: 20px;
   display: flex;
   justify-content: center;
   column-gap: 10px;

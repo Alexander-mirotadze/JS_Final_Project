@@ -1,3 +1,6 @@
+const burgerBar = document.querySelector(".burger__bar");
+const navLists = document.querySelector(".nav");
+
 export function burgerBarFnc(){
     const burgerBar = document.querySelector(".burger__bar");
     const navLists = document.querySelector(".nav");
