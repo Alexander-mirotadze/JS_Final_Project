@@ -1,130 +1,19 @@
 "use strict";
 // ! dropProductList
-const dropProductList = document.querySelector(".fa-solid");
-const dropProductsDiv = document.querySelector(".drop__product__list");
-
-function dropArrowUpDown() {
-  const dropProductListDown = document.querySelector(".fa-square-caret-down");
-
-  if (dropProductListDown) {
-    dropProductList.classList.remove("fa-square-caret-down");
-    dropProductList.classList.add("fa-square-caret-up");
-  } else {
-    dropProductList.classList.remove("fa-square-caret-up");
-    dropProductList.classList.add("fa-square-caret-down");
-  }
-}
-
-dropProductList.addEventListener("click", function () {
-  dropProductsDiv.classList.toggle("active--products");
-  dropArrowUpDown();
-});
-
-document.addEventListener("click", (body) => {
-  //   console.log(body.target);
-  const isDropDown = body.target.matches("[data-dropDown-icon]");
-  //   console.log(isDropDown);
-  const arrowDefault = document.querySelector(".fa-square-caret-down");
-  //   console.log(arrowDefault);
-
-  if (!isDropDown && !arrowDefault) {
-    dropProductsDiv.classList.remove("active--products");
-    dropArrowUpDown();
-  }
-});
-
+import { navDropDownFnc } from "./navDropDown.js";
+navDropDownFnc();
 // ! search
-const searchIcon = document.getElementById("searchIcon");
-const searchForm = document.getElementById("searchForm");
-const searchBtn = document.querySelector(".search__btn");
-const searchInput = document.querySelector(".search-input");
-
-searchIcon.addEventListener("click", function () {
-  searchForm.classList.toggle("active__search");
-  searchForm.reset();
-});
-searchForm.addEventListener("submit", function (e) {
-  e.preventDefault();
-  searchForm.reset();
-});
-
-document.addEventListener("click", (body) => {
-  const isSearchBar = body.target.matches("[search-bar]");
-  // console.log(isRegAutauDiv);
-  if (!isSearchBar) {
-    searchForm.classList.remove("active__search");
-    searchForm.reset();
-  }
-});
-
+import { searchFnc } from "./search.js";
+searchFnc();
 // ! user
-const userRegAutauthoriz = document.getElementById("userRegAutauthoriz");
-const regAutaudiv = document.querySelector(".reg__autau__btn__div");
-userRegAutauthoriz.addEventListener("click", function () {
-  regAutaudiv.classList.toggle("active-reg-btns");
-});
-
-document.addEventListener("click", (body) => {
-  const isRegAutauDiv = body.target.matches("[data-reg-auta-div]");
-  // console.log(isRegAutauDiv);
-  if (!isRegAutauDiv) {
-    regAutaudiv.classList.remove("active-reg-btns");
-  }
-});
-
+import { userBtnFnc } from "./userBtn.js";
+userBtnFnc();
 // ! registration sign in
-const signInBtn = document.getElementById("signe__in");
-const signInDiv = document.querySelector(".signe__in--div");
-const signInForm = document.querySelector(".log-in-form");
-const closeBtn = document.querySelector(".close--signInDiv-btn");
-
-signInBtn.addEventListener("click", function () {
-  signInDiv.classList.add("active-log-in");
-});
-
-signInForm.addEventListener("submit", function (e) {
-  e.preventDefault();
-});
-
-document.addEventListener("click", function (body) {
-  const isSignInForm = body.target.matches("[is-sign-in]");
-  if (!isSignInForm) {
-    signInDiv.classList.remove("active-log-in");
-    signInForm.reset();
-  }
-});
-
-closeBtn.addEventListener("click", function () {
-  signInDiv.classList.remove("active-log-in");
-  signInForm.reset();
-});
-
+import { SignInFnc } from "./signIn.js";
+SignInFnc();
 // ! registration sign up
-const signUpBtn = document.getElementById("signe__up");
-const signUpDiv = document.querySelector(".signe__up--div");
-const signUpForm = document.querySelector(".signe__up-form");
-const closeSignUpDiv = document.querySelector(".close--signUpDiv-btn");
-
-signUpBtn.addEventListener("click", function () {
-  signUpDiv.classList.add("active-sign-up");
-});
-
-signUpForm.addEventListener("submit", function (e) {
-  e.preventDefault();
-});
-
-document.addEventListener("click", function (body) {
-  const isSignUpForm = body.target.matches("[sign-up-form]");
-  if (!isSignUpForm) {
-    signUpDiv.classList.remove("active-sign-up");
-    signUpForm.reset();
-  }
-});
-
-closeSignUpDiv.addEventListener("click", function () {
-  signUpDiv.classList.remove("active-sign-up");
-  signUpForm.reset();
-});
+import { signUpFnc } from "./signUp.js";
+signUpFnc();
 
 // ! cart
 const cartIcon = document.getElementById("cartIcon");
@@ -179,12 +68,11 @@ function mainFnc(eachBeerItem) {
   beerDetailInfoFnc(eachBeerItem);
 }
 
-// ? --- slider beer Image Fnc
+// ? --- slider beer Image Fnc ვერაფრით ავამუშავე ის ლოგიკა რომ სლაიდერის სურათზე არსებული პროდუქტის აღწერა ჩამესვა გვერდით Div-ში
 // const beerInfoContainer = document.querySelector(".beer-info");
-const newBeerAllSlides = document.querySelectorAll(".splide__slide");
 // const activeSlide = document.querySelector("[aria-hidden]");
 // console.log(activeSlide);
-
+const newBeerAllSlides = document.querySelectorAll(".splide__slide");
 function beerImageFncForSlidersFnc(element) {
   let imgBeerElements = document.createElement("img");
   imgBeerElements.setAttribute("src", element.image_url);
@@ -203,89 +91,8 @@ function beerImageFncForSlidersFnc(element) {
     }
   });
 }
-// ! slider npm 1
-var splide = new Splide("#splide1", {
-  direction: "ttb",
-  height: "400px",
-  // width: "80%",
-  type: "slide",
-  wheel: true,
-  perPage: 1,
-  pagination: true,
-  rewind: true,
-  autoplay: true,
-  interval: 5000,
-  speed: 3000,
-
-  classes: {
-    // Add classes for arrows.
-    arrows: "splide__arrows new-beer-class-arrows",
-    arrow: "splide__arrow new-beer-class-arrow",
-    prev: "splide__arrow--prev new-beer-class-prev",
-    next: "splide__arrow--next new-beer-class-next",
-
-    // Add classes for pagination.
-    pagination: "splide__pagination new-beer-class-pagination", // container
-    page: "splide__pagination__page new-beer-class-page", // each button
-  },
-});
-splide.mount();
-
-// ! slider npm 2
-var splide = new Splide("#splide2", {
-  direction: "ttb",
-  height: "400px",
-  // width: "80%",
-  type: "slide",
-  wheel: true,
-  perPage: 1,
-  pagination: true,
-  rewind: true,
-  autoplay: true,
-  interval: 5000,
-  speed: 3000,
-
-  classes: {
-    // Add classes for arrows.
-    arrows: "splide__arrows new-beer-class-arrows",
-    arrow: "splide__arrow new-beer-class-arrow",
-    prev: "splide__arrow--prev new-beer-class-prev",
-    next: "splide__arrow--next new-beer-class-next",
-
-    // Add classes for pagination.
-    pagination: "splide__pagination new-beer-class-pagination", // container
-    page: "splide__pagination__page new-beer-class-page", // each button
-  },
-});
-splide.mount();
-
-// ! slider npm 3
-var splide = new Splide("#splide3", {
-  direction: "ttb",
-  height: "400px",
-  // width: "80%",
-  type: "slide",
-  wheel: true,
-  perPage: 1,
-  pagination: true,
-  rewind: true,
-  autoplay: true,
-  interval: 5000,
-  speed: 3000,
-
-  classes: {
-    // Add classes for arrows.
-    arrows: "splide__arrows new-beer-class-arrows",
-    arrow: "splide__arrow new-beer-class-arrow",
-    prev: "splide__arrow--prev new-beer-class-prev",
-    next: "splide__arrow--next new-beer-class-next",
-
-    // Add classes for pagination.
-    pagination: "splide__pagination new-beer-class-pagination", // container
-    page: "splide__pagination__page new-beer-class-page", // each button
-  },
-});
-splide.mount();
+import { allSlidersFnc } from "./sliders.js";
+allSlidersFnc();
 
 //  ! shop all products
 const shopAllProducts = document.querySelector(".shop");
@@ -385,32 +192,47 @@ function beerPPFnc(element) {
     if (Number(beerPcLine.value) <= 0) {
       return alert("Wrong Quantity");
     } else {
-      createCartLifnc(element);
-      // --- თითოეული ლუდის სახეობის ჯამის დასათვლელი ფორმულა
+      // ---
+      let beerQtyInput = Number(beerPcLine.value);
+      beerQtyload.textContent =`${beerQtyInput}`;
+      beerQtyload.setAttribute("cart-div", element.id);
+      element.input_qty = beerQtyInput;
+      // ---
+      let beerItemSum = beerQtyInput * Number(element.price);
+      beerQtySumload.textContent = `${beerItemSum}`;
+      beerQtySumload.setAttribute("cart-div", element.id);
+      element.qty_sum = beerItemSum;
+      // ---
       function sumProducts(...totalPrice) {
         let totalBeerPrice = 0;
         for (let item of totalPrice) {
+          // console.log(item);
           totalBeerPrice += item;
         }
         return totalBeerPrice;
       }
-      let resultTotalPrice = sumProducts(
-        Number(beerPcLine.value) * Number(element.price)
-      );
-      // --- li-ებში ჩასახატი ლუდის რაოდენობა და ჯამური თანხა სათითაოდ
-      let beerQtyInput = Number(beerPcLine.value);
-      beerQtyload.textContent = `${beerQtyInput} ${"PC"}`;
-      let beerItemSum = beerQtyInput * Number(element.price);
-      beerQtySumload.textContent = `${"total"} ${beerItemSum} ${"GEL"}`;
-      // --- localStorage-ში შენახვა li-ს საჭირო კომპონენტების
-      element.input_qty = beerQtyInput;
-      element.qty_sum = beerItemSum;
+      let resultTotalPrice = sumProducts(Number(element.input_qty) * Number(element.price));
       element.total_price = resultTotalPrice;
-      // --- input -ის გასუფთავება
+
+      createCartLifnc(element);
+
       beerPcLine.value = "";
     }
 
     loocalStorageFnc(element);
+    // ---
+    function totalPriceForDom (){
+      const cartLoad = JSON.parse(localStorage.getItem("cartLiLocStorage"));
+      if (cartLoad) {
+        cartLoad.forEach((element) => {});
+        const calculTotalLoadSum = cartLoad.reduce(function (totalSumLoad,sumLoad) {
+          return totalSumLoad + sumLoad.total_price;
+        },0);
+        const resulTotalLoadSum = calculTotalLoadSum;
+        totalBeerPriceBox.textContent = resulTotalLoadSum;
+      }
+    }
+    totalPriceForDom ();
   });
 
   beerPP.appendChild(beerPrice);
@@ -423,6 +245,7 @@ function beerPPFnc(element) {
   return beerPP;
 }
 
+// ! cart li Fnc
 function createCartLifnc(element) {
   let cartLi = document.createElement("li");
   cartLi.classList.add("cart-li");
@@ -437,14 +260,12 @@ function createCartLifnc(element) {
   let cartLiPrice = document.createElement("div");
   cartLiPrice.textContent = `${element.price} ${"GEL"}`;
   cartLiPrice.setAttribute("cart-div", element.id);
-  let cartTotalPrice = document.createElement("div");
-  cartTotalPrice.appendChild(beerQtySumload);
-  // cartTotalPrice.textContent = `${"total"} ${beerQtySumload} ${"GEL"}`;
-  cartTotalPrice.setAttribute("cart-div", element.id);
   let cartLiQty = document.createElement("div");
-  cartLiQty.appendChild(beerQtyload);
-  // cartLiQty.textContent = `${beerQtyload} ${"PC"}`;
+  cartLiQty.textContent = `${element.input_qty} ${"PC"}`;
   cartLiQty.setAttribute("cart-div", element.id);
+  let cartTotalPrice = document.createElement("div");
+  cartTotalPrice.textContent = `${"total"} ${element.qty_sum} ${"GEL"}`;
+  cartTotalPrice.setAttribute("cart-div", element.id);
   let deletecartLi = document.createElement("i");
   deletecartLi.classList.add(
     "fa-solid",
@@ -454,12 +275,24 @@ function createCartLifnc(element) {
   );
   deletecartLi.setAttribute("cart-div", element.id);
   deletecartLi.addEventListener("click", function () {
+    // const cartLoad = JSON.parse(localStorage.getItem("cartLiLocStorage"));
+    // if (cartLoad) {
+    //   cartLoad.forEach((element) => {
+    //     if (element.id == deletecartLi.getAttribute("cart-div")) {
+    //       let indexItemStorage = cartLoad.indexOf(element);
+    //       console.log(indexItemStorage);
+    //       // cartLoad.splice(indexItemStorage,1)
+    //       localStorage.removeItem();
+    //       // localStorage.removeItem(element[indexItemStorage]);
+    //     }
+    //   });
+    // }
     cartLi.remove();
+    // loocalStorageFnc(cartLoad);
   });
 
   cartLi.appendChild(cartLiPic);
   cartLi.appendChild(cartLiName);
-  cartLi.appendChild(cartLiPrice);
   cartLi.appendChild(cartLiPrice);
   cartLi.appendChild(cartLiQty);
   cartLi.appendChild(cartTotalPrice);
@@ -483,16 +316,10 @@ function loadLocalStorageFnc() {
   if (cartLoad) {
     cartLoad.forEach((element) => {
       createCartLifnc(element);
-      beerQtyload.textContent = `${element.input_qty} ${"PC"}`;
-      beerQtySumload.textContent =`${"total"} ${element.qty_sum} ${"GEL"}`;
     });
-    const calculTotalLoadSum = cartLoad.reduce(function (
-      totalSumLoad,
-      sumLoad
-    ) {
+    const calculTotalLoadSum = cartLoad.reduce(function (totalSumLoad,sumLoad) {
       return totalSumLoad + sumLoad.total_price;
-    },
-    0);
+    },0);
     const resulTotalLoadSum = calculTotalLoadSum;
     totalBeerPriceBox.textContent = resulTotalLoadSum;
   }
