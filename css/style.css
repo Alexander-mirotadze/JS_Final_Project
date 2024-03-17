@@ -195,6 +195,9 @@
   border-radius: 4px;
   border: 1px solid #000000;
 }
+.search-item-hide{
+  display: none;
+}
 .reg__autau__btn__div {
   display: none;
   -webkit-animation: left-to-right 3s ease-in-out;

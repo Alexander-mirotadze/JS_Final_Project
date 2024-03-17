@@ -2,9 +2,6 @@
 // ! dropProductList
 import { navDropDownFnc } from "./navDropDown.js";
 navDropDownFnc();
-// ! search
-import { searchFnc } from "./search.js";
-searchFnc();
 // ! user
 import { userBtnFnc } from "./userBtn.js";
 userBtnFnc();
@@ -94,12 +91,53 @@ function beerImageFncForSlidersFnc(element) {
 import { allSlidersFnc } from "./sliders.js";
 allSlidersFnc();
 
-//  ! shop all products
+// ! shop all products
 const shopAllProducts = document.querySelector(".shop");
+
+// ! search
+// import { searchFnc } from "./search.js";
+// searchFnc();
+const listOfShopProducts = [];
+
+const searchIcon = document.getElementById("searchIcon");
+const searchForm = document.getElementById("searchForm");
+const searchInput = document.querySelector(".search-input");
+const searchBtn = document.querySelector(".search__btn");
+
+searchIcon.addEventListener("click", function () {
+  searchForm.classList.toggle("active__search");
+  searchForm.reset();
+});
+
+searchForm.addEventListener("submit", function (e) {
+  e.preventDefault();
+  searchForm.reset();
+});
+
+document.addEventListener("click", (body) => {
+  const isSearchBar = body.target.matches("[data-search-bar]");
+  // console.log(isRegAutauDiv);
+  if (!isSearchBar) {
+    searchForm.classList.remove("active__search");
+    searchForm.reset();
+  }
+});
+
+function searchInputFnc(productItemName) {
+  listOfShopProducts.forEach((element) => {
+    if (element.toLowerCase().includes(productItemName.toLowerCase().trim())) {
+      element.classList.remove("search-item-hide");
+    } else {
+      element.classList.add("search-item-hide");
+    }
+  });
+}
+searchInput.addEventListener("keyup", searchInputFnc(searchInput.value)); //?
+// searchBtn.addEventListener("click", searchInputFnc(searchInput.value)); //?
 
 // ! beer Detail Info Fnc for shop
 function beerDetailInfoFnc(element) {
-  let beerDetailInfo = document.createElement("div");
+  let beerDetailInfo = document.createElement("li");
   beerDetailInfo.classList.add("shop-beer-details");
   beerDetailInfo.setAttribute("data-description", element.id);
 
@@ -149,6 +187,8 @@ function beerDetailInfoFnc(element) {
   beerDetailInfo.appendChild(beerDescription);
   beerDetailInfo.appendChild(resultBeerPP);
   shopAllProducts.appendChild(beerDetailInfo);
+  // # search
+  listOfShopProducts.push(element.name);
 }
 
 const beerQtyload = document.createElement("span");
