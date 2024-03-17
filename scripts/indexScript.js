@@ -154,7 +154,7 @@ function beerDetailInfoFnc(element) {
 const beerQtyload = document.createElement("span");
 const beerQtySumload = document.createElement("span");
 
-// ! total Price ForDom
+// ! total Price For Dom
 function totalPriceForDom (){
   const cartLocStorageArray = JSON.parse(localStorage.getItem("cartLiLocStorage")) || [];
   if (cartLocStorageArray) {
@@ -165,7 +165,7 @@ function totalPriceForDom (){
     const resulTotalLoadSum = calculTotalLoadSum;
     totalBeerPriceBox.textContent = resulTotalLoadSum;
   }
-  localStorage.setItem("cartLiLocStorage", JSON.stringify([...cartLocStorageArray, storageCartli]));
+  localStorage.setItem("cartLiLocStorage", JSON.stringify([...cartLocStorageArray]));
 }
 
 //! beer pp Fnc
@@ -248,8 +248,12 @@ function beerPPFnc(element) {
   return beerPP;
 }
 
+// const cartLiArray = []; //? ერთი და იგივე აითემი რომ ორჯერ არ დაამატოს ლისთში და მხოლოდ რაოდენობა შეკრიბოს მაგის ლოგიკა ვერ მოვასწარი და თან გამიჭირდა
+
 // ! cart li Fnc
 function createCartLifnc(element) {
+
+
   let cartLi = document.createElement("li");
   cartLi.classList.add("cart-li");
   cartLi.setAttribute("cart-div", element.id);
@@ -292,12 +296,28 @@ function createCartLifnc(element) {
     totalPriceForDom ();
   });
 
+
   cartLi.appendChild(cartLiPic);
   cartLi.appendChild(cartLiName);
   cartLi.appendChild(cartLiPrice);
   cartLi.appendChild(cartLiQty);
   cartLi.appendChild(cartTotalPrice);
   cartLi.appendChild(deletecartLi);
+ //? ერთი და იგივე აითემი რომ ორჯერ არ დაამატოს ლისთში და მხოლოდ რაოდენობა შეკრიბოს მაგის ლოგიკა ვერ მოვასწარი და თან გამიჭირდა(თუ გამოვიდოდა, მგავე ლოგიკას გამოვიყენებდი ყველა ელემენტის კალათის თავზე რომ შეყვანილი რაოდენობა ჩავარდნილიყო რამე Div ელემენტში რომელსაც შევუქმნიდი)
+  // cartLiArray.push(element.id);
+  // console.log(cartLiArray);
+  // cartLiArray.forEach((element) => {
+  //   // console.log(element);
+  //   for( let x of element){
+  //     if (x == x){
+  //       console.log("true");
+  //     }
+  //     else{
+  //       console.log("false");
+  //     }
+  //   }
+  // })
+
   cartUl.appendChild(cartLi);
 }
 

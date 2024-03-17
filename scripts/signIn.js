@@ -10,6 +10,7 @@ export function SignInFnc() {
 
   signInForm.addEventListener("submit", function (e) {
     e.preventDefault();
+    
   });
 
   document.addEventListener("click", function (body) {

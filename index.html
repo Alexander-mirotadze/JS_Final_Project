@@ -66,7 +66,7 @@
               data-reg-auta-div
             />
           </div>
-          <div class="header__components-div" cart-div>
+          <div class="header__components-div" >
             <img
               id="cartIcon"
               class="header__components-img"
@@ -92,18 +92,22 @@
             </button>
           </div>
           <div class="signe__in--div" is-sign-in>
-            <form class="log-in-form" action="" method="get" is-sign-in>
-              <input
-                class="search-input"
-                type="text"
-                placeholder="Enter your Email :"
-                is-sign-in
-              />
-              <input
-                type="password"
-                placeholder="Enter you password :"
-                is-sign-in
-              />
+            <form class="log-in-form" action="" method="post" is-sign-in>
+              <div>
+                <input
+                  class="search-input"
+                  type="text"
+                  placeholder="Enter your Email :"
+                  is-sign-in
+                />
+              </div>
+              <div>
+                <input
+                  type="password"
+                  placeholder="Enter you password :"
+                  is-sign-in
+                />
+              </div>
               <button is-sign-in>Log In</button>
             </form>
             <i
@@ -112,42 +116,89 @@
             ></i>
           </div>
           <div class="signe__up--div" sign-up-form>
-            <form class="signe__up-form" action="" method="get" sign-up-form>
-              <input
-                type="text"
-                placeholder="Enter your first name :"
-                sign-up-form
-              />
-              <input
-                type="text"
-                placeholder="Enter your last name :"
-                sign-up-form
-              />
-              <input
-                type="password"
-                placeholder="Enter your password :"
-                sign-up-form
-              />
-              <input
-                type="password"
-                placeholder="Re-enter your password :"
-                sign-up-form
-              />
-              <input
-                type="email"
-                placeholder="Enter your email :"
-                sign-up-form
-              />
+            <form
+              class="signe__up-form"
+              action=""
+              method="post"
+              sign-up-form
+            >
+              <!-- first Name -->
+              <div>
+                <input
+                  type="text"
+                  name="firstName"
+                  id="firstName"
+                  placeholder="Enter your first name :"
+                  sign-up-form
+                />
+              </div>
+              <p id="error-firstName" class="error-text" sign-up-form></p>
+              <!-- last Name -->
+              <div>
+                <input
+                  type="text"
+                  name="lastName"
+                  id="lastName"
+                  placeholder="Enter your last name :"
+                  sign-up-form
+                />
+              </div>
+              <p id="error-lastName" class="error-text" sign-up-form></p>
+              <!-- pass -->
+              <div class="pass-divs" sign-up-form>
+                <input
+                  type="password"
+                  id="password"
+                  name="passw1"
+                  placeholder="Enter your password :"
+                  sign-up-form
+                />
+                <i id="showPass1" class="fa-solid fa-eye show-hide-eye" sign-up-form></i>
+              </div>
+              <p id="error-passw1" class="error-text" sign-up-form></p>
+              <!-- pass rep -->
+              <div class="pass-divs" sign-up-form>
+                <input
+                  type="password"
+                  id="repeatPassword"
+                  name="passw2"
+                  placeholder="Re-enter your password :"
+                  sign-up-form
+                />
+                <i id="showPass2" class="fa-solid fa-eye show-hide-eye" sign-up-form></i>
+              </div>
+              <p id="error-passw2" class="error-text" sign-up-form></p>
+              <!-- email -->
+              <div>
+                <input
+                  type="email"
+                  name="email"
+                  id="Email"
+                  placeholder="Enter your email :"
+                  sign-up-form
+                />
+              </div>
+              <p id="error-email" class="error-text" sign-up-form></p>
+              <!-- radio -->
               <div class="signe__up-radio" sign-up-form>
                 <label for="Male" sign-up-form>Male</label>
-                <input type="radio" name="gender" id="Male" sign-up-form />
+                <input type="radio" name="radio" id="Male" sign-up-form />
                 <label for="Female" sign-up-form>Female</label>
-                <input type="radio" name="gender" id="Female" sign-up-form />
+                <input type="radio" name="radio" id="Female" sign-up-form />
               </div>
-              <div class="signe__up-checkbox" sign-up-form>
+              <p id="error-radio" class="error-text" sign-up-form></p>
+              <!-- check box -->
+              <div
+                id="checkBox"
+                name="checkbox"
+                class="signe__up-checkbox"
+                sign-up-form
+              >
                 <span sign-up-form>I agree terms</span>
                 <input type="checkbox" sign-up-form />
               </div>
+              <p id="error-checkbox" class="error-text" sign-up-form></p>
+              <!-- button submit -->
               <button sign-up-form>SubmiT</button>
             </form>
             <i
