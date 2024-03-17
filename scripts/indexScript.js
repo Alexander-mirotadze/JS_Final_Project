@@ -126,9 +126,9 @@ document.addEventListener("click", (body) => {
 function searchInputFnc(productItemName) {
   listOfShopProducts.forEach((element) => {
     if (element.toLowerCase().includes(productItemName.toLowerCase().trim())) {
-      element.classList.remove("search-item-hide");
+      searchInput.classList.add("searching-true-color-green");
     } else {
-      element.classList.add("search-item-hide");
+      searchInput.classList.add("searching-true-color-red");
     }
   });
 }
