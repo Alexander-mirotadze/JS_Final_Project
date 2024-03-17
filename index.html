@@ -6,14 +6,11 @@
     <meta name="description" content="Online Beer Shop" />
     <meta name="keywords" content="Beer, Shop, Store" />
     <meta name="author" content="Alexander Mirotadze" />
+    <meta property="og:description" content="Beer is always a good idea" />
     <meta
-    property="og:description"
-    content="Beer is always a good idea"
-  />
-  <meta
-    property="og:image"
-    content="https://github.com/Alexander-mirotadze/JS_Final_Project/blob/main/img/beerHelpingUglyPeople.jpg?raw=true"
-  />
+      property="og:image"
+      content="https://github.com/Alexander-mirotadze/JS_Final_Project/blob/main/img/beerHelpingUglyPeople.jpg?raw=true"
+    />
     <title>Beer-shop.com</title>
     <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="css/font.css" />
@@ -65,7 +62,7 @@
               id="searchIcon"
               src="img/header/search_line.svg"
               alt="search_icon"
-              search-bar
+              data-search-bar="ser"
             />
           </div>
           <div class="header__components-div">
@@ -83,51 +80,61 @@
               class="header__components-img"
               src="img/header/shopping_cart_line.svg"
               alt="cart_icon"
-              cart-div
+              data-cart-div="cart"
             />
           </div>
           <div class="reg__autau__btn__div">
             <button
               id="signe__in"
               class="reg__autau__btn__div-button"
-              is-sign-in
+              data-is-sign-in="signeIn"
             >
               Sign In
             </button>
             <button
               id="signe__up"
               class="reg__autau__btn__div-button"
-              sign-up-form
+              data-sign-up-form="signUp"
             >
               Sign Up
             </button>
           </div>
-          <div class="signe__in--div" is-sign-in>
-            <form class="log-in-form" action="" method="post" is-sign-in>
+          <div class="signe__in--div" data-is-sign-in="signeIn">
+            <form
+              class="log-in-form"
+              action=""
+              method="post"
+              data-is-sign-in="signeIn"
+            >
               <div>
                 <input
                   class="search-input"
                   type="text"
                   placeholder="Enter your Email :"
-                  is-sign-in
+                  data-is-sign-in="signeIn"
                 />
               </div>
               <div>
                 <input
                   type="password"
                   placeholder="Enter you password :"
-                  is-sign-in
+                  data-is-sign-in="signeIn"
                 />
               </div>
-              <button is-sign-in>Log In</button>
+              <button data-is-sign-in="signeIn">Log In</button>
             </form>
             <i
               class="fa-solid fa-rectangle-xmark fa-2xl close--signInDiv-btn"
               style="color: #000000"
             ></i>
           </div>
-          <div class="signe__up--div" sign-up-form>
-            <form class="signe__up-form" action="" method="post" sign-up-form>
+          <div class="signe__up--div" data-sign-up-form="signUp">
+            <form
+              class="signe__up-form"
+              action=""
+              method="post"
+              data-sign-up-form="signUp"
+            >
               <!-- first Name -->
               <div>
                 <input
@@ -135,10 +142,14 @@
                   name="firstName"
                   id="firstName"
                   placeholder="Enter your first name :"
-                  sign-up-form
+                  data-sign-up-form="signUp"
                 />
               </div>
-              <p id="error-firstName" class="error-text" sign-up-form></p>
+              <p
+                id="error-firstName"
+                class="error-text"
+                data-sign-up-form="signUp"
+              ></p>
               <!-- last Name -->
               <div>
                 <input
@@ -146,42 +157,54 @@
                   name="lastName"
                   id="lastName"
                   placeholder="Enter your last name :"
-                  sign-up-form
+                  data-sign-up-form="signUp"
                 />
               </div>
-              <p id="error-lastName" class="error-text" sign-up-form></p>
+              <p
+                id="error-lastName"
+                class="error-text"
+                data-sign-up-form="signUp"
+              ></p>
               <!-- pass -->
-              <div class="pass-divs" sign-up-form>
+              <div class="pass-divs" data-sign-up-form="signUp">
                 <input
                   type="password"
                   id="password"
                   name="passw1"
                   placeholder="Enter your password :"
-                  sign-up-form
+                  data-sign-up-form="signUp"
                 />
                 <i
                   id="showPass1"
                   class="fa-solid fa-eye show-hide-eye"
-                  sign-up-form
+                  data-sign-up-form="signUp"
                 ></i>
               </div>
-              <p id="error-passw1" class="error-text" sign-up-form></p>
+              <p
+                id="error-passw1"
+                class="error-text"
+                data-sign-up-form="signUp"
+              ></p>
               <!-- pass rep -->
-              <div class="pass-divs" sign-up-form>
+              <div class="pass-divs" data-sign-up-form="signUp">
                 <input
                   type="password"
                   id="repeatPassword"
                   name="passw2"
                   placeholder="Re-enter your password :"
-                  sign-up-form
+                  data-sign-up-form="signUp"
                 />
                 <i
                   id="showPass2"
                   class="fa-solid fa-eye show-hide-eye"
-                  sign-up-form
+                  data-sign-up-form="signUp"
                 ></i>
               </div>
-              <p id="error-passw2" class="error-text" sign-up-form></p>
+              <p
+                id="error-passw2"
+                class="error-text"
+                data-sign-up-form="signUp"
+              ></p>
               <!-- email -->
               <div>
                 <input
@@ -189,59 +212,79 @@
                   name="email"
                   id="Email"
                   placeholder="Enter your email :"
-                  sign-up-form
+                  data-sign-up-form="signUp"
                 />
               </div>
-              <p id="error-email" class="error-text" sign-up-form></p>
+              <p
+                id="error-email"
+                class="error-text"
+                data-sign-up-form="signUp"
+              ></p>
               <!-- radio -->
-              <div class="signe__up-radio" sign-up-form>
-                <label for="Male" sign-up-form>Male</label>
-                <input type="radio" name="radio" id="Male" sign-up-form />
-                <label for="Female" sign-up-form>Female</label>
-                <input type="radio" name="radio" id="Female" sign-up-form />
+              <div class="signe__up-radio" data-sign-up-form="signUp">
+                <label for="Male" data-sign-up-form="signUp">Male</label>
+                <input
+                  type="radio"
+                  name="radio"
+                  id="Male"
+                  data-sign-up-form="signUp"
+                />
+                <label for="Female" data-sign-up-form="signUp">Female</label>
+                <input
+                  type="radio"
+                  name="radio"
+                  id="Female"
+                  data-sign-up-form="signUp"
+                />
               </div>
-              <p id="error-radio" class="error-text" sign-up-form></p>
+              <p
+                id="error-radio"
+                class="error-text"
+                data-sign-up-form="signUp"
+              ></p>
               <!-- check box -->
-              <div
-                id="checkBox"
-                name="checkbox"
-                class="signe__up-checkbox"
-                sign-up-form
-              >
-                <span sign-up-form>I agree terms</span>
-                <input type="checkbox" sign-up-form />
+              <div class="signe__up-checkbox" data-sign-up-form="signUp">
+                <span data-sign-up-form="signUp">I agree terms</span>
+                <input
+                  type="checkbox"
+                  id="checkBox"
+                  name="checkbox"
+                  data-sign-up-form="signUp"
+                />
               </div>
-              <p id="error-checkbox" class="error-text" sign-up-form></p>
+              <p
+                id="error-checkbox"
+                class="error-text"
+                data-sign-up-form="signUp"
+              ></p>
               <!-- button submit -->
-              <button sign-up-form>SubmiT</button>
+              <button data-sign-up-form="signUp">SubmiT</button>
             </form>
             <i
               class="fa-solid fa-rectangle-xmark fa-2xl close--signUpDiv-btn"
               style="color: #000000"
             ></i>
           </div>
-          <div class="cart-div" cart-div>
-            <h2 cart-div>PRODUCT LIST</h2>
-            <ul class="cart-ul" cart-div></ul>
-            <div class="total-pay-div" cart-div>
-              <span class="total-pay-number" cart-div></span>
-              <span class="total-pay-valute" cart-div>GEL</span>
+          <div class="cart-div" data-cart-div="cart">
+            <h2 data-cart-div="cart">PRODUCT LIST</h2>
+            <ul class="cart-ul" data-cart-div="cart"></ul>
+            <div class="total-pay-div" data-cart-div="cart">
+              <span class="total-pay-number" data-cart-div="cart"></span>
+              <span class="total-pay-valute" data-cart-div="cart">GEL</span>
             </div>
-            <div class="pay-clear-div" cart-div>
-              <button class="pay" cart-div>
-                <a href="#" target="_blank" cart-div>
-                  <i
-                    cart-div
-                    class="fa-solid fa-money-bill-1-wave fa-2xl"
-                    style="color: #f4c314"
-                  ></i>
-                  Pay It
-                </a>
+            <div class="pay-clear-div" data-cart-div="cart">
+              <button class="pay" type="submit" data-cart-div="cart">
+                <i
+                  data-cart-div="cart"
+                  class="fa-solid fa-money-bill-1-wave fa-2xl"
+                  style="color: #f4c314"
+                ></i>
+                Pay It
               </button>
-              <button class="clear-all" cart-div>
+              <button class="clear-all" data-cart-div="cart">
                 Clear All
                 <i
-                  cart-div
+                  data-cart-div="cart"
                   class="fa-solid fa-trash-can fa-2xl"
                   style="color: #f4c314"
                 ></i>
@@ -259,14 +302,19 @@
           <div class="burger__lines line--3"></div>
         </div>
       </div>
-      <form id="searchForm" action="" class="search__form" search-bar>
+      <form
+        id="searchForm"
+        action=""
+        class="search__form"
+        data-search-bar="ser"
+      >
         <input
           class="search__input"
           type="search"
           placeholder="Search"
-          search-bar
+          data-search-bar="ser"
         />
-        <button class="search__btn" search-bar>Search</button>
+        <button class="search__btn" data-search-bar="ser">Search</button>
       </form>
     </header>
     <main>

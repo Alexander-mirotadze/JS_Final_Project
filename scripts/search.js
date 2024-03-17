@@ -14,7 +14,7 @@ searchForm.addEventListener("submit", function (e) {
 });
 
 document.addEventListener("click", (body) => {
-  const isSearchBar = body.target.matches("[search-bar]");
+  const isSearchBar = body.target.matches("[data-search-bar]");
   // console.log(isRegAutauDiv);
   if (!isSearchBar) {
     searchForm.classList.remove("active__search");

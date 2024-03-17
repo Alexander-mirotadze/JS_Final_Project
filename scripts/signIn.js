@@ -10,11 +10,10 @@ export function SignInFnc() {
 
   signInForm.addEventListener("submit", function (e) {
     e.preventDefault();
-    
   });
 
   document.addEventListener("click", function (body) {
-    const isSignInForm = body.target.matches("[is-sign-in]");
+    const isSignInForm = body.target.matches("[data-is-sign-in]");
     if (!isSignInForm) {
       signInDiv.classList.remove("active-log-in");
       signInForm.reset();

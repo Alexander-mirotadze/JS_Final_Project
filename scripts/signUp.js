@@ -190,7 +190,7 @@ export function signUpFnc() {
 
   // ---
   document.addEventListener("click", function (body) {
-    const isSignUpForm = body.target.matches("[sign-up-form]");
+    const isSignUpForm = body.target.matches("[data-sign-up-form]");
     if (!isSignUpForm) {
       signUpDiv.classList.remove("active-sign-up");
       signUpForm.reset();

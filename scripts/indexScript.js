@@ -28,7 +28,7 @@ cartIcon.addEventListener("click", function () {
 });
 
 document.addEventListener("click", (body) => {
-  const isCartDiv = body.target.matches("[cart-div]");
+  const isCartDiv = body.target.matches("[data-cart-div]");
   // console.log(isCartDiv);
   if (!isCartDiv) {
     cartDivActive.classList.remove("active-cart");
@@ -155,17 +155,25 @@ const beerQtyload = document.createElement("span");
 const beerQtySumload = document.createElement("span");
 
 // ! total Price For Dom
-function totalPriceForDom (){
-  const cartLocStorageArray = JSON.parse(localStorage.getItem("cartLiLocStorage")) || [];
+function totalPriceForDom() {
+  const cartLocStorageArray =
+    JSON.parse(localStorage.getItem("cartLiLocStorage")) || [];
   if (cartLocStorageArray) {
     cartLocStorageArray.forEach((element) => {});
-    const calculTotalLoadSum = cartLocStorageArray.reduce(function (totalSumLoad,sumLoad) {
+    const calculTotalLoadSum = cartLocStorageArray.reduce(function (
+      totalSumLoad,
+      sumLoad
+    ) {
       return totalSumLoad + sumLoad.total_price;
-    },0);
+    },
+    0);
     const resulTotalLoadSum = calculTotalLoadSum;
     totalBeerPriceBox.textContent = resulTotalLoadSum;
   }
-  localStorage.setItem("cartLiLocStorage", JSON.stringify([...cartLocStorageArray]));
+  localStorage.setItem(
+    "cartLiLocStorage",
+    JSON.stringify([...cartLocStorageArray])
+  );
 }
 
 //! beer pp Fnc
@@ -208,13 +216,13 @@ function beerPPFnc(element) {
     } else {
       // ---
       let beerQtyInput = Number(beerPcLine.value);
-      beerQtyload.textContent =`${beerQtyInput}`;
-      beerQtyload.setAttribute("cart-div", element.id);
+      beerQtyload.textContent = `${beerQtyInput}`;
+      beerQtyload.setAttribute("data-cart-div", element.id);
       element.input_qty = beerQtyInput;
       // ---
       let beerItemSum = beerQtyInput * Number(element.price);
       beerQtySumload.textContent = `${beerItemSum}`;
-      beerQtySumload.setAttribute("cart-div", element.id);
+      beerQtySumload.setAttribute("data-cart-div", element.id);
       element.qty_sum = beerItemSum;
       // ---
       function sumProducts(...totalPrice) {
@@ -225,7 +233,9 @@ function beerPPFnc(element) {
         }
         return totalBeerPrice;
       }
-      let resultTotalPrice = sumProducts(Number(element.input_qty) * Number(element.price));
+      let resultTotalPrice = sumProducts(
+        Number(element.input_qty) * Number(element.price)
+      );
       element.total_price = resultTotalPrice;
 
       createCartLifnc(element);
@@ -235,7 +245,7 @@ function beerPPFnc(element) {
 
     loocalStorageFnc(element);
     // ---
-    totalPriceForDom ();
+    totalPriceForDom();
   });
 
   beerPP.appendChild(beerPrice);
@@ -252,27 +262,25 @@ function beerPPFnc(element) {
 
 // ! cart li Fnc
 function createCartLifnc(element) {
-
-
   let cartLi = document.createElement("li");
   cartLi.classList.add("cart-li");
-  cartLi.setAttribute("cart-div", element.id);
+  cartLi.setAttribute("data-cart-div", element.id);
   let cartLiPic = document.createElement("img");
   cartLiPic.setAttribute("src", element.image_url);
   cartLiPic.classList.add("cart-li-pic");
-  cartLiPic.setAttribute("cart-div", element.id);
+  cartLiPic.setAttribute("data-cart-div", element.id);
   let cartLiName = document.createElement("div");
   cartLiName.textContent = element.name;
-  cartLiName.setAttribute("cart-div", element.id);
+  cartLiName.setAttribute("data-cart-div", element.id);
   let cartLiPrice = document.createElement("div");
   cartLiPrice.textContent = `${element.price} ${"GEL"}`;
-  cartLiPrice.setAttribute("cart-div", element.id);
+  cartLiPrice.setAttribute("data-cart-div", element.id);
   let cartLiQty = document.createElement("div");
   cartLiQty.textContent = `${element.input_qty} ${"PC"}`;
-  cartLiQty.setAttribute("cart-div", element.id);
+  cartLiQty.setAttribute("data-cart-div", element.id);
   let cartTotalPrice = document.createElement("div");
   cartTotalPrice.textContent = `${"total"} ${element.qty_sum} ${"GEL"}`;
-  cartTotalPrice.setAttribute("cart-div", element.id);
+  cartTotalPrice.setAttribute("data-cart-div", element.id);
   let deletecartLi = document.createElement("i");
   deletecartLi.classList.add(
     "fa-solid",
@@ -280,22 +288,25 @@ function createCartLifnc(element) {
     "fa-lg",
     "delete-cart-li"
   );
-  deletecartLi.setAttribute("cart-div", element.id);
+  deletecartLi.setAttribute("data-cart-div", element.id);
   deletecartLi.addEventListener("click", function () {
-    const cartLocStorageArray = JSON.parse(localStorage.getItem("cartLiLocStorage")) || [];
-      if (cartLocStorageArray) {
-        cartLocStorageArray.forEach((element) => {
-        if (element.id == deletecartLi.getAttribute("cart-div")) {
+    const cartLocStorageArray =
+      JSON.parse(localStorage.getItem("cartLiLocStorage")) || [];
+    if (cartLocStorageArray) {
+      cartLocStorageArray.forEach((element) => {
+        if (element.id == deletecartLi.getAttribute("data-cart-div")) {
           let indexItemStorage = cartLocStorageArray.indexOf(element);
-          cartLocStorageArray.splice(indexItemStorage,1)
+          cartLocStorageArray.splice(indexItemStorage, 1);
         }
       });
     }
-    localStorage.setItem("cartLiLocStorage", JSON.stringify([...cartLocStorageArray]));
+    localStorage.setItem(
+      "cartLiLocStorage",
+      JSON.stringify([...cartLocStorageArray])
+    );
     cartLi.remove();
-    totalPriceForDom ();
+    totalPriceForDom();
   });
-
 
   cartLi.appendChild(cartLiPic);
   cartLi.appendChild(cartLiName);
@@ -303,7 +314,7 @@ function createCartLifnc(element) {
   cartLi.appendChild(cartLiQty);
   cartLi.appendChild(cartTotalPrice);
   cartLi.appendChild(deletecartLi);
- //? ერთი და იგივე აითემი რომ ორჯერ არ დაამატოს ლისთში და მხოლოდ რაოდენობა შეკრიბოს მაგის ლოგიკა ვერ მოვასწარი და თან გამიჭირდა(თუ გამოვიდოდა, მგავე ლოგიკას გამოვიყენებდი ყველა ელემენტის კალათის თავზე რომ შეყვანილი რაოდენობა ჩავარდნილიყო რამე Div ელემენტში რომელსაც შევუქმნიდი)
+  //? ერთი და იგივე აითემი რომ ორჯერ არ დაამატოს ლისთში და მხოლოდ რაოდენობა შეკრიბოს მაგის ლოგიკა ვერ მოვასწარი და თან გამიჭირდა(თუ გამოვიდოდა, მგავე ლოგიკას გამოვიყენებდი ყველა ელემენტის კალათის თავზე რომ შეყვანილი რაოდენობა ჩავარდნილიყო რამე Div ელემენტში რომელსაც შევუქმნიდი)
   // cartLiArray.push(element.id);
   // console.log(cartLiArray);
   // cartLiArray.forEach((element) => {
@@ -323,8 +334,12 @@ function createCartLifnc(element) {
 
 // //! create Storage Fnc
 function loocalStorageFnc(storageCartli) {
-  const cartLocStorageArray = JSON.parse(localStorage.getItem("cartLiLocStorage")) || [];
-  localStorage.setItem("cartLiLocStorage", JSON.stringify([...cartLocStorageArray, storageCartli]));
+  const cartLocStorageArray =
+    JSON.parse(localStorage.getItem("cartLiLocStorage")) || [];
+  localStorage.setItem(
+    "cartLiLocStorage",
+    JSON.stringify([...cartLocStorageArray, storageCartli])
+  );
 }
 
 // //! load local storage fnc
@@ -334,9 +349,13 @@ function loadLocalStorageFnc() {
     cartLoad.forEach((element) => {
       createCartLifnc(element);
     });
-    const calculTotalLoadSum = cartLoad.reduce(function (totalSumLoad,sumLoad) {
+    const calculTotalLoadSum = cartLoad.reduce(function (
+      totalSumLoad,
+      sumLoad
+    ) {
       return totalSumLoad + sumLoad.total_price;
-    },0);
+    },
+    0);
     const resulTotalLoadSum = calculTotalLoadSum;
     totalBeerPriceBox.textContent = resulTotalLoadSum;
   }
