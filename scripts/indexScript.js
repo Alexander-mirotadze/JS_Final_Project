@@ -72,20 +72,14 @@ async function serverInfo() {
     );
     const JSdata = await response.json();
     const result = await JSdata.forEach((element) => {
-      mainFnc(element);
+      beerImageFncForSlidersFnc(element);
+      beerDetailInfoFnc(element);
     });
-    return result;
   } catch (error) {
     console.log("Page Not Found");
   }
 }
 serverInfo();
-
-// ! ---main Fnc
-function mainFnc(eachBeerItem) {
-  beerImageFncForSlidersFnc(eachBeerItem);
-  beerDetailInfoFnc(eachBeerItem);
-}
 
 // ? --- slider beer Image Fnc ვერაფრით ავამუშავე ის ლოგიკა რომ სლაიდერის სურათზე არსებული პროდუქტის აღწერა ჩამესვა გვერდით Div-ში
 // const beerInfoContainer = document.querySelector(".beer-info");

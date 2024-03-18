@@ -1,10 +1,3 @@
-/*
-* Prefixed by https://autoprefixer.github.io
-* PostCSS: v8.4.14,
-* Autoprefixer: v10.4.7
-* Browsers: last 4 version
-*/
-
 .body {
   padding-top: 120px;
   /* background-color: #000000; */
@@ -238,6 +231,8 @@
   height: 650px;
   background-color: #f4c314;
   border-radius: 4px;
+  border: 3px solid #000000;
+  box-shadow: 5px 10px 10px #000000;
   -webkit-animation: right-to-left 3s ease-in-out;
   animation: right-to-left 3s ease-in-out;
 }
@@ -320,6 +315,8 @@
   height: 650px;
   background-color: #f4c314;
   border-radius: 4px;
+  border: 3px solid #000000;
+  box-shadow: 5px 10px 10px #000000;
   -webkit-animation: right-to-left 3s ease-in-out;
   animation: right-to-left 3s ease-in-out;
 }
@@ -438,6 +435,8 @@
   height: 650px;
   background-color: #f4c314;
   border-radius: 4px;
+  border: 3px solid #000000;
+  box-shadow: 5px 10px 10px #000000;
   -webkit-animation: right-to-left 3s ease-in-out;
   animation: right-to-left 3s ease-in-out;
 }
@@ -1173,9 +1172,13 @@ h1::after {
     position: absolute;
     top: 80px;
     right: 0;
+    padding: 20px;
     width: 100%;
     height: 650px;
     background-color: #f4c314;
+    border-radius: 4px;
+    border: 3px solid #000000;
+    box-shadow: 5px 10px 10px #000000;
     -webkit-animation: right-to-left 3s ease-in-out;
     animation: right-to-left 3s ease-in-out;
   }
