@@ -2,6 +2,28 @@
 // ! dropProductList
 import { navDropDownFnc } from "./navDropDown.js";
 navDropDownFnc();
+
+// ! search
+// import { searchFnc } from "./search.js";
+// searchFnc();
+const searchIcon = document.getElementById("searchIcon");
+const searchForm = document.getElementById("searchForm");
+const searchInput = document.getElementById("searchForm");
+
+searchIcon.addEventListener("click", function () {
+  searchForm.classList.toggle("active__search");
+  searchInput.value = "";
+});
+
+document.addEventListener("click", (body) => {
+  const isSearchBar = body.target.matches("[data-search-bar]");
+  // console.log(isRegAutauDiv);
+  if (!isSearchBar) {
+    searchForm.classList.remove("active__search");
+    searchInput.value = "";
+  }
+});
+
 // ! user
 import { userBtnFnc } from "./userBtn.js";
 userBtnFnc();
@@ -94,47 +116,6 @@ allSlidersFnc();
 // ! shop all products
 const shopAllProducts = document.querySelector(".shop");
 
-// ! search
-// import { searchFnc } from "./search.js";
-// searchFnc();
-const listOfShopProducts = [];
-
-const searchIcon = document.getElementById("searchIcon");
-const searchForm = document.getElementById("searchForm");
-const searchInput = document.querySelector(".search-input");
-const searchBtn = document.querySelector(".search__btn");
-
-searchIcon.addEventListener("click", function () {
-  searchForm.classList.toggle("active__search");
-  searchForm.reset();
-});
-
-searchForm.addEventListener("submit", function (e) {
-  e.preventDefault();
-  searchForm.reset();
-});
-
-document.addEventListener("click", (body) => {
-  const isSearchBar = body.target.matches("[data-search-bar]");
-  // console.log(isRegAutauDiv);
-  if (!isSearchBar) {
-    searchForm.classList.remove("active__search");
-    searchForm.reset();
-  }
-});
-
-function searchInputFnc(productItemName) {
-  listOfShopProducts.forEach((element) => {
-    if (element.toLowerCase().includes(productItemName.toLowerCase().trim())) {
-      searchInput.classList.add("searching-true-color-green");
-    } else {
-      searchInput.classList.add("searching-true-color-red");
-    }
-  });
-}
-searchInput.addEventListener("keyup", searchInputFnc(searchInput.value)); //?
-// searchBtn.addEventListener("click", searchInputFnc(searchInput.value)); //?
-
 // ! beer Detail Info Fnc for shop
 function beerDetailInfoFnc(element) {
   let beerDetailInfo = document.createElement("li");
@@ -176,6 +157,28 @@ function beerDetailInfoFnc(element) {
     }
   });
 
+  const listOfShopProducts = [];
+
+  listOfShopProducts.push(beerName.innerText);
+
+  // # search
+  searchInput.addEventListener("input", function (e) {
+    // console.log(e.target.value);
+    let searchInputValue = e.target.value;
+    // console.log(searchInputValue);
+    // console.log(listOfShopProducts);
+    listOfShopProducts.map((element) => {
+      // console.log(element);
+      if (
+        !element.toLowerCase().includes(searchInputValue.toLowerCase().trim())
+      ) {
+        beerDetailInfo.classList.add("search-hide");
+      } else {
+        beerDetailInfo.classList.remove("search-hide");
+      }
+    });
+  });
+
   //# --- PP
   let resultBeerPP = beerPPFnc(element);
   // console.log(resultBeerPP);
@@ -187,8 +190,6 @@ function beerDetailInfoFnc(element) {
   beerDetailInfo.appendChild(beerDescription);
   beerDetailInfo.appendChild(resultBeerPP);
   shopAllProducts.appendChild(beerDetailInfo);
-  // # search
-  listOfShopProducts.push(element.name);
 }
 
 const beerQtyload = document.createElement("span");

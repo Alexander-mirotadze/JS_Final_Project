@@ -195,11 +195,8 @@
   border-radius: 4px;
   border: 1px solid #000000;
 }
-.searching-true-color-green {
-  background-color: greenyellow;
-}
-.searching-true-color-green {
-  background-color: red;
+.search-hide {
+  display: none;
 }
 .reg__autau__btn__div {
   display: none;
