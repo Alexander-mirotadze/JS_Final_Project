@@ -141,7 +141,7 @@
                   type="text"
                   name="firstName"
                   id="firstName"
-                  placeholder="Enter your first name :"
+                  placeholder="First Name *"
                   data-sign-up-form="signUp"
                 />
               </div>
@@ -156,7 +156,7 @@
                   type="text"
                   name="lastName"
                   id="lastName"
-                  placeholder="Enter your last name :"
+                  placeholder="Last Name *"
                   data-sign-up-form="signUp"
                 />
               </div>
@@ -188,10 +188,10 @@
               <!-- pass rep -->
               <div class="pass-divs" data-sign-up-form="signUp">
                 <input
-                  type="password"
                   id="repeatPassword"
                   name="passw2"
-                  placeholder="Re-enter your password :"
+                  type="password"
+                  placeholder="Repeat password *"
                   data-sign-up-form="signUp"
                 />
                 <i
@@ -211,7 +211,7 @@
                   type="email"
                   name="email"
                   id="Email"
-                  placeholder="Enter your email :"
+                  placeholder="Email *"
                   data-sign-up-form="signUp"
                 />
               </div>
@@ -224,16 +224,16 @@
               <div class="signe__up-radio" data-sign-up-form="signUp">
                 <label for="Male" data-sign-up-form="signUp">Male</label>
                 <input
-                  type="radio"
+                  id="male"
                   name="radio"
-                  id="Male"
+                  type="radio"
                   data-sign-up-form="signUp"
                 />
                 <label for="Female" data-sign-up-form="signUp">Female</label>
                 <input
-                  type="radio"
+                  id="female"
                   name="radio"
-                  id="Female"
+                  type="radio"
                   data-sign-up-form="signUp"
                 />
               </div>
@@ -246,9 +246,9 @@
               <div class="signe__up-checkbox" data-sign-up-form="signUp">
                 <span data-sign-up-form="signUp">I agree terms</span>
                 <input
-                  type="checkbox"
                   id="checkBox"
                   name="checkbox"
+                  type="checkbox"
                   data-sign-up-form="signUp"
                 />
               </div>
@@ -258,7 +258,7 @@
                 data-sign-up-form="signUp"
               ></p>
               <!-- button submit -->
-              <button data-sign-up-form="signUp">SubmiT</button>
+              <button type="submit" data-sign-up-form="signUp">SubmiT</button>
             </form>
             <i
               class="fa-solid fa-rectangle-xmark fa-2xl close--signUpDiv-btn"

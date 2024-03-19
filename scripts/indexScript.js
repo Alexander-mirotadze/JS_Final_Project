@@ -119,16 +119,13 @@ function searchFnc(searchInputValue) {
     // console.log(element);
     console.log(element.firstElementChild.textContent);
     let test = element.firstElementChild.textContent;
-    if (
-      !test.toLowerCase().includes(searchInputValue.toLowerCase().trim(""))
-    ) {
+    if (!test.toLowerCase().includes(searchInputValue.toLowerCase().trim(""))) {
       element.classList.add("search-hide");
     } else {
       element.classList.remove("search-hide");
     }
   });
 }
-
 
 // ! beer Detail Info Fnc for shop
 function beerDetailInfoFnc(element) {
@@ -178,7 +175,7 @@ function beerDetailInfoFnc(element) {
     // console.log(this);
     // console.log(this.value);
     searchFnc(this.value);
-  })
+  });
 
   //# --- PP
   let resultBeerPP = beerPPFnc(element);

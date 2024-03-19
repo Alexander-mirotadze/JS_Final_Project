@@ -415,6 +415,12 @@
   width: 20%;
   height: 1rem;
 }
+.error-text {
+  color: red;
+  font-size: 12px;
+  height: 5px;
+  margin: 5px 0;
+}
 .close--signUpDiv-btn {
   position: absolute;
   top: 20px;

@@ -12,6 +12,19 @@ export function signUpFnc() {
     signUpDiv.classList.add("active-sign-up");
   });
 
+  document.addEventListener("click", function (body) {
+    const isSignUpForm = body.target.matches("[data-sign-up-form]");
+    if (!isSignUpForm) {
+      signUpDiv.classList.remove("active-sign-up");
+      signUpForm.reset();
+    }
+  });
+
+  closeSignUpDiv.addEventListener("click", function () {
+    signUpDiv.classList.remove("active-sign-up");
+    signUpForm.reset();
+  });
+
   signUpForm.addEventListener("submit", function (e) {
     e.preventDefault();
 
@@ -47,7 +60,7 @@ export function signUpFnc() {
     }
 
     let radio = false;
-    formElement.querySelectorAll('[name="radio"]').forEach((gendreItems) => {
+    signUpForm.querySelectorAll('[name="radio"]').forEach((gendreItems) => {
       if (gendreItems.checked) {
         radio = true;
       }
@@ -55,16 +68,17 @@ export function signUpFnc() {
     if (radio != true) {
       errors.radio = "Please check you gender";
     }
+
     let checkBox = document.getElementById("checkBox").checked;
     if (checkBox != true) {
       errors.checkbox = "You need to agree terms";
     }
 
-    formElement
-      .querySelectorAll(".error-text")
-      .forEach((formChildeElements) => {
-        formChildeElements.textContent = "";
-      });
+    signUpForm.querySelectorAll(".error-text").forEach((formChildeElements) => {
+      formChildeElements.textContent = "";
+    });
+
+    // console.log(errors);
 
     for (let errorsKeys in errors) {
       let errorsPelements = document.getElementById("error-" + errorsKeys);
@@ -75,7 +89,7 @@ export function signUpFnc() {
     }
 
     if (Object.keys(errors).length == 0) {
-      formElement.submit();
+      signUpForm.submit();
     }
   });
 
@@ -187,18 +201,4 @@ export function signUpFnc() {
     }
   }
   repPass.addEventListener("keyup", perPasswordChecker);
-
-  // ---
-  document.addEventListener("click", function (body) {
-    const isSignUpForm = body.target.matches("[data-sign-up-form]");
-    if (!isSignUpForm) {
-      signUpDiv.classList.remove("active-sign-up");
-      signUpForm.reset();
-    }
-  });
-
-  closeSignUpDiv.addEventListener("click", function () {
-    signUpDiv.classList.remove("active-sign-up");
-    signUpForm.reset();
-  });
 }
