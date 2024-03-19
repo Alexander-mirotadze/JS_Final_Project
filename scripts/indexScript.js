@@ -8,7 +8,7 @@ navDropDownFnc();
 // searchFnc();
 const searchIcon = document.getElementById("searchIcon");
 const searchForm = document.getElementById("searchForm");
-const searchInput = document.getElementById("searchForm");
+const searchInput = document.getElementById("search__input");
 
 searchIcon.addEventListener("click", function () {
   searchForm.classList.toggle("active__search");
@@ -109,6 +109,26 @@ allSlidersFnc();
 
 // ! shop all products
 const shopAllProducts = document.querySelector(".shop");
+const listOfShopProducts = [];
+// console.log(listOfShopProducts);
+
+// ! search Fnc
+function searchFnc(searchInputValue) {
+  listOfShopProducts.forEach(function (element) {
+    console.log(searchInputValue);
+    // console.log(element);
+    console.log(element.firstElementChild.textContent);
+    let test = element.firstElementChild.textContent;
+    if (
+      !test.toLowerCase().includes(searchInputValue.toLowerCase().trim(""))
+    ) {
+      element.classList.add("search-hide");
+    } else {
+      element.classList.remove("search-hide");
+    }
+  });
+}
+
 
 // ! beer Detail Info Fnc for shop
 function beerDetailInfoFnc(element) {
@@ -151,27 +171,14 @@ function beerDetailInfoFnc(element) {
     }
   });
 
-  const listOfShopProducts = [];
-
-  listOfShopProducts.push(beerName.innerText);
-
   // # search
-  searchInput.addEventListener("input", function (e) {
-    // console.log(e.target.value);
-    let searchInputValue = e.target.value;
-    // console.log(searchInputValue);
-    // console.log(listOfShopProducts);
-    listOfShopProducts.map((element) => {
-      // console.log(element);
-      if (
-        !element.toLowerCase().includes(searchInputValue.toLowerCase().trim())
-      ) {
-        beerDetailInfo.classList.add("search-hide");
-      } else {
-        beerDetailInfo.classList.remove("search-hide");
-      }
-    });
-  });
+  listOfShopProducts.push(beerDetailInfo);
+
+  searchInput.addEventListener("keyup", function () {
+    // console.log(this);
+    // console.log(this.value);
+    searchFnc(this.value);
+  })
 
   //# --- PP
   let resultBeerPP = beerPPFnc(element);
