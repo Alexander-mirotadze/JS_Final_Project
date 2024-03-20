@@ -9,6 +9,7 @@ navDropDownFnc();
 const searchIcon = document.getElementById("searchIcon");
 const searchForm = document.getElementById("searchForm");
 const searchInput = document.getElementById("search__input");
+const listOfShopProducts = [];
 
 searchIcon.addEventListener("click", function () {
   searchForm.classList.toggle("active__search");
@@ -64,7 +65,6 @@ clearAllBtn.addEventListener("click", function () {
 });
 
 // ! info from server
-
 async function serverInfo() {
   try {
     const response = await fetch(
@@ -74,6 +74,27 @@ async function serverInfo() {
     const result = await JSdata.forEach((element) => {
       beerImageFncForSlidersFnc(element);
       beerDetailInfoFnc(element);
+      // ! search Fnc
+      function searchFnc(searchInputValue) {
+        listOfShopProducts.forEach(function (element) {
+          // console.log(searchInputValue);
+          console.log(element);
+          console.log(element.firstElementChild.textContent);
+          let test = element.firstElementChild.textContent;
+          if (
+            !test.toLowerCase().includes(searchInputValue.toLowerCase().trim())
+          ) {
+            element.classList.add("search-hide");
+          } else {
+            element.classList.remove("search-hide");
+          }
+        });
+      }
+      searchInput.addEventListener("keyup", function () {
+        // console.log(this);
+        // console.log(this.value);
+        searchFnc(this.value);
+      });
     });
   } catch (error) {
     console.log("Page Not Found");
@@ -109,23 +130,6 @@ allSlidersFnc();
 
 // ! shop all products
 const shopAllProducts = document.querySelector(".shop");
-const listOfShopProducts = [];
-// console.log(listOfShopProducts);
-
-// ! search Fnc
-function searchFnc(searchInputValue) {
-  listOfShopProducts.forEach(function (element) {
-    console.log(searchInputValue);
-    // console.log(element);
-    console.log(element.firstElementChild.textContent);
-    let test = element.firstElementChild.textContent;
-    if (!test.toLowerCase().includes(searchInputValue.toLowerCase().trim(""))) {
-      element.classList.add("search-hide");
-    } else {
-      element.classList.remove("search-hide");
-    }
-  });
-}
 
 // ! beer Detail Info Fnc for shop
 function beerDetailInfoFnc(element) {
@@ -170,12 +174,6 @@ function beerDetailInfoFnc(element) {
 
   // # search
   listOfShopProducts.push(beerDetailInfo);
-
-  searchInput.addEventListener("keyup", function () {
-    // console.log(this);
-    // console.log(this.value);
-    searchFnc(this.value);
-  });
 
   //# --- PP
   let resultBeerPP = beerPPFnc(element);

@@ -92,7 +92,7 @@ export function signUpFnc() {
 
       const formData = new FormData(signUpForm);
       const data = Object.fromEntries(formData);
-      // console.log(data);
+      console.log(data);
 
       //? ავტორიზაციის ობიექტი არ გააგზავნა
       fetch(
@@ -100,7 +100,7 @@ export function signUpFnc() {
         {
           method: "POST",
           headers: {
-            "Content-type": "application/json; charset=UTF-8",
+            "Content-type": "application/json",
           },
           body: JSON.stringify(data),
         }
@@ -114,8 +114,9 @@ export function signUpFnc() {
         .catch((error) => {
           console.log(error);
         });
+        
+        signUpForm.submit();
     }
-    // signUpForm.submit();
   });
 
   function ShowHidePassword() {
@@ -215,8 +216,11 @@ export function signUpFnc() {
     if (repPassValue != password.value) {
       repPassworPElement.textContent = "Password is not match";
       repPassLine.style.border = "2px solid red";
-    } 
-    if(repPassworPElement.textContent != "" && repPassValue == password.value ){
+    }
+    if (
+      repPassworPElement.textContent != "" &&
+      repPassValue == password.value
+    ) {
       repPassLine.style.border = "2px solid green";
     }
     if (repPassValue == "" && repPassValue == password.value) {
