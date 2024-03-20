@@ -232,6 +232,7 @@
   background-color: #f4c314;
   border-radius: 4px;
   border: 3px solid #000000;
+  -webkit-box-shadow: 5px 10px 10px #000000;
   box-shadow: 5px 10px 10px #000000;
   -webkit-animation: right-to-left 3s ease-in-out;
   animation: right-to-left 3s ease-in-out;
@@ -441,6 +442,7 @@
   background-color: #f4c314;
   border-radius: 4px;
   border: 3px solid #000000;
+  -webkit-box-shadow: 5px 10px 10px #000000;
   box-shadow: 5px 10px 10px #000000;
   -webkit-animation: right-to-left 3s ease-in-out;
   animation: right-to-left 3s ease-in-out;
@@ -1183,6 +1185,7 @@ h1::after {
     background-color: #f4c314;
     border-radius: 4px;
     border: 3px solid #000000;
+    -webkit-box-shadow: 5px 10px 10px #000000;
     box-shadow: 5px 10px 10px #000000;
     -webkit-animation: right-to-left 3s ease-in-out;
     animation: right-to-left 3s ease-in-out;
@@ -1221,6 +1224,7 @@ h1::after {
   .cart-div.active-cart {
     top: 80px;
   }
+}
 @media (max-width: 550px) {
   .beer-container-div {
     height: 1000px;
