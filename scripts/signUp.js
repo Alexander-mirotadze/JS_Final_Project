@@ -52,9 +52,6 @@ export function signUpFnc() {
 
     if (password.value != repPass.value) {
       errors.passw2 = "Password is not match";
-      repPassLine.style.border = "2px solid red";
-    } else {
-      repPassLine.style.border = "2px solid green";
     }
 
     if (email.value == "") {
@@ -218,12 +215,11 @@ export function signUpFnc() {
     if (repPassValue != password.value) {
       repPassworPElement.textContent = "Password is not match";
       repPassLine.style.border = "2px solid red";
-    } else {
-      repPassworPElement.textContent = "";
+    } 
+    if(repPassworPElement.textContent != "" && repPassValue == password.value ){
       repPassLine.style.border = "2px solid green";
     }
-
-    if (repPassValue == "") {
+    if (repPassValue == "" && repPassValue == password.value) {
       repPassworPElement.textContent = "";
       repPassLine.style.border = "1px solid #bdbdbd";
     }
