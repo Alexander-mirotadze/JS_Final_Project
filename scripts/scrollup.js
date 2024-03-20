@@ -1,12 +1,13 @@
+"use strict";
+
 export function scrollUp() {
-    const scrollUpIcon = document.querySelector(".fa-circle-up");
-  
-    scrollUpIcon.addEventListener("click", function () {
-      window.scrollTo({
-        top: 0,
-        left: 0,
-        behavior: "smooth",
-      });
+  const scrollUpIcon = document.querySelector(".fa-circle-up");
+
+  scrollUpIcon.addEventListener("click", function () {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
     });
-  }
-  
+  });
+}

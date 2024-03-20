@@ -1,3 +1,5 @@
+"use strict";
+
 export function navDropDownFnc() {
   const dropProductList = document.querySelector(".fa-solid");
   const dropProductsDiv = document.querySelector(".drop__product__list");

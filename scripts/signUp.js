@@ -1,3 +1,5 @@
+"use strict";
+
 export function signUpFnc() {
   const signUpBtn = document.getElementById("signe__up");
   const signUpDiv = document.querySelector(".signe__up--div");
@@ -88,7 +90,6 @@ export function signUpFnc() {
       }
     }
 
-
     if (Object.keys(errors).length == 0) {
       e.preventDefault();
 
@@ -97,22 +98,27 @@ export function signUpFnc() {
       // console.log(data);
 
       //? ავტორიზაციის ობიექტი არ გააგზავნა
-      fetch("https://alexander-mirotadze.github.io/server-use-post-comment/serverpcu.json", {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json; charset=UTF-8",
-      },
-      body: JSON.stringify(data),
-    })
-      .then((resp) => {resp.json();
-      })
-      .then((data) => {console.log(data);
-      })
-      .catch( (error) => {
-        console.log(error);
-      });
-  }
-      // signUpForm.submit();
+      fetch(
+        "https://alexander-mirotadze.github.io/server-use-post-comment/serverpcu.json",
+        {
+          method: "POST",
+          headers: {
+            "Content-type": "application/json; charset=UTF-8",
+          },
+          body: JSON.stringify(data),
+        }
+      )
+        .then((resp) => {
+          resp.json();
+        })
+        .then((data) => {
+          console.log(data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+    // signUpForm.submit();
   });
 
   function ShowHidePassword() {

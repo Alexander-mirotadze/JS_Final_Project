@@ -290,6 +290,12 @@
   border-radius: 4px;
   border: 1px solid #000000;
 }
+.error-log-in-text{
+  color: red;
+  font-size: 12px;
+  height: 5px;
+  margin: 5px 0;
+}
 .close--signInDiv-btn {
   position: absolute;
   top: 20px;

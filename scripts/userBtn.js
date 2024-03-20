@@ -1,3 +1,5 @@
+"use strict";
+
 export function userBtnFnc() {
   const userRegAutauthoriz = document.getElementById("userRegAutauthoriz");
   const regAutaudiv = document.querySelector(".reg__autau__btn__div");

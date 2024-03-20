@@ -1,3 +1,5 @@
+"use strict";
+
 export function allSlidersFnc() {
   // ! slider npm 1
   var splide = new Splide("#splide1", {

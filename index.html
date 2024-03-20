@@ -99,29 +99,35 @@
               Sign Up
             </button>
           </div>
-          <div class="signe__in--div" data-is-sign-in="signeIn">
+          <div id="signe__in--div" class="signe__in--div" data-is-sign-in="signeIn">
             <form
               class="log-in-form"
               action=""
               method="post"
               data-is-sign-in="signeIn"
             >
-              <div>
+              <div data-is-sign-in="signeIn">
                 <input
+                  id="log-in-email"
+                  name="log_in_email"
                   class="search-input"
-                  type="text"
+                  type="email"
                   placeholder="Enter your Email :"
                   data-is-sign-in="signeIn"
                 />
+                <p id="error-log_in_email" class="error-log-in-text" data-is-sign-in="signeIn"></p>
               </div>
-              <div>
+              <div data-is-sign-in="signeIn">
                 <input
+                  id="log-in-pass"
+                  name="log_in_pass"
                   type="password"
                   placeholder="Enter you password :"
                   data-is-sign-in="signeIn"
                 />
+                <p id="error-log_in_pass" class="error-log-in-text" data-is-sign-in="signeIn"></p>
               </div>
-              <button data-is-sign-in="signeIn">Log In</button>
+              <button type="submit" data-is-sign-in="signeIn">Log In</button>
             </form>
             <i
               class="fa-solid fa-rectangle-xmark fa-2xl close--signInDiv-btn"
