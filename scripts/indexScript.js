@@ -206,7 +206,7 @@ function totalPriceForDom() {
       return totalSumLoad + sumLoad.total_price;
     },
     0);
-    const resulTotalLoadSum = calculTotalLoadSum;
+    const resulTotalLoadSum = Number(calculTotalLoadSum.toFixed(2));
     totalBeerPriceBox.textContent = resulTotalLoadSum;
   }
   localStorage.setItem(
@@ -262,7 +262,7 @@ function beerPPFnc(element) {
       let beerItemSum = beerQtyInput * Number(element.price);
       beerQtySumload.textContent = `${beerItemSum}`;
       beerQtySumload.setAttribute("data-cart-div", element.id);
-      element.qty_sum = beerItemSum;
+      element.qty_sum = Number(beerItemSum.toFixed(2));
       // ---
       function sumProducts(...totalPrice) {
         let totalBeerPrice = 0;
