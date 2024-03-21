@@ -489,7 +489,7 @@
 }
 .cart-li {
   width: 100%;
-  height: 50px;
+  min-height: 50px;
   padding: 15px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -509,12 +509,14 @@
   font-size: 14px;
   font-weight: 700;
   color: #000000;
+  /* overflow-y: hidden; */
 }
 .cart-li div {
   width: 100%;
   min-height: 30px;
   text-align: center;
   padding-top: 2px;
+  /* overflow: hidden; */
   /* background-color: red; */
 }
 .cart-li-pic {

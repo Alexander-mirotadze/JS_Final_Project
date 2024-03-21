@@ -71,7 +71,7 @@ async function serverInfo() {
       "https://alexander-mirotadze.github.io/server/server.json"
     );
     const JSdata = await response.json();
-    const result = await JSdata.forEach((element) => {
+    JSdata.forEach((element) => {
       beerImageFncForSlidersFnc(element);
       beerDetailInfoFnc(element);
       // ! search Fnc
