@@ -290,7 +290,7 @@
   border-radius: 4px;
   border: 1px solid #000000;
 }
-.error-log-in-text{
+.error-log-in-text {
   color: red;
   font-size: 12px;
   height: 5px;
@@ -706,6 +706,18 @@ h1::after {
   content: "\f0fc";
   margin-left: 10px;
 }
+#section-newses {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+  justify-content: space-around;
+  -webkit-column-gap: 20px;
+  -moz-column-gap: 20px;
+  column-gap: 20px;
+  /* flex-wrap: wrap; */
+  /* background-color: green; */
+}
 .h2-section-header {
   margin: 20px auto;
   width: -webkit-fit-content;
@@ -718,33 +730,108 @@ h1::after {
   background-color: #f4c314;
   font-family: "Kode Mono";
   color: #000000;
-  font-size: 36px;
-  line-height: 36px;
+  font-size: 32px;
+  line-height: 32px;
   font-weight: 900;
   font-style: italic;
   text-align: center;
 }
-.beer-container-div {
-  margin: 20px auto;
-  height: 400px;
+/* ! sliders */
+.splide {
+  width: 30vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-pack: distribute;
   justify-content: space-around;
-  -webkit-column-gap: 30px;
-  -moz-column-gap: 30px;
-  column-gap: 30px;
-  /* background-color: red; */
+  border-radius: 4px;
+  background-color: #f4c314;
+  -webkit-box-shadow: 5px 10px 10px #000000;
+  box-shadow: 5px 10px 10px #000000;
+}
+.splide__track {
+  width: 100%;
+}
+/* .splide__list{
+
+} */
+.splide__slide {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  width: 100%;
+}
+.beer-image {
+  max-width: 150px;
+  width: 30%;
+  height: 100%;
+  /* object-fit: cover; */
+}
+/* .splide__arrows.new-beer-class-arrows {
+  color: red;
+  background-color: red;
+}
+.splide__arrow.new-beer-class-arrow {
+  color: red;
+  background-color: red;
+} */
+.splide__arrow--prev.new-beer-class-prev {
+  background-color: #f4c314;
+  width: 40px;
+  height: 40px;
+  border: 5px solid #000000;
+  display: none;
+}
+.splide__arrow--next.new-beer-class-next {
+  background-color: #f4c314;
+  width: 40px;
+  height: 40px;
+  border: 5px solid #000000;
+  display: none;
+}
+.splide__pagination__page.new-beer-class-page {
+  width: 10px;
+  height: 10px;
+  background-color: #000000;
+}
+.splide__pagination__page.new-beer-class-page.is-active {
+  background-color: #ffffff;
 }
 .beer-info {
   width: 45%;
   height: 100%;
-  border-radius: 4px;
-  background-color: #f4c314;
-  overflow: hidden;
-  -webkit-box-shadow: 5px 10px 10px #000000;
-  box-shadow: 5px 10px 10px #000000;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -ms-flex-pack: distribute;
+  justify-content: space-around;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  /* background-color: red; */
+}
+.slider-descr-info {
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -ms-flex-pack: distribute;
+  justify-content: space-around;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 .beer-details {
   width: 100%;
@@ -763,7 +850,7 @@ h1::after {
 .h2-beer-name {
   padding-top: 5px;
   width: 90%;
-  height: 40px;
+  min-height: 40px;
   font-family: "Kode Mono";
   font-size: 18px;
   font-weight: 800;
@@ -853,92 +940,6 @@ h1::after {
   width: 40px;
   height: 100%;
   background-color: #f4c314;
-}
-/* ! sliders */
-
-/* .li-for-beer-img {
-  width: 200px;
-  height: 100%;
-  padding: 5px;
-  background-color: #f4c314;
-  border-radius: 4px;
-} */
-.beer-slides {
-  width: 45%;
-  height: 100%;
-  border-radius: 4px;
-  background-color: #f4c314;
-  -webkit-box-shadow: 5px 10px 10px #000000;
-  box-shadow: 5px 10px 10px #000000;
-}
-#slide-ul-1 {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-#slide-ul-2 {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-#slide-ul-3 {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-.beer-image {
-  width: 150px;
-  height: 100%;
-  /* object-fit: cover; */
-}
-/* .splide__arrows.new-beer-class-arrows {
-  color: red;
-  background-color: red;
-}
-.splide__arrow.new-beer-class-arrow {
-  color: red;
-  background-color: red;
-} */
-.splide__arrow--prev.new-beer-class-prev {
-  background-color: #f4c314;
-  width: 40px;
-  height: 40px;
-  border: 5px solid #000000;
-}
-.splide__arrow--next.new-beer-class-next {
-  background-color: #f4c314;
-  width: 40px;
-  height: 40px;
-  border: 5px solid #000000;
-}
-.splide__pagination__page.new-beer-class-page {
-  width: 10px;
-  height: 10px;
-  background-color: #000000;
-}
-.splide__pagination__page.new-beer-class-page.is-active {
-  background-color: #ffffff;
 }
 /* ! shop */
 .shop {
@@ -1232,31 +1233,25 @@ h1::after {
   .cart-div.active-cart {
     top: 80px;
   }
-}
-@media (max-width: 550px) {
-  .beer-container-div {
-    height: 1000px;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
+  #section-newses {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: reverse;
-    -ms-flex-direction: column-reverse;
-    flex-direction: column-reverse;
-    row-gap: 20px;
   }
-  .beer-info {
-    width: 90%;
-    background-color: gray;
+  .splide {
+    width: 90vw;
   }
-  .beer-slides {
-    width: 90%;
-  }
-  .shop-beer-details {
-    width: 90%;
+}
+@media (max-width: 550px) {
+  .splide__slide {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    height: 100vh;
   }
   #footer {
     height: 100%;

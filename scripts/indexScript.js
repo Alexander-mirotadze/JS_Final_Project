@@ -102,11 +102,10 @@ async function serverInfo() {
 }
 serverInfo();
 
-// ? --- slider beer Image Fnc ვერაფრით ავამუშავე ის ლოგიკა რომ სლაიდერის სურათზე არსებული პროდუქტის აღწერა ჩამესვა გვერდით Div-ში
-// const beerInfoContainer = document.querySelector(".beer-info");
-// const activeSlide = document.querySelector("[aria-hidden]");
-// console.log(activeSlide);
+// ! Slider with descr
+const beerInfoContainer = document.querySelectorAll(".beer-info");
 const newBeerAllSlides = document.querySelectorAll(".splide__slide");
+
 function beerImageFncForSlidersFnc(element) {
   let imgBeerElements = document.createElement("img");
   imgBeerElements.setAttribute("src", element.image_url);
@@ -114,7 +113,61 @@ function beerImageFncForSlidersFnc(element) {
   imgBeerElements.setAttribute("data-id-img", element.id);
   imgBeerElements.classList.add("beer-image");
 
+  let beerDescrForSlider = document.createElement("div");
+  beerDescrForSlider.setAttribute("data-id-descr", element.id);
+  beerDescrForSlider.classList.add("slider-descr-info");
+
+  let beerDetailInfo = document.createElement("li");
+  beerDetailInfo.classList.add("shop-beer-details");
+  beerDetailInfo.setAttribute("data-description", element.id);
+
+  let beerName = document.createElement("h2");
+  beerName.innerText = element.name;
+  beerName.classList.add("h2-beer-name");
+
+  let beerTag = document.createElement("p");
+  beerTag.innerText = element.tagline;
+  beerTag.classList.add("p-beer-tagline");
+
+  let beerDescription = document.createElement("p");
+  beerDescription.innerText = element.description;
+  beerDescription.classList.add("shop-span-beer-description");
+  let beerDescDrop = document.createElement("i");
+  beerDescDrop.classList.add(
+    "fa-solid",
+    "fa-sort-down",
+    "fa-lg",
+    "desc-accord-icon"
+  );
+  beerDescDrop.addEventListener("click", function (e) {
+    beerDescription.classList.toggle("up-down");
+    let descritptionActive = document.querySelector(".up-down");
+    if (descritptionActive) {
+      beerDescDrop.classList.remove("fa-sort-down");
+      beerDescDrop.classList.add("fa-sort-up");
+    } else {
+      beerDescDrop.classList.remove("fa-sort-up");
+      beerDescDrop.classList.add("fa-sort-down");
+    }
+  });
+
+  let resultBeerPP = beerPPFnc(element);
+  beerDescrForSlider.appendChild(beerName);
+  beerDescrForSlider.appendChild(beerTag);
+  beerDescription.appendChild(beerDescDrop);
+  beerDescrForSlider.appendChild(beerDescription);
+  beerDescrForSlider.appendChild(resultBeerPP);
+
   // console.log(imgBeerElements);
+
+  beerInfoContainer.forEach((element) => {
+    let beerInfoNum = element.getAttribute("data-id-description");
+    let descriptionNum = beerDescrForSlider.getAttribute("data-id-descr");
+
+    if (beerInfoNum == descriptionNum) {
+      element.appendChild(beerDescrForSlider);
+    }
+  });
 
   newBeerAllSlides.forEach(function (elementSlide) {
     let slideElementNum = elementSlide.getAttribute("data-id");
