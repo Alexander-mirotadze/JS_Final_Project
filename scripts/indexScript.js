@@ -4,8 +4,6 @@ import { navDropDownFnc } from "./navDropDown.js";
 navDropDownFnc();
 
 // ! search
-// import { searchFnc } from "./search.js";
-// searchFnc();
 const searchIcon = document.getElementById("searchIcon");
 const searchForm = document.getElementById("searchForm");
 const searchInput = document.getElementById("search__input");
@@ -74,27 +72,6 @@ async function serverInfo() {
     JSdata.forEach((element) => {
       beerImageFncForSlidersFnc(element);
       beerDetailInfoFnc(element);
-      // ! search Fnc
-      function searchFnc(searchInputValue) {
-        listOfShopProducts.forEach(function (element) {
-          // console.log(searchInputValue);
-          console.log(element);
-          console.log(element.firstElementChild.textContent);
-          let test = element.firstElementChild.textContent;
-          if (
-            !test.toLowerCase().includes(searchInputValue.toLowerCase().trim())
-          ) {
-            element.classList.add("search-hide");
-          } else {
-            element.classList.remove("search-hide");
-          }
-        });
-      }
-      searchInput.addEventListener("keyup", function () {
-        // console.log(this);
-        // console.log(this.value);
-        searchFnc(this.value);
-      });
     });
   } catch (error) {
     console.log("Page Not Found");
@@ -102,7 +79,7 @@ async function serverInfo() {
 }
 serverInfo();
 
-// ! Slider with descr
+// ! beer Image and descr Fnc for sliders
 const beerInfoContainer = document.querySelectorAll(".beer-info");
 const newBeerAllSlides = document.querySelectorAll(".splide__slide");
 
@@ -157,7 +134,6 @@ function beerImageFncForSlidersFnc(element) {
   beerDescription.appendChild(beerDescDrop);
   beerDescrForSlider.appendChild(beerDescription);
   beerDescrForSlider.appendChild(resultBeerPP);
-
   // console.log(imgBeerElements);
 
   beerInfoContainer.forEach((element) => {
@@ -178,6 +154,8 @@ function beerImageFncForSlidersFnc(element) {
     }
   });
 }
+
+// ! sliders logic
 import { allSlidersFnc } from "./sliders.js";
 allSlidersFnc();
 
@@ -240,6 +218,22 @@ function beerDetailInfoFnc(element) {
   beerDetailInfo.appendChild(resultBeerPP);
   shopAllProducts.appendChild(beerDetailInfo);
 }
+// ! search Fnc
+function searchFnc(searchInputValue) {
+  let filterdlists = listOfShopProducts.filter((element) =>
+    element.firstElementChild.textContent
+      .toLowerCase()
+      .includes(searchInputValue.toLowerCase().trim())
+  );
+  console.log(filterdlists);
+  shopAllProducts.innerHTML = "";
+  filterdlists.forEach((filteredLi) => {
+    shopAllProducts.appendChild(filteredLi);
+  });
+}
+searchInput.addEventListener("keyup", function () {
+  searchFnc(this.value);
+});
 
 const beerQtyload = document.createElement("span");
 const beerQtySumload = document.createElement("span");
