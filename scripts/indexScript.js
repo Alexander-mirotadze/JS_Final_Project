@@ -243,7 +243,6 @@ function totalPriceForDom() {
   const cartLocStorageArray =
     JSON.parse(localStorage.getItem("cartLiLocStorage")) || [];
   if (cartLocStorageArray) {
-    cartLocStorageArray.forEach((element) => {});
     const calculTotalLoadSum = cartLocStorageArray.reduce(function (
       totalSumLoad,
       sumLoad
@@ -440,7 +439,7 @@ function loadLocalStorageFnc() {
       return totalSumLoad + sumLoad.total_price;
     },
     0);
-    const resulTotalLoadSum = calculTotalLoadSum;
+    const resulTotalLoadSum = Number(calculTotalLoadSum.toFixed(2));
     totalBeerPriceBox.textContent = resulTotalLoadSum;
   }
 }
